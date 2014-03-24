@@ -40,10 +40,10 @@ Partial Class Form1
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.ClearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PauseLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
@@ -65,7 +65,7 @@ Partial Class Form1
         Me.OutPutTextBox.Name = "OutPutTextBox"
         Me.OutPutTextBox.ReadOnly = True
         Me.OutPutTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.OutPutTextBox.Size = New System.Drawing.Size(515, 262)
+        Me.OutPutTextBox.Size = New System.Drawing.Size(515, 264)
         Me.OutPutTextBox.TabIndex = 2
         '
         'BackgroundWorker1
@@ -86,16 +86,18 @@ Partial Class Form1
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.JarPathText})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 307)
+        Me.StatusStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 309)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(515, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(515, 20)
         Me.StatusStrip1.TabIndex = 5
         Me.StatusStrip1.Text = "StatusStrip1"
         '
         'JarPathText
         '
+        Me.JarPathText.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
         Me.JarPathText.Name = "JarPathText"
-        Me.JarPathText.Size = New System.Drawing.Size(91, 17)
+        Me.JarPathText.Size = New System.Drawing.Size(91, 15)
         Me.JarPathText.Text = "No JAR selected"
         '
         'ToolStrip1
@@ -186,12 +188,6 @@ Partial Class Form1
         Me.PauseLogToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
         Me.PauseLogToolStripMenuItem.Text = "Pause/Resume Log"
         '
-        'SettingsToolStripMenuItem
-        '
-        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
-        Me.SettingsToolStripMenuItem.Text = "Settings"
-        '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
@@ -207,6 +203,12 @@ Partial Class Form1
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
         Me.ToolStripSeparator4.Size = New System.Drawing.Size(172, 6)
+        '
+        'SettingsToolStripMenuItem
+        '
+        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
+        Me.SettingsToolStripMenuItem.Text = "Settings"
         '
         'AboutToolStripMenuItem
         '
@@ -235,7 +237,7 @@ Partial Class Form1
         '
         Me.Panel1.Controls.Add(Me.InputTextBox)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 287)
+        Me.Panel1.Location = New System.Drawing.Point(0, 289)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(515, 20)
         Me.Panel1.TabIndex = 7
@@ -246,7 +248,7 @@ Partial Class Form1
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 25)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(515, 262)
+        Me.Panel2.Size = New System.Drawing.Size(515, 264)
         Me.Panel2.TabIndex = 8
         '
         'Form1

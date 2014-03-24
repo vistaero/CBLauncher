@@ -12,6 +12,29 @@ Public Class Form1
     Dim JarFolder As String
     Dim IsStarted As Boolean = False
 
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Dim processlist As Object = Process.GetProcesses
+        For Each process As Process In processlist
+            Dim Process2 As String = process.Id
+            If Process2.Equals(My.Settings.LastJavawPID) Then
+                MessageBox.Show("The last server you launched (with " & My.Settings.LastJavawPID & " PID) with this application was not stopped. Probably due to a crash of the launcher. And probably the server is frozen. The only thing you (and us) can do, is killing the process." & vbNewLine & vbNewLine & "Let's go?", "Oups, we are so sorry...", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+                process.Kill()
+            End If
+        Next
+
+
+        CheckJavaw(True)
+        If My.Application.CommandLineArgs.Count > 0 Then
+            MemoryText.Text = My.Application.CommandLineArgs.First
+            JarPath = Path.GetFullPath(My.Application.CommandLineArgs.Last)
+            JarFolder = Path.GetDirectoryName(JarPath)
+            JarPathText.Text = JarPath
+            If System.IO.File.Exists(JarPath) Then
+                StartServer(MemoryText.Text)
+            End If
+        End If
+    End Sub
+
     Private Function CheckJavaw(ByVal download As Boolean)
         Dim ExistsJavaw As Boolean = System.IO.File.Exists(PathJavaw)
         If ExistsJavaw = False And download = True Then
@@ -66,7 +89,6 @@ Public Class Form1
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-
 
     End Sub
 
@@ -136,46 +158,24 @@ Public Class Form1
         Dim Dialog As New OpenFileDialog
         Dialog.Filter = "Java Files|*.jar"
         Dialog.InitialDirectory = My.Settings.DefaultJarPath
-        Dialog.ShowDialog()
-        JarPath = Dialog.FileName
-        If Not JarPath = "" Then
-            JarFolder = JarPath.Replace(Dialog.SafeFileName, "")
-            JarPathText.Text = JarPath
-            If IsStarted = False Then
-                StartButton.Enabled = True
+        Dim reply = Dialog.ShowDialog()
+        If reply = Windows.Forms.DialogResult.OK Then
+
+            JarPath = Dialog.FileName
+            MsgBox("La ruta escogida es " & JarPath)
+            If Not JarPath = "" Then
+                JarFolder = JarPath.Replace(Dialog.SafeFileName, "")
+                JarPathText.Text = JarPath
+                If IsStarted = False Then
+                    StartButton.Enabled = True
+                End If
             End If
         End If
 
-    End Sub
-
-    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
-        'AboutBox1.ShowDialog()
 
     End Sub
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
 
-        Dim processlist As Object = Process.GetProcesses
-        For Each process As Process In processlist
-            Dim Process2 As String = process.Id
-            If Process2.Equals(My.Settings.LastJavawPID) Then
-                MessageBox.Show("The last server you launched (with " & My.Settings.LastJavawPID & " PID) with this application was not stopped. Probably due to a crash of the launcher. And probably the server is frozen. The only thing you (and us) can do, is killing the process." & vbNewLine & vbNewLine & "Let's go?", "Oups, we are so sorry...", MessageBoxButtons.OK, MessageBoxIcon.Hand)
-                process.Kill()
-            End If
-        Next
-
-
-        CheckJavaw(True)
-        If My.Application.CommandLineArgs.Count > 0 Then
-            MemoryText.Text = My.Application.CommandLineArgs.First
-            JarPath = Path.GetFullPath(My.Application.CommandLineArgs.Last)
-            JarFolder = Path.GetDirectoryName(JarPath)
-            JarPathText.Text = JarPath
-            If System.IO.File.Exists(JarPath) Then
-                StartServer(MemoryText.Text)
-            End If
-        End If
-    End Sub
 
     Private Sub PauseLogToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PauseLogToolStripMenuItem.Click
         If Timer1.Enabled = False Then
@@ -228,7 +228,9 @@ Public Class Form1
 
     End Sub
 
-    Private Sub InputTextBox_TextChanged(sender As Object, e As EventArgs) Handles InputTextBox.TextChanged
+
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+        AboutBox1.ShowDialog()
 
     End Sub
 End Class

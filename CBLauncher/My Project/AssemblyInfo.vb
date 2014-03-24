@@ -11,7 +11,7 @@ Imports System.Runtime.InteropServices
 ' Revisar los valores de los atributos del ensamblado
 
 <Assembly: AssemblyTitle("CraftBukkit Launcher")> 
-<Assembly: AssemblyDescription("")> 
+<Assembly: AssemblyDescription("This makes simpler all things related with starting a server.")> 
 <Assembly: AssemblyCompany("vistaero")> 
 <Assembly: AssemblyProduct("CraftBukkit Launcher")> 
 <Assembly: AssemblyCopyright("Copyright ©  2014")> 
@@ -33,7 +33,7 @@ Imports System.Runtime.InteropServices
 ' mediante el asterisco ('*'), como se muestra a continuación:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("1.0")> 
+<Assembly: AssemblyFileVersion("1.0")> 
 
 <Assembly: NeutralResourcesLanguageAttribute("")> 
