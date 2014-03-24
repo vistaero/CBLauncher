@@ -15,8 +15,8 @@ Public Class Form1
     Private Function CheckJavaw(ByVal download As Boolean)
         Dim ExistsJavaw As Boolean = System.IO.File.Exists(PathJavaw)
         If ExistsJavaw = False And download = True Then
-            MessageBox.Show("You must install Java 64 Bits.", "64 Bits version of Java not found")
-            Process.Start("http://javadl.sun.com/webapps/download/AutoDL?BundleId=83385")
+            MessageBox.Show("Java is not installed.", "Java not found")
+            Process.Start("https://www.java.com/es/download/")
         End If
         If ExistsJavaw = False Then
             Return (False)
@@ -101,7 +101,7 @@ Public Class Form1
                 serverprocess.StartInfo.RedirectStandardOutput = True
                 serverprocess.StartInfo.RedirectStandardInput = True
                 serverprocess.StartInfo.FileName = PathJavaw
-                serverprocess.StartInfo.Arguments = "-Xmx" & memory & "M -jar " & JarPath
+                serverprocess.StartInfo.Arguments = "-Xmx" & memory & "M -jar " & """" & JarPath & """"
                 serverprocess.StartInfo.UseShellExecute = False
                 serverprocess.StartInfo.CreateNoWindow = True
                 serverprocess.StartInfo.WorkingDirectory = JarFolder
@@ -120,7 +120,7 @@ Public Class Form1
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         Else
-            MessageBox.Show("You have not installed Java 64 Bits yet.")
+            MessageBox.Show("You have not installed Java yet.")
         End If
     End Sub
 
