@@ -177,4 +177,16 @@ Nombre del proceso y PID: </value>
   <data name="ShouldClickStop2" xml:space="preserve">
     <value>Clic en Detener</value>
   </data>
+  <data name="CBUpdated1" xml:space="preserve">
+    <value>La última versión ya está descargada.</value>
+  </data>
+  <data name="CBUpdated2" xml:space="preserve">
+    <value>No es necesario descargar</value>
+  </data>
+  <data name="SelectJar" xml:space="preserve">
+    <value>Seleccionar fichero Jar</value>
+  </data>
+  <data name="WhereCopy" xml:space="preserve">
+    <value>Dónde copiar </value>
+  </data>
 </root>

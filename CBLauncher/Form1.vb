@@ -18,9 +18,44 @@ Public Class Form1
     Public NewFavoriteName As String
     Public documentspath As String = (System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)) & "\CBLauncher\"
     Private InputHistorial As New List(Of String)
-    Dim LocRM As New ResourceManager("CBLauncher.Strings", GetType(Form1).Assembly)
+    Public LocRM As New ResourceManager("CBLauncher.Strings", GetType(Form1).Assembly)
+
+    Private Sub EasterEgg()
+
+        If My.Computer.Clock.LocalTime.Month = 1 And My.Computer.Clock.LocalTime.Day = 1 Then
+            Me.Text = "¡Happy " & My.Computer.Clock.LocalTime.Year & "!"
+
+        End If
+
+        If My.Computer.Clock.LocalTime.Month = 12 And My.Computer.Clock.LocalTime.Day = 13 Then
+            Me.Text = "¡Happy birthday, vistaero!"
+
+        End If
+
+        If My.Computer.Clock.LocalTime.Month = 4 And My.Computer.Clock.LocalTime.Day = 1 Then
+            Me.Text = "Space Rocket Launcher"
+
+        End If
+
+        If My.Computer.Clock.LocalTime.Month = 7 And My.Computer.Clock.LocalTime.Day = 23 Then
+            Me.Text = "Happy birthday Dinnerbone"
+
+        End If
+
+        If My.Computer.Clock.LocalTime.Month = 5 And My.Computer.Clock.LocalTime.Day = 18 Then
+            Me.Text = "Happy birthday Jeb"
+
+        End If
+
+        If My.Computer.Clock.LocalTime.Month = 9 And My.Computer.Clock.LocalTime.Day = 19 Then
+            Me.Text = "Birthday of the person who, a long time ago, thought I missed her birthday."
+
+        End If
+
+        HuevoToolStripMenuItem.Visible = True
 
 
+    End Sub
 
     Private Sub AddFavoriteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddFavoriteToolStripMenuItem.Click
         Dim Exists As Boolean = False
@@ -101,6 +136,7 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
+        EasterEgg()
 
         Dim processlist As Object = Process.GetProcesses
         For Each process As Process In processlist
@@ -433,4 +469,8 @@ Public Class Form1
         Clipboard.SetText(OutPutTextBox.Text)
     End Sub
 
+    Private Sub HuevoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HuevoToolStripMenuItem.Click
+        Me.Text = "CraftBukkit Launcher"
+        HuevoToolStripMenuItem.Visible = False
+    End Sub
 End Class

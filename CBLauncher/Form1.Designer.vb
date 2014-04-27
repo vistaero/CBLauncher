@@ -48,7 +48,7 @@ Partial Class Form1
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EliminarFavoritoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HuevoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.MemoryText = New System.Windows.Forms.ToolStripTextBox()
@@ -154,7 +154,7 @@ Partial Class Form1
         resources.ApplyResources(Me.ToolStripButton2, "ToolStripButton2")
         Me.ToolStripButton2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripButton2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearToolStripMenuItem, Me.CopyAllToolStripMenuItem, Me.ToolStripSeparator3, Me.AddFavoriteToolStripMenuItem, Me.ToolStripMenuItem1, Me.DownloadCraftBukkitToolStripMenuItem, Me.ToolStripSeparator5, Me.SettingsToolStripMenuItem, Me.AboutToolStripMenuItem, Me.EliminarFavoritoToolStripMenuItem})
+        Me.ToolStripButton2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearToolStripMenuItem, Me.CopyAllToolStripMenuItem, Me.ToolStripSeparator3, Me.AddFavoriteToolStripMenuItem, Me.ToolStripMenuItem1, Me.DownloadCraftBukkitToolStripMenuItem, Me.ToolStripSeparator5, Me.SettingsToolStripMenuItem, Me.AboutToolStripMenuItem, Me.HuevoToolStripMenuItem})
         Me.ToolStripButton2.Name = "ToolStripButton2"
         '
         'ClearToolStripMenuItem
@@ -202,10 +202,10 @@ Partial Class Form1
         resources.ApplyResources(Me.AboutToolStripMenuItem, "AboutToolStripMenuItem")
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
         '
-        'EliminarFavoritoToolStripMenuItem
+        'HuevoToolStripMenuItem
         '
-        resources.ApplyResources(Me.EliminarFavoritoToolStripMenuItem, "EliminarFavoritoToolStripMenuItem")
-        Me.EliminarFavoritoToolStripMenuItem.Name = "EliminarFavoritoToolStripMenuItem"
+        resources.ApplyResources(Me.HuevoToolStripMenuItem, "HuevoToolStripMenuItem")
+        Me.HuevoToolStripMenuItem.Name = "HuevoToolStripMenuItem"
         '
         'ToolStripSeparator2
         '
@@ -284,6 +284,6 @@ Partial Class Form1
     Friend WithEvents OutPutPanel As System.Windows.Forms.Panel
     Friend WithEvents FavoritesButton As System.Windows.Forms.ToolStripButton
     Friend WithEvents CopyAllToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents EliminarFavoritoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents HuevoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

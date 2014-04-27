@@ -102,6 +102,24 @@ Friend Class Strings
     End Property
     
     '''<summary>
+    '''  Busca una cadena traducida similar a Latest build already downloaded..
+    '''</summary>
+    Friend Shared ReadOnly Property CBUpdated1() As String
+        Get
+            Return ResourceManager.GetString("CBUpdated1", resourceCulture)
+        End Get
+    End Property
+
+    '''<summary>
+    '''  Busca una cadena traducida similar a Not download necessary.
+    '''</summary>
+    Friend Shared ReadOnly Property CBUpdated2() As String
+        Get
+            Return ResourceManager.GetString("CBUpdated2", resourceCulture)
+        End Get
+    End Property
+
+    '''<summary>
     '''  Busca un recurso adaptado de tipo System.Windows.Forms.ImeMode similar a NoControl.
     '''</summary>
     Friend Shared ReadOnly Property CheckBox1_ImeMode() As System.Windows.Forms.ImeMode
@@ -206,6 +224,15 @@ Friend Class Strings
     End Property
     
     '''<summary>
+    '''  Busca una cadena traducida similar a Select Jar File.
+    '''</summary>
+    Friend Shared ReadOnly Property SelectJar() As String
+        Get
+            Return ResourceManager.GetString("SelectJar", resourceCulture)
+        End Get
+    End Property
+    
+    '''<summary>
     '''  Busca una cadena traducida similar a You should click Stop before exit. Are you sure?.
     '''</summary>
     Friend Shared ReadOnly Property ShouldClickStop1() As String
@@ -220,6 +247,15 @@ Friend Class Strings
     Friend Shared ReadOnly Property ShouldClickStop2() As String
         Get
             Return ResourceManager.GetString("ShouldClickStop2", resourceCulture)
+        End Get
+    End Property
+    
+    '''<summary>
+    '''  Busca una cadena traducida similar a Where to copy .
+    '''</summary>
+    Friend Shared ReadOnly Property WhereCopy() As String
+        Get
+            Return ResourceManager.GetString("WhereCopy", resourceCulture)
         End Get
     End Property
 End Class

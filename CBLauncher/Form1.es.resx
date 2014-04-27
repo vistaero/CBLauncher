@@ -124,14 +124,14 @@
   <data name="InputTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>584, 18</value>
   </data>
-  <data name="StatusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>584, 20</value>
-  </data>
   <data name="JarPathText.Size" type="System.Drawing.Size, System.Drawing">
     <value>139, 15</value>
   </data>
   <data name="JarPathText.Text" xml:space="preserve">
     <value>No hay JAR seleccionado</value>
+  </data>
+  <data name="StatusStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>584, 20</value>
   </data>
   <data name="FavoritesButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -232,6 +232,67 @@
   <data name="ForceStopButton.Text" xml:space="preserve">
     <value>Forzar detención</value>
   </data>
+  <data name="ClearToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="ClearToolStripMenuItem.Text" xml:space="preserve">
+    <value>Limpiar</value>
+  </data>
+  <data name="CopyAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="CopyAllToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copiar todo</value>
+  </data>
+  <data name="ToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 6</value>
+  </data>
+  <data name="AddFavoriteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="AddFavoriteToolStripMenuItem.Text" xml:space="preserve">
+    <value>Añadir favorito</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ToolStripMenuItem1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="ToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Guardar acceso directo</value>
+  </data>
+  <data name="DownloadCraftBukkitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="DownloadCraftBukkitToolStripMenuItem.Text" xml:space="preserve">
+    <value>Descargar CraftBukkit</value>
+  </data>
+  <data name="ToolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 6</value>
+  </data>
+  <data name="SettingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="SettingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ajustes</value>
+  </data>
+  <data name="AboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="AboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>Acerca de</value>
+  </data>
+  <data name="HuevoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="HuevoToolStripMenuItem.Text" xml:space="preserve">
+    <value>Restaurar barra de título</value>
+  </data>
+  <data name="HuevoToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="ToolStripButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -262,65 +323,10 @@
   <data name="ToolStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>584, 25</value>
   </data>
-  <data name="ClearToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="ClearToolStripMenuItem.Text" xml:space="preserve">
-    <value>Limpiar</value>
-  </data>
-  <data name="CopyAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="CopyAllToolStripMenuItem.Text" xml:space="preserve">
-    <value>Copiar todo</value>
-  </data>
-  <data name="ToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 6</value>
-  </data>
-  <data name="AddFavoriteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="AddFavoriteToolStripMenuItem.Text" xml:space="preserve">
-    <value>Añadir favorito</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ToolStripMenuItem1.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="ToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Guardar acceso directo</value>
-  </data>
-  <data name="DownloadCraftBukkitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="DownloadCraftBukkitToolStripMenuItem.Text" xml:space="preserve">
-    <value>Descargar CraftBukkit</value>
-  </data>
-  <data name="ToolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 6</value>
-  </data>
-  <data name="SettingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="SettingsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ajustes</value>
-  </data>
-  <data name="AboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="AboutToolStripMenuItem.Text" xml:space="preserve">
-    <value>Acerca de</value>
-  </data>
-  <data name="EliminarFavoritoToolStripMenuItem.Text" xml:space="preserve">
-    <value>Eliminar favorito</value>
-  </data>
-  <data name="OutPutPanel.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ListBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>584, 266</value>
   </data>
-  <data name="ListBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="OutPutPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>584, 266</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
@@ -2163,8 +2169,5 @@
         AIAPAACADwAA8D8AAOAfAADnBwAAxwcAAM+DAADPkwAAz4EAAMABAACADwAA/P8AAPh/AADyPwAA4D8A
         AOA/AAA=
 </value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Lanzador CraftBukkit</value>
   </data>
 </root>

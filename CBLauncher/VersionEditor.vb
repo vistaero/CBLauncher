@@ -104,7 +104,7 @@ Public Class VersionEditor
             Dim Updated As Boolean = System.IO.File.Exists(SavePath)
             Select Case Updated
                 Case True
-                    MessageBox.Show("CraftBukkit is up to date", "Up to date", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    MessageBox.Show(Form1.LocRM.GetString("CBUpdated1"), Form1.LocRM.GetString("CBUpdated2"), MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 Case False
                     Try
@@ -170,9 +170,9 @@ Public Class VersionEditor
 
     Private Sub CopyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem.Click
         Dim CopyJar As New SaveFileDialog
-        CopyJar.Title = "Where to copy " & ListBox1.SelectedItem
+        CopyJar.Title = Form1.LocRM.GetString("WhereCopy") & ListBox1.SelectedItem
         CopyJar.FileName = ListBox1.SelectedItem
-        CopyJar.Filter = "JAR|*.jar"
+        CopyJar.Filter = Form1.LocRM.GetString("JarFormat")
         CopyJar.ShowDialog()
         System.IO.File.Copy(Form1.documentspath & "\versions\" & ListBox1.SelectedItem & ".jar", CopyJar.FileName)
     End Sub
@@ -190,11 +190,19 @@ Public Class VersionEditor
 
     Private Sub AddToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddToolStripMenuItem.Click
         Dim CopyJar As New OpenFileDialog
-        CopyJar.Title = "Select Jar File"
+        CopyJar.Title = Form1.LocRM.GetString("SelectJar")
         CopyJar.Filter = "JAR|*.jar"
         CopyJar.ShowDialog()
-        System.IO.File.Copy(CopyJar.FileName, Form1.documentspath & "\versions\" & CopyJar.SafeFileName)
-        ListVersions()
+        If Not CopyJar.FileName.Equals("") Then
+            Try
+                System.IO.File.Copy(CopyJar.FileName, Form1.documentspath & "\versions\" & CopyJar.SafeFileName)
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+
+            ListVersions()
+        End If
+
 
     End Sub
 End Class
