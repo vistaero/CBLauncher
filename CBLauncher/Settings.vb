@@ -1,10 +1,12 @@
 ﻿Imports System.Windows.Forms
+Imports System.Resources
+
 
 Public Class Settings
 
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
         Me.DialogResult = System.Windows.Forms.DialogResult.OK
-
+        My.Settings.Save()
         Me.Close()
     End Sub
 
@@ -24,5 +26,30 @@ Public Class Settings
 
             End If
         End If
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs)
+        My.Settings.History = ""
+    End Sub
+
+    Private Sub Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CheckAutoArgs()
+        
+    End Sub
+
+    Private Sub CheckAutoArgs()
+        Select Case CheckBox1.Checked
+            Case True
+
+                NonAutoArgs.Enabled = False
+            Case False
+
+                NonAutoArgs.Enabled = True
+        End Select
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        CheckAutoArgs()
+
     End Sub
 End Class

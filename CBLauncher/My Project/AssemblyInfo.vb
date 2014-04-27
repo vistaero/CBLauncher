@@ -11,7 +11,7 @@ Imports System.Runtime.InteropServices
 ' Revisar los valores de los atributos del ensamblado
 
 <Assembly: AssemblyTitle("CraftBukkit Launcher")> 
-<Assembly: AssemblyDescription("This makes simpler all things related with starting a server.")> 
+<Assembly: AssemblyDescription("Easier than using a batch script.")> 
 <Assembly: AssemblyCompany("vistaero")> 
 <Assembly: AssemblyProduct("CraftBukkit Launcher")> 
 <Assembly: AssemblyCopyright("Copyright ©  2014")> 
