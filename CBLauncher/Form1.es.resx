@@ -124,14 +124,14 @@
   <data name="InputTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>584, 18</value>
   </data>
+  <data name="StatusStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>584, 20</value>
+  </data>
   <data name="JarPathText.Size" type="System.Drawing.Size, System.Drawing">
     <value>139, 15</value>
   </data>
   <data name="JarPathText.Text" xml:space="preserve">
     <value>No hay JAR seleccionado</value>
-  </data>
-  <data name="StatusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>584, 20</value>
   </data>
   <data name="FavoritesButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -244,8 +244,60 @@
   <data name="CopyAllToolStripMenuItem.Text" xml:space="preserve">
     <value>Copiar todo</value>
   </data>
+  <data name="FontTypeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="FontTypeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Tipo de letra</value>
+  </data>
   <data name="ToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>197, 6</value>
+  </data>
+  <data name="EditPropertiesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="EditPropertiesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Editar Propiedades</value>
+  </data>
+  <data name="OperatorsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="OperatorsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Operadores</value>
+  </data>
+  <data name="WhiteListToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="WhiteListToolStripMenuItem.Text" xml:space="preserve">
+    <value>Lista blanca</value>
+  </data>
+  <data name="BannedPlayersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="BannedPlayersToolStripMenuItem.Text" xml:space="preserve">
+    <value>Jugadores prohibidos</value>
+  </data>
+  <data name="RegenerateWorldToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="RegenerateWorldToolStripMenuItem.Text" xml:space="preserve">
+    <value>Regenerar mundo</value>
+  </data>
+  <data name="LogsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="LogsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Registros</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ExtrasToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ExtrasToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="ExtrasToolStripMenuItem.Text" xml:space="preserve">
+    <value>Extras (En Desarrollo)</value>
   </data>
   <data name="AddFavoriteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 22</value>
@@ -253,7 +305,6 @@
   <data name="AddFavoriteToolStripMenuItem.Text" xml:space="preserve">
     <value>Añadir favorito</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ToolStripMenuItem1.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -263,14 +314,14 @@
   <data name="ToolStripMenuItem1.Text" xml:space="preserve">
     <value>Guardar acceso directo</value>
   </data>
+  <data name="ToolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 6</value>
+  </data>
   <data name="DownloadCraftBukkitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 22</value>
   </data>
   <data name="DownloadCraftBukkitToolStripMenuItem.Text" xml:space="preserve">
     <value>Descargar CraftBukkit</value>
-  </data>
-  <data name="ToolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 6</value>
   </data>
   <data name="SettingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 22</value>
@@ -289,9 +340,6 @@
   </data>
   <data name="HuevoToolStripMenuItem.Text" xml:space="preserve">
     <value>Restaurar barra de título</value>
-  </data>
-  <data name="HuevoToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="ToolStripButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -323,10 +371,16 @@
   <data name="ToolStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>584, 25</value>
   </data>
-  <data name="ListBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>584, 266</value>
+  <data name="ConsoleToolStripMenuItem.Text" xml:space="preserve">
+    <value>Consola</value>
+  </data>
+  <data name="BookToolStripMenuItem.Text" xml:space="preserve">
+    <value>Libro</value>
   </data>
   <data name="OutPutPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>584, 266</value>
+  </data>
+  <data name="ListBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>584, 266</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">

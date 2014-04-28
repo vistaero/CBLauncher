@@ -75,6 +75,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -96,6 +97,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Favorite.vb" />
+    <Compile Include="ModernTextBox.Designer.vb">
+      <DependentUpon>ModernTextBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ModernTextBox.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Properties.Designer.vb">
+      <DependentUpon>Properties.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Properties.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Settings.Designer.vb">
       <DependentUpon>Settings.vb</DependentUpon>
     </Compile>
@@ -153,6 +166,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.es.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModernTextBox.resx">
+      <DependentUpon>ModernTextBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties.es.resx">
+      <DependentUpon>Properties.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties.resx">
+      <DependentUpon>Properties.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.es.resx">
       <DependentUpon>Settings.vb</DependentUpon>

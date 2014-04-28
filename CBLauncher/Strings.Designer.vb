@@ -82,26 +82,6 @@ Friend Class Strings
     End Property
     
     '''<summary>
-    '''  Busca un recurso adaptado de tipo System.Windows.Forms.ImeMode similar a NoControl.
-    '''</summary>
-    Friend Shared ReadOnly Property Button1_ImeMode() As System.Windows.Forms.ImeMode
-        Get
-            Dim obj As Object = ResourceManager.GetObject("Button1.ImeMode", resourceCulture)
-            Return CType(obj,System.Windows.Forms.ImeMode)
-        End Get
-    End Property
-    
-    '''<summary>
-    '''  Busca un recurso adaptado de tipo System.Windows.Forms.ImeMode similar a NoControl.
-    '''</summary>
-    Friend Shared ReadOnly Property Button2_ImeMode() As System.Windows.Forms.ImeMode
-        Get
-            Dim obj As Object = ResourceManager.GetObject("Button2.ImeMode", resourceCulture)
-            Return CType(obj,System.Windows.Forms.ImeMode)
-        End Get
-    End Property
-    
-    '''<summary>
     '''  Busca una cadena traducida similar a Latest build already downloaded..
     '''</summary>
     Friend Shared ReadOnly Property CBUpdated1() As String
@@ -109,33 +89,13 @@ Friend Class Strings
             Return ResourceManager.GetString("CBUpdated1", resourceCulture)
         End Get
     End Property
-
+    
     '''<summary>
     '''  Busca una cadena traducida similar a Not download necessary.
     '''</summary>
     Friend Shared ReadOnly Property CBUpdated2() As String
         Get
             Return ResourceManager.GetString("CBUpdated2", resourceCulture)
-        End Get
-    End Property
-
-    '''<summary>
-    '''  Busca un recurso adaptado de tipo System.Windows.Forms.ImeMode similar a NoControl.
-    '''</summary>
-    Friend Shared ReadOnly Property CheckBox1_ImeMode() As System.Windows.Forms.ImeMode
-        Get
-            Dim obj As Object = ResourceManager.GetObject("CheckBox1.ImeMode", resourceCulture)
-            Return CType(obj,System.Windows.Forms.ImeMode)
-        End Get
-    End Property
-    
-    '''<summary>
-    '''  Busca un recurso adaptado de tipo System.Drawing.Size similar a {Width=142, Height=17}.
-    '''</summary>
-    Friend Shared ReadOnly Property CheckBox1_Size() As System.Drawing.Size
-        Get
-            Dim obj As Object = ResourceManager.GetObject("CheckBox1.Size", resourceCulture)
-            Return CType(obj,System.Drawing.Size)
         End Get
     End Property
     
@@ -196,6 +156,24 @@ Friend Class Strings
     End Property
     
     '''<summary>
+    '''  Busca una cadena traducida similar a This operation can not be undoned..
+    '''</summary>
+    Friend Shared ReadOnly Property LdDfProps() As String
+        Get
+            Return ResourceManager.GetString("LdDfProps", resourceCulture)
+        End Get
+    End Property
+    
+    '''<summary>
+    '''  Busca una cadena traducida similar a Are you sure?.
+    '''</summary>
+    Friend Shared ReadOnly Property LdDfProps2() As String
+        Get
+            Return ResourceManager.GetString("LdDfProps2", resourceCulture)
+        End Get
+    End Property
+    
+    '''<summary>
     '''  Busca una cadena traducida similar a Shortcut|*.lnk.
     '''</summary>
     Friend Shared ReadOnly Property lnkFormat() As String
@@ -214,12 +192,11 @@ Friend Class Strings
     End Property
     
     '''<summary>
-    '''  Busca un recurso adaptado de tipo System.Windows.Forms.ImeMode similar a NoControl.
+    '''  Busca una cadena traducida similar a Server Properties.
     '''</summary>
-    Friend Shared ReadOnly Property OK_Button_ImeMode() As System.Windows.Forms.ImeMode
+    Friend Shared ReadOnly Property PropsTitle() As String
         Get
-            Dim obj As Object = ResourceManager.GetObject("OK_Button.ImeMode", resourceCulture)
-            Return CType(obj,System.Windows.Forms.ImeMode)
+            Return ResourceManager.GetString("PropsTitle", resourceCulture)
         End Get
     End Property
     

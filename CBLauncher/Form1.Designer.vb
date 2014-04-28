@@ -41,11 +41,21 @@ Partial Class Form1
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.ClearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CopyAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FontTypeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConsoleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BookToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ExtrasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EditPropertiesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OperatorsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WhiteListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BannedPlayersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RegenerateWorldToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LogsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddFavoriteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DownloadCraftBukkitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.DownloadCraftBukkitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HuevoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -154,7 +164,7 @@ Partial Class Form1
         resources.ApplyResources(Me.ToolStripButton2, "ToolStripButton2")
         Me.ToolStripButton2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripButton2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearToolStripMenuItem, Me.CopyAllToolStripMenuItem, Me.ToolStripSeparator3, Me.AddFavoriteToolStripMenuItem, Me.ToolStripMenuItem1, Me.DownloadCraftBukkitToolStripMenuItem, Me.ToolStripSeparator5, Me.SettingsToolStripMenuItem, Me.AboutToolStripMenuItem, Me.HuevoToolStripMenuItem})
+        Me.ToolStripButton2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearToolStripMenuItem, Me.CopyAllToolStripMenuItem, Me.FontTypeToolStripMenuItem, Me.ToolStripSeparator3, Me.ExtrasToolStripMenuItem, Me.AddFavoriteToolStripMenuItem, Me.ToolStripMenuItem1, Me.ToolStripSeparator5, Me.DownloadCraftBukkitToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.AboutToolStripMenuItem, Me.HuevoToolStripMenuItem})
         Me.ToolStripButton2.Name = "ToolStripButton2"
         '
         'ClearToolStripMenuItem
@@ -167,10 +177,62 @@ Partial Class Form1
         resources.ApplyResources(Me.CopyAllToolStripMenuItem, "CopyAllToolStripMenuItem")
         Me.CopyAllToolStripMenuItem.Name = "CopyAllToolStripMenuItem"
         '
+        'FontTypeToolStripMenuItem
+        '
+        resources.ApplyResources(Me.FontTypeToolStripMenuItem, "FontTypeToolStripMenuItem")
+        Me.FontTypeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConsoleToolStripMenuItem, Me.BookToolStripMenuItem})
+        Me.FontTypeToolStripMenuItem.Name = "FontTypeToolStripMenuItem"
+        '
+        'ConsoleToolStripMenuItem
+        '
+        resources.ApplyResources(Me.ConsoleToolStripMenuItem, "ConsoleToolStripMenuItem")
+        Me.ConsoleToolStripMenuItem.Name = "ConsoleToolStripMenuItem"
+        '
+        'BookToolStripMenuItem
+        '
+        resources.ApplyResources(Me.BookToolStripMenuItem, "BookToolStripMenuItem")
+        Me.BookToolStripMenuItem.Name = "BookToolStripMenuItem"
+        '
         'ToolStripSeparator3
         '
         resources.ApplyResources(Me.ToolStripSeparator3, "ToolStripSeparator3")
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        '
+        'ExtrasToolStripMenuItem
+        '
+        resources.ApplyResources(Me.ExtrasToolStripMenuItem, "ExtrasToolStripMenuItem")
+        Me.ExtrasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditPropertiesToolStripMenuItem, Me.OperatorsToolStripMenuItem, Me.WhiteListToolStripMenuItem, Me.BannedPlayersToolStripMenuItem, Me.RegenerateWorldToolStripMenuItem, Me.LogsToolStripMenuItem})
+        Me.ExtrasToolStripMenuItem.Name = "ExtrasToolStripMenuItem"
+        '
+        'EditPropertiesToolStripMenuItem
+        '
+        resources.ApplyResources(Me.EditPropertiesToolStripMenuItem, "EditPropertiesToolStripMenuItem")
+        Me.EditPropertiesToolStripMenuItem.Name = "EditPropertiesToolStripMenuItem"
+        '
+        'OperatorsToolStripMenuItem
+        '
+        resources.ApplyResources(Me.OperatorsToolStripMenuItem, "OperatorsToolStripMenuItem")
+        Me.OperatorsToolStripMenuItem.Name = "OperatorsToolStripMenuItem"
+        '
+        'WhiteListToolStripMenuItem
+        '
+        resources.ApplyResources(Me.WhiteListToolStripMenuItem, "WhiteListToolStripMenuItem")
+        Me.WhiteListToolStripMenuItem.Name = "WhiteListToolStripMenuItem"
+        '
+        'BannedPlayersToolStripMenuItem
+        '
+        resources.ApplyResources(Me.BannedPlayersToolStripMenuItem, "BannedPlayersToolStripMenuItem")
+        Me.BannedPlayersToolStripMenuItem.Name = "BannedPlayersToolStripMenuItem"
+        '
+        'RegenerateWorldToolStripMenuItem
+        '
+        resources.ApplyResources(Me.RegenerateWorldToolStripMenuItem, "RegenerateWorldToolStripMenuItem")
+        Me.RegenerateWorldToolStripMenuItem.Name = "RegenerateWorldToolStripMenuItem"
+        '
+        'LogsToolStripMenuItem
+        '
+        resources.ApplyResources(Me.LogsToolStripMenuItem, "LogsToolStripMenuItem")
+        Me.LogsToolStripMenuItem.Name = "LogsToolStripMenuItem"
         '
         'AddFavoriteToolStripMenuItem
         '
@@ -182,15 +244,15 @@ Partial Class Form1
         resources.ApplyResources(Me.ToolStripMenuItem1, "ToolStripMenuItem1")
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         '
-        'DownloadCraftBukkitToolStripMenuItem
-        '
-        resources.ApplyResources(Me.DownloadCraftBukkitToolStripMenuItem, "DownloadCraftBukkitToolStripMenuItem")
-        Me.DownloadCraftBukkitToolStripMenuItem.Name = "DownloadCraftBukkitToolStripMenuItem"
-        '
         'ToolStripSeparator5
         '
         resources.ApplyResources(Me.ToolStripSeparator5, "ToolStripSeparator5")
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        '
+        'DownloadCraftBukkitToolStripMenuItem
+        '
+        resources.ApplyResources(Me.DownloadCraftBukkitToolStripMenuItem, "DownloadCraftBukkitToolStripMenuItem")
+        Me.DownloadCraftBukkitToolStripMenuItem.Name = "DownloadCraftBukkitToolStripMenuItem"
         '
         'SettingsToolStripMenuItem
         '
@@ -285,5 +347,15 @@ Partial Class Form1
     Friend WithEvents FavoritesButton As System.Windows.Forms.ToolStripButton
     Friend WithEvents CopyAllToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HuevoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ExtrasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents EditPropertiesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents WhiteListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents OperatorsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents BannedPlayersToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents RegenerateWorldToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents LogsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents FontTypeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ConsoleToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents BookToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

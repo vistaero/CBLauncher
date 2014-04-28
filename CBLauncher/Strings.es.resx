@@ -189,4 +189,13 @@ Nombre del proceso y PID: </value>
   <data name="WhereCopy" xml:space="preserve">
     <value>Dónde copiar </value>
   </data>
+  <data name="LdDfProps" xml:space="preserve">
+    <value>Esta operación no puede deshacerse.</value>
+  </data>
+  <data name="LdDfProps2" xml:space="preserve">
+    <value>¿Estás seguro?</value>
+  </data>
+  <data name="WhereCopy1" xml:space="preserve">
+    <value>Where to copy </value>
+  </data>
 </root>

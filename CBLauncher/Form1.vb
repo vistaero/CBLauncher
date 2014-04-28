@@ -23,36 +23,31 @@ Public Class Form1
     Private Sub EasterEgg()
 
         If My.Computer.Clock.LocalTime.Month = 1 And My.Computer.Clock.LocalTime.Day = 1 Then
-            Me.Text = "¡Happy " & My.Computer.Clock.LocalTime.Year & "!"
-
+            Me.Text = "Happy " & My.Computer.Clock.LocalTime.Year & "!"
+            HuevoToolStripMenuItem.Visible = True
         End If
 
         If My.Computer.Clock.LocalTime.Month = 12 And My.Computer.Clock.LocalTime.Day = 13 Then
-            Me.Text = "¡Happy birthday, vistaero!"
-
+            Me.Text = "Happy birthday, vistaero!"
+            HuevoToolStripMenuItem.Visible = True
         End If
 
         If My.Computer.Clock.LocalTime.Month = 4 And My.Computer.Clock.LocalTime.Day = 1 Then
             Me.Text = "Space Rocket Launcher"
-
+            HuevoToolStripMenuItem.Visible = True
         End If
 
         If My.Computer.Clock.LocalTime.Month = 7 And My.Computer.Clock.LocalTime.Day = 23 Then
-            Me.Text = "Happy birthday Dinnerbone"
-
+            Me.Text = "Happy birthday Dinnerbone!"
+            HuevoToolStripMenuItem.Visible = True
         End If
 
         If My.Computer.Clock.LocalTime.Month = 5 And My.Computer.Clock.LocalTime.Day = 18 Then
-            Me.Text = "Happy birthday Jeb"
-
+            Me.Text = "Happy birthday Jeb!"
+            HuevoToolStripMenuItem.Visible = True
         End If
 
-        If My.Computer.Clock.LocalTime.Month = 9 And My.Computer.Clock.LocalTime.Day = 19 Then
-            Me.Text = "Birthday of the person who, a long time ago, thought I missed her birthday."
 
-        End If
-
-        HuevoToolStripMenuItem.Visible = True
 
 
     End Sub
@@ -242,6 +237,8 @@ Public Class Form1
     Private SelectedInputHistorial As Integer = 0
 
     Private Sub InputTextBox_KeyDown(sender As Object, e As KeyEventArgs) Handles InputTextBox.KeyDown
+
+
         If e.KeyCode = Keys.Enter And IsStarted = True Then
             e.SuppressKeyPress = True
             serverprocess.StandardInput.WriteLine(InputTextBox.Text)
@@ -267,6 +264,14 @@ Public Class Form1
 
         End If
 
+        If e.KeyCode = Keys.A And e.Control = True Then
+            ExtrasToolStripMenuItem.Visible = True
+        End If
+
+    End Sub
+
+    Private Sub InputTextBox_KeyUp(sender As Object, e As KeyEventArgs) Handles InputTextBox.KeyUp
+        InputTextBox.Select(InputTextBox.Text.Length + 1, 0)
     End Sub
 
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles StartButton.Click
@@ -337,6 +342,7 @@ Public Class Form1
         If Not JarPath = "" Then
             JarFolder = JarPath.Replace(InputSafeFileName, "")
             JarPathText.Text = JarPath
+            ExtrasToolStripMenuItem.Enabled = True
             If IsStarted = False Then
                 StartButton.Enabled = True
             End If
@@ -367,9 +373,7 @@ Public Class Form1
     Private Function CreateShortCut(TargetName As String, ShortCutPath As String, ShortCutName As String) As Boolean
         Dim oShell As Object
         Dim oLink As Object
-
         oShell = CreateObject("WScript.Shell")
-
         oLink = oShell.CreateShortcut(ShortCutPath & "\" & ShortCutName & ".lnk")
         oLink.Arguments = MemoryText.Text & " " & """" & JarPathText.Text & """"
         oLink.TargetPath = TargetName
@@ -448,7 +452,6 @@ Public Class Form1
 
     Private Declare Sub keybd_event Lib "user32.dll" (ByVal bVk As Byte, ByVal bScan As Byte, ByVal dwFlags As Long, ByVal dwExtraInfo As Long)
 
-
     Private Sub OutPutTextBox_MouseDown(sender As Object, e As MouseEventArgs) Handles OutPutTextBox.MouseDown
         If Timer1.Enabled = False Then
             Timer1.Enabled = True
@@ -472,5 +475,55 @@ Public Class Form1
     Private Sub HuevoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HuevoToolStripMenuItem.Click
         Me.Text = "CraftBukkit Launcher"
         HuevoToolStripMenuItem.Visible = False
+    End Sub
+
+    Private Sub EditPropertiesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditPropertiesToolStripMenuItem.Click
+        Dim PropertiesWindow As New Form
+        Dim PropertiesContent As New Properties
+        PropertiesContent.Dock = DockStyle.Fill
+        PropertiesWindow.Size = New Size(800, 800)
+
+        PropertiesWindow.StartPosition = FormStartPosition.CenterScreen
+        PropertiesWindow.Text = LocRM.GetString("PropsTitle")
+        PropertiesWindow.Controls.Add(PropertiesContent)
+        PropertiesWindow.ShowDialog()
+
+    End Sub
+
+    Private Sub FontSelect(ByVal Type)
+        Select Case Type
+            Case Is = "Book"
+                With OutPutTextBox
+                    .Font = New Font("Tahoma", 10, FontStyle.Regular)
+                    .ForeColor = Color.Black
+                    .BackColor = Color.White
+                End With
+                With InputTextBox
+                    .Font = New Font("Tahoma", 10, FontStyle.Regular)
+                    .ForeColor = Color.Black
+                    .BackColor = Color.White
+                End With
+
+            Case Is = "Console"
+
+                With OutPutTextBox
+                    .Font = New Font("Lucida Console", 8.25, FontStyle.Bold)
+                    .ForeColor = Color.White
+                    .BackColor = Color.Black
+                End With
+                With InputTextBox
+                    .Font = New Font("Lucida Console", 8.25, FontStyle.Bold)
+                    .ForeColor = Color.White
+                    .BackColor = Color.Black
+                End With
+        End Select
+    End Sub
+
+    Private Sub ConsoleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsoleToolStripMenuItem.Click
+        FontSelect("Console")
+    End Sub
+
+    Private Sub BookToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BookToolStripMenuItem.Click
+        FontSelect("Book")
     End Sub
 End Class
