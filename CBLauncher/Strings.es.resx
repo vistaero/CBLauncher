@@ -117,23 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="OK_Button.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="Button2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="Button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="CheckBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="CheckBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 17</value>
-  </data>
   <data name="About" xml:space="preserve">
     <value>CBLauncher es un programa desarrollado por vistaero en el 2014 para las personas que no se conforman con un script en batch para iniciar sus servidores.</value>
   </data>
@@ -194,5 +177,8 @@ Nombre del proceso y PID: </value>
   </data>
   <data name="PropsTitle" xml:space="preserve">
     <value>Propiedades del servidor</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Archivo no encontrado</value>
   </data>
 </root>

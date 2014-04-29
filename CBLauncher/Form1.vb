@@ -38,8 +38,14 @@ Public Class Form1
 
         CheckJavaw(True)
         If My.Application.CommandLineArgs.Count > 0 Then
-            SelectJar(My.Application.CommandLineArgs.Last, Path.GetFileName(My.Application.CommandLineArgs.Last))
-            StartServer(MemoryText.Text)
+            If IO.File.Exists(My.Application.CommandLineArgs.Last) Then
+                SelectJar(My.Application.CommandLineArgs.Last, Path.GetFileName(My.Application.CommandLineArgs.Last))
+                MemoryText.Text = My.Application.CommandLineArgs.First
+                StartServer(MemoryText.Text)
+            Else
+                MessageBox.Show(LocRM.GetString("NotFound"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+
         End If
 
         RefreshFavorites()
@@ -607,4 +613,8 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        If SelectionStart = 0 And SelectionLenght = 0 Then OutPutTextBox.ScrollToCaret()
+
+    End Sub
 End Class

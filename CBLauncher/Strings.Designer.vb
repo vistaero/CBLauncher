@@ -183,6 +183,15 @@ Friend Class Strings
     End Property
     
     '''<summary>
+    '''  Busca una cadena traducida similar a File not found..
+    '''</summary>
+    Friend Shared ReadOnly Property NotFound() As String
+        Get
+            Return ResourceManager.GetString("NotFound", resourceCulture)
+        End Get
+    End Property
+    
+    '''<summary>
     '''  Busca una cadena traducida similar a You have not installed Java yet..
     '''</summary>
     Friend Shared ReadOnly Property NotInstalledJavaYet() As String
