@@ -38,7 +38,6 @@ Public Class Form1
 
         CheckJavaw(True)
         If My.Application.CommandLineArgs.Count > 0 Then
-            MsgBox("Ruta Jar: " & My.Application.CommandLineArgs.Last & vbNewLine & "Nombre de archivo: " & Path.GetFileName(My.Application.CommandLineArgs.Last))
             SelectJar(My.Application.CommandLineArgs.Last, Path.GetFileName(My.Application.CommandLineArgs.Last))
             StartServer(MemoryText.Text)
         End If
@@ -302,8 +301,6 @@ Public Class Form1
                 NewFavorite.FavPath = contenido
                 Favorites.Add(NewFavorite)
                 ListBox1.Items.Add(NewFavorite.FavName)
-            Else
-                MsgBox("Not valid")
             End If
         Next
     End Sub
@@ -470,7 +467,6 @@ Public Class Form1
 
     Private Sub ListBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles ListBox1.KeyDown
         If e.KeyCode = Keys.Back Or e.KeyCode = Keys.Delete Then
-            MsgBox(ListBox1.SelectedIndex)
             IO.File.Delete(documentspath & ListBox1.SelectedItem & ".cblfav")
             RefreshFavorites()
 
@@ -603,7 +599,6 @@ Public Class Form1
         If Not SelectingText = True Or OutPutTextBox.SelectionLength > 0 Then
             OutPutTextBox.SelectionStart = OutPutTextBox.TextLength
             OutPutTextBox.SelectionLength = 0
-            OutPutTextBox.ScrollToCaret()
             If SelectionStart > 0 Or SelectionLenght > 0 Then
                 OutPutTextBox.SelectionStart = SelectionStart
                 OutPutTextBox.SelectionLength = SelectionLenght
