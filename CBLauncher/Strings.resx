@@ -156,10 +156,7 @@ Process Name and PID: </value>
     <value>You have not installed Java yet.</value>
   </data>
   <data name="ShouldClickStop1" xml:space="preserve">
-    <value>You should click Stop before exit. Are you sure?</value>
-  </data>
-  <data name="ShouldClickStop2" xml:space="preserve">
-    <value>Click Stop</value>
+    <value>Stop server and close?</value>
   </data>
   <data name="CBUpdated1" xml:space="preserve">
     <value>Latest build already downloaded.</value>
@@ -179,7 +176,7 @@ Process Name and PID: </value>
   <data name="LdDfProps" xml:space="preserve">
     <value>This operation can not be undoned.</value>
   </data>
-  <data name="LdDfProps2" xml:space="preserve">
+  <data name="AreYouSure" xml:space="preserve">
     <value>Are you sure?</value>
   </data>
 </root>

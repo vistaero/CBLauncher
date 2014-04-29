@@ -23,8 +23,6 @@ Partial Class Settings
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Settings))
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.OK_Button = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -32,26 +30,30 @@ Partial Class Settings
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
+        Me.ForceStopRadio = New System.Windows.Forms.RadioButton()
+        Me.StopRadio = New System.Windows.Forms.RadioButton()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.NonAutoArgs = New System.Windows.Forms.TextBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.TableLayoutPanel1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.TabControl1.SuspendLayout()
+        Me.TabPage1.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
+        Me.TabPage3.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'TableLayoutPanel1
-        '
-        resources.ApplyResources(Me.TableLayoutPanel1, "TableLayoutPanel1")
-        Me.TableLayoutPanel1.Controls.Add(Me.OK_Button, 0, 0)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        '
-        'OK_Button
-        '
-        resources.ApplyResources(Me.OK_Button, "OK_Button")
-        Me.OK_Button.Name = "OK_Button"
         '
         'GroupBox2
         '
@@ -99,6 +101,95 @@ Partial Class Settings
         '
         resources.ApplyResources(Me.FolderBrowserDialog1, "FolderBrowserDialog1")
         '
+        'TabControl1
+        '
+        resources.ApplyResources(Me.TabControl1, "TabControl1")
+        Me.TabControl1.Controls.Add(Me.TabPage1)
+        Me.TabControl1.Controls.Add(Me.TabPage3)
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.SelectedIndex = 0
+        '
+        'TabPage1
+        '
+        resources.ApplyResources(Me.TabPage1, "TabPage1")
+        Me.TabPage1.Controls.Add(Me.GroupBox4)
+        Me.TabPage1.Controls.Add(Me.GroupBox1)
+        Me.TabPage1.Controls.Add(Me.GroupBox2)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'GroupBox4
+        '
+        resources.ApplyResources(Me.GroupBox4, "GroupBox4")
+        Me.GroupBox4.Controls.Add(Me.CheckBox2)
+        Me.GroupBox4.Controls.Add(Me.ComboBox1)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.TabStop = False
+        '
+        'CheckBox2
+        '
+        resources.ApplyResources(Me.CheckBox2, "CheckBox2")
+        Me.CheckBox2.Checked = True
+        Me.CheckBox2.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.UseVisualStyleBackColor = True
+        '
+        'ComboBox1
+        '
+        resources.ApplyResources(Me.ComboBox1, "ComboBox1")
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {resources.GetString("ComboBox1.Items"), resources.GetString("ComboBox1.Items1")})
+        Me.ComboBox1.Name = "ComboBox1"
+        '
+        'TabPage3
+        '
+        resources.ApplyResources(Me.TabPage3, "TabPage3")
+        Me.TabPage3.Controls.Add(Me.Button3)
+        Me.TabPage3.Controls.Add(Me.GroupBox5)
+        Me.TabPage3.Controls.Add(Me.GroupBox3)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        resources.ApplyResources(Me.Button3, "Button3")
+        Me.Button3.Name = "Button3"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'GroupBox5
+        '
+        resources.ApplyResources(Me.GroupBox5, "GroupBox5")
+        Me.GroupBox5.Controls.Add(Me.CheckBox3)
+        Me.GroupBox5.Controls.Add(Me.ForceStopRadio)
+        Me.GroupBox5.Controls.Add(Me.StopRadio)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.TabStop = False
+        '
+        'CheckBox3
+        '
+        resources.ApplyResources(Me.CheckBox3, "CheckBox3")
+        Me.CheckBox3.Checked = Global.CBLauncher.My.MySettings.Default.AskBeforeExit
+        Me.CheckBox3.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckBox3.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.CBLauncher.My.MySettings.Default, "AskBeforeExit", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.CheckBox3.Name = "CheckBox3"
+        Me.CheckBox3.UseVisualStyleBackColor = True
+        '
+        'ForceStopRadio
+        '
+        resources.ApplyResources(Me.ForceStopRadio, "ForceStopRadio")
+        Me.ForceStopRadio.Checked = Global.CBLauncher.My.MySettings.Default.ForceStop
+        Me.ForceStopRadio.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.CBLauncher.My.MySettings.Default, "ForceStop", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.ForceStopRadio.Name = "ForceStopRadio"
+        Me.ForceStopRadio.TabStop = True
+        Me.ForceStopRadio.UseVisualStyleBackColor = True
+        '
+        'StopRadio
+        '
+        resources.ApplyResources(Me.StopRadio, "StopRadio")
+        Me.StopRadio.Name = "StopRadio"
+        Me.StopRadio.UseVisualStyleBackColor = True
+        '
         'GroupBox3
         '
         resources.ApplyResources(Me.GroupBox3, "GroupBox3")
@@ -133,30 +224,30 @@ Partial Class Settings
         '
         'Settings
         '
-        Me.AcceptButton = Me.OK_Button
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.GroupBox3)
-        Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.Controls.Add(Me.TabControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Settings"
         Me.ShowInTaskbar = False
-        Me.TableLayoutPanel1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.TabControl1.ResumeLayout(False)
+        Me.TabPage1.ResumeLayout(False)
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
+        Me.TabPage3.ResumeLayout(False)
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
-    Friend WithEvents OK_Button As System.Windows.Forms.Button
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
     Friend WithEvents Button2 As System.Windows.Forms.Button
@@ -164,9 +255,20 @@ Partial Class Settings
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents FolderBrowserDialog1 As System.Windows.Forms.FolderBrowserDialog
+    Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
+    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
+    Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents NonAutoArgs As System.Windows.Forms.TextBox
     Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
     Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
+    Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
+    Friend WithEvents CheckBox2 As System.Windows.Forms.CheckBox
+    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
+    Friend WithEvents CheckBox3 As System.Windows.Forms.CheckBox
+    Friend WithEvents ForceStopRadio As System.Windows.Forms.RadioButton
+    Friend WithEvents StopRadio As System.Windows.Forms.RadioButton
+    Friend WithEvents Button3 As System.Windows.Forms.Button
 
 End Class

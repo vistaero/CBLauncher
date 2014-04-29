@@ -23,8 +23,6 @@ Partial Class Properties
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Properties))
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.MaxPlayers = New System.Windows.Forms.NumericUpDown()
         Me.MaxPlayersLabel = New System.Windows.Forms.Label()
@@ -34,6 +32,8 @@ Partial Class Properties
         Me.DescriptionTextBox = New System.Windows.Forms.TextBox()
         Me.DescriptionLabel = New System.Windows.Forms.Label()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.RconPassword = New System.Windows.Forms.MaskedTextBox()
+        Me.RconPasswordLabel = New System.Windows.Forms.Label()
         Me.ViewDistance = New System.Windows.Forms.NumericUpDown()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.EnableCommandBlock = New System.Windows.Forms.CheckBox()
@@ -77,15 +77,11 @@ Partial Class Properties
         Me.ForceGamemodeCheckBox = New System.Windows.Forms.CheckBox()
         Me.AnnouncePArchsCheckBox = New System.Windows.Forms.CheckBox()
         Me.AllowFlightCheckBox = New System.Windows.Forms.CheckBox()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.TabControl1.SuspendLayout()
-        Me.TabPage3.SuspendLayout()
+        Me.MenuBar = New System.Windows.Forms.ToolStrip()
+        Me.SaveToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.UndoToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.Regen = New System.Windows.Forms.ToolStripButton()
+        Me.Content = New System.Windows.Forms.Panel()
         Me.GroupBox5.SuspendLayout()
         CType(Me.MaxPlayers, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
@@ -96,28 +92,9 @@ Partial Class Properties
         CType(Me.MaxBuildHeight, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox8.SuspendLayout()
         CType(Me.PlayerIdlTimeout, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPage2.SuspendLayout()
-        Me.ToolStrip1.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.MenuBar.SuspendLayout()
+        Me.Content.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'TabControl1
-        '
-        Me.TabControl1.Controls.Add(Me.TabPage3)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
-        resources.ApplyResources(Me.TabControl1, "TabControl1")
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        '
-        'TabPage3
-        '
-        resources.ApplyResources(Me.TabPage3, "TabPage3")
-        Me.TabPage3.Controls.Add(Me.GroupBox5)
-        Me.TabPage3.Controls.Add(Me.GroupBox6)
-        Me.TabPage3.Controls.Add(Me.GroupBox7)
-        Me.TabPage3.Controls.Add(Me.GroupBox8)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.UseVisualStyleBackColor = True
         '
         'GroupBox5
         '
@@ -172,6 +149,8 @@ Partial Class Properties
         'GroupBox6
         '
         resources.ApplyResources(Me.GroupBox6, "GroupBox6")
+        Me.GroupBox6.Controls.Add(Me.RconPassword)
+        Me.GroupBox6.Controls.Add(Me.RconPasswordLabel)
         Me.GroupBox6.Controls.Add(Me.ViewDistance)
         Me.GroupBox6.Controls.Add(Me.Label4)
         Me.GroupBox6.Controls.Add(Me.EnableCommandBlock)
@@ -187,6 +166,18 @@ Partial Class Properties
         Me.GroupBox6.Controls.Add(Me.OpPermLevelLabel)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.TabStop = False
+        '
+        'RconPassword
+        '
+        resources.ApplyResources(Me.RconPassword, "RconPassword")
+        Me.RconPassword.Name = "RconPassword"
+        Me.RconPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
+        Me.RconPassword.ShortcutsEnabled = False
+        '
+        'RconPasswordLabel
+        '
+        resources.ApplyResources(Me.RconPasswordLabel, "RconPasswordLabel")
+        Me.RconPasswordLabel.Name = "RconPasswordLabel"
         '
         'ViewDistance
         '
@@ -465,58 +456,47 @@ Partial Class Properties
         Me.AllowFlightCheckBox.Name = "AllowFlightCheckBox"
         Me.AllowFlightCheckBox.UseVisualStyleBackColor = True
         '
-        'TabPage2
+        'MenuBar
         '
-        Me.TabPage2.Controls.Add(Me.TextBox5)
-        resources.ApplyResources(Me.TabPage2, "TabPage2")
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.UseVisualStyleBackColor = True
+        Me.MenuBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.MenuBar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveToolStripButton, Me.UndoToolStripButton, Me.Regen})
+        resources.ApplyResources(Me.MenuBar, "MenuBar")
+        Me.MenuBar.Name = "MenuBar"
         '
-        'TextBox5
+        'SaveToolStripButton
         '
-        resources.ApplyResources(Me.TextBox5, "TextBox5")
-        Me.TextBox5.Name = "TextBox5"
+        Me.SaveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        resources.ApplyResources(Me.SaveToolStripButton, "SaveToolStripButton")
+        Me.SaveToolStripButton.Name = "SaveToolStripButton"
         '
-        'ToolStrip1
+        'UndoToolStripButton
         '
-        Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripButton3})
-        resources.ApplyResources(Me.ToolStrip1, "ToolStrip1")
-        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.UndoToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        resources.ApplyResources(Me.UndoToolStripButton, "UndoToolStripButton")
+        Me.UndoToolStripButton.Name = "UndoToolStripButton"
         '
-        'ToolStripButton1
+        'Regen
         '
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        resources.ApplyResources(Me.ToolStripButton1, "ToolStripButton1")
-        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.Regen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        resources.ApplyResources(Me.Regen, "Regen")
+        Me.Regen.Name = "Regen"
         '
-        'ToolStripButton2
+        'Content
         '
-        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        resources.ApplyResources(Me.ToolStripButton2, "ToolStripButton2")
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        '
-        'ToolStripButton3
-        '
-        Me.ToolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        resources.ApplyResources(Me.ToolStripButton3, "ToolStripButton3")
-        Me.ToolStripButton3.Name = "ToolStripButton3"
-        '
-        'Panel1
-        '
-        Me.Panel1.Controls.Add(Me.TabControl1)
-        resources.ApplyResources(Me.Panel1, "Panel1")
-        Me.Panel1.Name = "Panel1"
+        resources.ApplyResources(Me.Content, "Content")
+        Me.Content.Controls.Add(Me.GroupBox5)
+        Me.Content.Controls.Add(Me.GroupBox6)
+        Me.Content.Controls.Add(Me.GroupBox7)
+        Me.Content.Controls.Add(Me.GroupBox8)
+        Me.Content.Name = "Content"
         '
         'Properties
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.ToolStrip1)
+        Me.Controls.Add(Me.Content)
+        Me.Controls.Add(Me.MenuBar)
         Me.Name = "Properties"
-        Me.TabControl1.ResumeLayout(False)
-        Me.TabPage3.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
         CType(Me.MaxPlayers, System.ComponentModel.ISupportInitialize).EndInit()
@@ -531,19 +511,13 @@ Partial Class Properties
         Me.GroupBox8.ResumeLayout(False)
         Me.GroupBox8.PerformLayout()
         CType(Me.PlayerIdlTimeout, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabPage2.ResumeLayout(False)
-        Me.TabPage2.PerformLayout()
-        Me.ToolStrip1.ResumeLayout(False)
-        Me.ToolStrip1.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
+        Me.MenuBar.ResumeLayout(False)
+        Me.MenuBar.PerformLayout()
+        Me.Content.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
-    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
-    Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
     Friend WithEvents MaxPlayers As System.Windows.Forms.NumericUpDown
     Friend WithEvents MaxPlayersLabel As System.Windows.Forms.Label
@@ -596,10 +570,12 @@ Partial Class Properties
     Friend WithEvents GenerateStructures As System.Windows.Forms.CheckBox
     Friend WithEvents SpawnProtection As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
-    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton3 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents MenuBar As System.Windows.Forms.ToolStrip
+    Friend WithEvents SaveToolStripButton As System.Windows.Forms.ToolStripButton
+    Friend WithEvents UndoToolStripButton As System.Windows.Forms.ToolStripButton
+    Friend WithEvents Regen As System.Windows.Forms.ToolStripButton
+    Friend WithEvents Content As System.Windows.Forms.Panel
+    Friend WithEvents RconPasswordLabel As System.Windows.Forms.Label
+    Friend WithEvents RconPassword As System.Windows.Forms.MaskedTextBox
 
 End Class

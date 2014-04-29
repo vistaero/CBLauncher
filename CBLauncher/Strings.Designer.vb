@@ -82,6 +82,15 @@ Friend Class Strings
     End Property
     
     '''<summary>
+    '''  Busca una cadena traducida similar a Are you sure?.
+    '''</summary>
+    Friend Shared ReadOnly Property AreYouSure() As String
+        Get
+            Return ResourceManager.GetString("AreYouSure", resourceCulture)
+        End Get
+    End Property
+    
+    '''<summary>
     '''  Busca una cadena traducida similar a Latest build already downloaded..
     '''</summary>
     Friend Shared ReadOnly Property CBUpdated1() As String
@@ -165,15 +174,6 @@ Friend Class Strings
     End Property
     
     '''<summary>
-    '''  Busca una cadena traducida similar a Are you sure?.
-    '''</summary>
-    Friend Shared ReadOnly Property LdDfProps2() As String
-        Get
-            Return ResourceManager.GetString("LdDfProps2", resourceCulture)
-        End Get
-    End Property
-    
-    '''<summary>
     '''  Busca una cadena traducida similar a Shortcut|*.lnk.
     '''</summary>
     Friend Shared ReadOnly Property lnkFormat() As String
@@ -210,20 +210,11 @@ Friend Class Strings
     End Property
     
     '''<summary>
-    '''  Busca una cadena traducida similar a You should click Stop before exit. Are you sure?.
+    '''  Busca una cadena traducida similar a Stop server and close?.
     '''</summary>
     Friend Shared ReadOnly Property ShouldClickStop1() As String
         Get
             Return ResourceManager.GetString("ShouldClickStop1", resourceCulture)
-        End Get
-    End Property
-    
-    '''<summary>
-    '''  Busca una cadena traducida similar a Click Stop.
-    '''</summary>
-    Friend Shared ReadOnly Property ShouldClickStop2() As String
-        Get
-            Return ResourceManager.GetString("ShouldClickStop2", resourceCulture)
         End Get
     End Property
     

@@ -93,18 +93,6 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property Setting() As String
-            Get
-                Return CType(Me("Setting"),String)
-            End Get
-            Set
-                Me("Setting") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
         Public Property History() As String
             Get
                 Return CType(Me("History"),String)
@@ -147,6 +135,30 @@ Namespace My
             End Get
             Set
                 Me("NonAutoArgsText") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property AskBeforeExit() As Boolean
+            Get
+                Return CType(Me("AskBeforeExit"),Boolean)
+            End Get
+            Set
+                Me("AskBeforeExit") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property ForceStop() As Boolean
+            Get
+                Return CType(Me("ForceStop"),Boolean)
+            End Get
+            Set
+                Me("ForceStop") = value
             End Set
         End Property
     End Class

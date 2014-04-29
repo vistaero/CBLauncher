@@ -10,15 +10,193 @@ Public Class Form1
 
     Dim output As String
     Dim serverprocess As New Process()
-    Dim log As String
     Public JarPath As String = ""
     Dim JarFolder As String
-    Dim IsStarted As Boolean = False
     Public Favorites As New List(Of Favorite)
     Public NewFavoriteName As String
     Public documentspath As String = (System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)) & "\CBLauncher\"
     Private InputHistorial As New List(Of String)
     Public LocRM As New ResourceManager("CBLauncher.Strings", GetType(Form1).Assembly)
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
+        EasterEgg()
+
+        Dim processlist As Object = Process.GetProcesses
+        For Each process As Process In processlist
+            Dim Process2 As String = process.Id
+            If Process2.Equals(My.Settings.LastJavawPID) And process.ProcessName.Equals("javaw") Then
+
+                Dim AlertWindow = MessageBox.Show(LocRM.GetString("LastPIDAlert") & process.ProcessName & " (" & My.Settings.LastJavawPID & ").", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Hand)
+
+                If AlertWindow = Windows.Forms.DialogResult.Yes Then
+                    process.Kill()
+                Else
+                    My.Settings.LastJavawPID = ""
+                End If
+            End If
+        Next
+
+        CheckJavaw(True)
+        If My.Application.CommandLineArgs.Count > 0 Then
+            MsgBox("Ruta Jar: " & My.Application.CommandLineArgs.Last & vbNewLine & "Nombre de archivo: " & Path.GetFileName(My.Application.CommandLineArgs.Last))
+            SelectJar(My.Application.CommandLineArgs.Last, Path.GetFileName(My.Application.CommandLineArgs.Last))
+            StartServer(MemoryText.Text)
+        End If
+
+        RefreshFavorites()
+    End Sub
+
+    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
+        Do
+            output = serverprocess.StandardOutput.ReadLine()
+            If Not output.ToString.Length < 1 Then
+                UpdateStatus(output & vbNewLine)
+            End If
+        Loop
+
+    End Sub
+
+    Private Sub BackgroundWorker1_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
+        BackgroundWorker1.Dispose()
+        If ShouldExitWhenBackgroundWorkerEnds = True Then
+            Environment.Exit(0)
+        End If
+        StopButton.Enabled = False
+        ForceStopButton.Enabled = False
+        StartButton.Enabled = True
+        SelectJarButton.Enabled = True
+        FavoritesButton.Enabled = True
+        MoreCommands.Enabled = False
+    End Sub
+
+    Private Delegate Sub DelegateUpdateStatus(ByVal statusText As String)
+
+    Private TextBuffer As String = ""
+
+    Private Sub UpdateStatus(ByVal NewInput As String)
+        If InvokeRequired Then
+
+            If SelectingText = False Then
+                If Not TextBuffer.Equals("") Then
+                    Invoke(Sub() OutPutTextBox.AppendText(TextBuffer))
+                    TextBuffer = ""
+                End If
+                Invoke(Sub() OutPutTextBox.AppendText(NewInput))
+            Else
+                TextBuffer += NewInput
+            End If
+
+        Else
+            If SelectingText = False Then
+                If Not TextBuffer.Equals("") Then
+                    OutPutTextBox.AppendText(TextBuffer)
+                    TextBuffer = ""
+                End If
+                OutPutTextBox.AppendText(NewInput)
+            Else
+                TextBuffer += NewInput
+            End If
+
+        End If
+
+    End Sub
+
+    Private Sub SelectJar(ByVal InputJarPath As String, ByVal InputSafeFileName As String)
+        JarPath = InputJarPath
+        If Not JarPath = "" Then
+            JarFolder = JarPath.Replace(InputSafeFileName, "")
+            JarPathText.Text = JarPath
+            ExtrasToolStripMenuItem.Enabled = True
+            If BackgroundWorker1.IsBusy = False Then
+                StartButton.Enabled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub StartServer(ByVal memory As String)
+        If CheckJavaw(False) = True Then
+            Try
+                serverprocess.StartInfo.RedirectStandardOutput = True
+                serverprocess.StartInfo.RedirectStandardInput = True
+                serverprocess.StartInfo.FileName = My.Settings.JavawPath
+                Select Case My.Settings.AutoArgs
+                    Case True
+                        serverprocess.StartInfo.Arguments = "-Xmx" & memory & "M -jar " & """" & JarPath & """"
+                    Case False
+                        serverprocess.StartInfo.Arguments = My.Settings.NonAutoArgsText
+                End Select
+                serverprocess.StartInfo.UseShellExecute = False
+                serverprocess.StartInfo.CreateNoWindow = True
+                serverprocess.StartInfo.WorkingDirectory = JarFolder
+                serverprocess.Start()
+                My.Settings.LastJavawPID = serverprocess.Id
+                If Not My.Settings.History.Contains(JarPath) Then My.Settings.History += vbNewLine & JarPath
+                My.Settings.Save()
+                BackgroundWorker1.RunWorkerAsync()
+                StopButton.Enabled = True
+                ForceStopButton.Enabled = True
+                StartButton.Enabled = False
+                SelectJarButton.Enabled = False
+                FavoritesButton.Enabled = False
+                MoreCommands.Enabled = True
+                ListBox1.Visible = False
+                OutPutTextBox.Visible = True
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        Else
+            MessageBox.Show(LocRM.GetString("NotInstalledJavaYet"))
+        End If
+    End Sub
+
+    Private ShouldExitWhenBackgroundWorkerEnds As Boolean
+
+    Private Sub StopServer(ByVal Forced As Boolean)
+        Try
+            Select Case Forced
+                Case True
+                    serverprocess.Kill()
+                Case False
+                    serverprocess.StandardInput.WriteLine("stop")
+            End Select
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If BackgroundWorker1.IsBusy = True Then
+            If My.Settings.AskBeforeExit = True Then
+                Dim reply As DialogResult = MessageBox.Show(LocRM.GetString("ShouldClickStop1"), LocRM.GetString("AreYouSure"), MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                Select Case reply
+                    Case Windows.Forms.DialogResult.Yes
+                        ShouldExitWhenBackgroundWorkerEnds = True
+                        Select Case My.Settings.ForceStop
+                            Case True
+                                e.Cancel = True
+                                StopServer(True)
+                            Case False
+                                e.Cancel = True
+                                StopServer(False)
+                        End Select
+                    Case Windows.Forms.DialogResult.No
+                        e.Cancel = True
+                End Select
+            Else
+                ShouldExitWhenBackgroundWorkerEnds = True
+                Select Case My.Settings.ForceStop
+                    Case True
+                        e.Cancel = True
+                        StopServer(True)
+                    Case False
+                        e.Cancel = True
+                        StopServer(False)
+                End Select
+            End If
+
+        End If
+    End Sub
 
     Private Sub EasterEgg()
 
@@ -130,33 +308,6 @@ Public Class Form1
         Next
     End Sub
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
-        EasterEgg()
-
-        Dim processlist As Object = Process.GetProcesses
-        For Each process As Process In processlist
-            Dim Process2 As String = process.Id
-            If Process2.Equals(My.Settings.LastJavawPID) And process.ProcessName.Equals("javaw") Then
-
-                Dim AlertWindow = MessageBox.Show(LocRM.GetString("LastPIDAlert") & process.ProcessName & " (" & My.Settings.LastJavawPID & ").", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Hand)
-
-                If AlertWindow = Windows.Forms.DialogResult.Yes Then
-                    process.Kill()
-                Else
-                    My.Settings.LastJavawPID = ""
-                End If
-            End If
-        Next
-
-        CheckJavaw(True)
-        If My.Application.CommandLineArgs.Count > 0 Then
-            MsgBox("Ruta Jar: " & My.Application.CommandLineArgs.Last & vbNewLine & "Nombre de archivo: " & Path.GetFileName(My.Application.CommandLineArgs.Last))
-            SelectJar(My.Application.CommandLineArgs.Last, Path.GetFileName(My.Application.CommandLineArgs.Last))
-        End If
-
-        RefreshFavorites()
-    End Sub
-
     Private Function CheckJavaw(ByVal download As Boolean)
         Dim ExistsJavaw As Boolean = System.IO.File.Exists(My.Settings.JavawPath)
         If ExistsJavaw = False And download = True And My.Settings.JavawPath.Equals("C:\Program Files\Java\jre7\bin\javaw.exe") Then
@@ -171,75 +322,12 @@ Public Class Form1
 
     End Function
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        If BackgroundWorker1.IsBusy Then
-            Dim Select1 As Integer = OutPutTextBox.SelectionStart
-            Dim Select2 As Integer = OutPutTextBox.SelectionLength
-
-            If Not OutPutTextBox.Text.Equals(log) Then
-                OutPutTextBox.Text = log
-                OutPutTextBox.Select(OutPutTextBox.TextLength, 0)
-                OutPutTextBox.ScrollToCaret()
-                OutPutTextBox.SelectionStart = Select1
-                OutPutTextBox.SelectionLength = Select2
-            End If
-
-        Else
-            StopButton.Enabled = False
-            ForceStopButton.Enabled = False
-            StartButton.Enabled = True
-            SelectJarButton.Enabled = True
-            FavoritesButton.Enabled = True
-        End If
-
-    End Sub
-
-    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
-        Try
-            Do
-                output = serverprocess.StandardOutput.ReadLine()
-                If Not output.ToString.Length < 1 Then
-                    log += output & vbNewLine
-                End If
-            Loop
-        Catch ex As Exception
-            BackgroundWorker1.Dispose()
-            IsStarted = False
-        End Try
-    End Sub
-
-    Private Sub StopServer(ByVal forzado As Boolean)
-        Try
-            Select Case forzado
-                Case True
-                    serverprocess.Kill()
-                Case False
-                    serverprocess.StandardInput.WriteLine("stop")
-            End Select
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-
-    End Sub
-
-    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If IsStarted = True Then
-            Dim reply As DialogResult = MessageBox.Show(LocRM.GetString("ShouldClickStop1"), LocRM.GetString("ShouldClickStop2"), MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            Select Case reply
-                Case Windows.Forms.DialogResult.Yes
-                    StopServer(True)
-                Case Windows.Forms.DialogResult.No
-                    e.Cancel = True
-            End Select
-        End If
-    End Sub
-
     Private SelectedInputHistorial As Integer = 0
 
     Private Sub InputTextBox_KeyDown(sender As Object, e As KeyEventArgs) Handles InputTextBox.KeyDown
 
 
-        If e.KeyCode = Keys.Enter And IsStarted = True Then
+        If e.KeyCode = Keys.Enter And BackgroundWorker1.IsBusy = True Then
             e.SuppressKeyPress = True
             serverprocess.StandardInput.WriteLine(InputTextBox.Text)
             InputHistorial.Add(InputTextBox.Text)
@@ -264,10 +352,37 @@ Public Class Form1
 
         End If
 
-        If e.KeyCode = Keys.A And e.Control = True Then
-            ExtrasToolStripMenuItem.Visible = True
+        If e.KeyCode = Keys.H And e.Control = True Then
+            MsgBox(My.Settings.History)
+
         End If
 
+        If e.KeyCode = Keys.J And e.Control = True Then
+            My.Settings.History = ""
+            My.Settings.Save()
+            MessageBox.Show("Historial cleared", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+
+    End Sub
+
+    Private SelectingText As Boolean = False
+
+    Private Sub OutPutTextBox_MouseDown(sender As Object, e As MouseEventArgs) Handles OutPutTextBox.MouseDown
+        SelectingText = True
+    End Sub
+
+    Private SelectionStart As Integer
+    Private SelectionLenght As Integer
+
+    Private Sub OutPutTextBox_MouseUp(sender As Object, e As MouseEventArgs) Handles OutPutTextBox.MouseUp
+        SelectionStart = OutPutTextBox.SelectionStart
+        SelectionLenght = OutPutTextBox.SelectionLength
+
+        SelectingText = False
+        If Not TextBuffer.Equals("") Then
+            OutPutTextBox.Text += TextBuffer
+            TextBuffer = ""
+        End If
     End Sub
 
     Private Sub InputTextBox_KeyUp(sender As Object, e As KeyEventArgs) Handles InputTextBox.KeyUp
@@ -277,43 +392,6 @@ Public Class Form1
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles StartButton.Click
         StartServer(MemoryText.Text)
 
-    End Sub
-
-    Private Sub StartServer(ByVal memory As String)
-        If CheckJavaw(False) = True Then
-            Try
-                serverprocess.StartInfo.RedirectStandardOutput = True
-                serverprocess.StartInfo.RedirectStandardInput = True
-                serverprocess.StartInfo.FileName = My.Settings.JavawPath
-                Select Case My.Settings.AutoArgs
-                    Case True
-                        serverprocess.StartInfo.Arguments = "-Xmx" & memory & "M -jar " & """" & JarPath & """"
-                    Case False
-                        serverprocess.StartInfo.Arguments = My.Settings.NonAutoArgsText
-                End Select
-                serverprocess.StartInfo.UseShellExecute = False
-                serverprocess.StartInfo.CreateNoWindow = True
-                serverprocess.StartInfo.WorkingDirectory = JarFolder
-                serverprocess.Start()
-                My.Settings.LastJavawPID = serverprocess.Id
-                My.Settings.History += vbNewLine & JarPath
-                My.Settings.Save()
-                BackgroundWorker1.RunWorkerAsync()
-                Timer1.Enabled = True
-                IsStarted = True
-                StopButton.Enabled = True
-                ForceStopButton.Enabled = True
-                StartButton.Enabled = False
-                SelectJarButton.Enabled = False
-                FavoritesButton.Enabled = False
-                ListBox1.Visible = False
-                OutPutTextBox.Visible = True
-            Catch ex As Exception
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-        Else
-            MessageBox.Show(LocRM.GetString("NotInstalledJavaYet"))
-        End If
     End Sub
 
     Private Sub StopButton_Click(sender As Object, e As EventArgs) Handles StopButton.Click
@@ -331,28 +409,11 @@ Public Class Form1
         Dim reply = Dialog.ShowDialog()
         If reply = Windows.Forms.DialogResult.OK Then
             SelectJar(Dialog.FileName, Dialog.SafeFileName)
-
-        End If
-
-
-    End Sub
-
-    Private Sub SelectJar(ByVal InputJarPath As String, ByVal InputSafeFileName As String)
-        JarPath = InputJarPath
-        If Not JarPath = "" Then
-            JarFolder = JarPath.Replace(InputSafeFileName, "")
-            JarPathText.Text = JarPath
-            ExtrasToolStripMenuItem.Enabled = True
-            If IsStarted = False Then
-                StartButton.Enabled = True
-            End If
         End If
     End Sub
 
     Private Sub ClearToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearToolStripMenuItem.Click
-        log = ""
         OutPutTextBox.Clear()
-
     End Sub
 
     Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
@@ -365,7 +426,6 @@ Public Class Form1
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-
     End Sub
 
     'Dim oShell2 As WshShell 'import IWshRuntimeLibrary 'Project > Add Reference > COM > Windows Script Host Object Model.
@@ -452,22 +512,6 @@ Public Class Form1
 
     Private Declare Sub keybd_event Lib "user32.dll" (ByVal bVk As Byte, ByVal bScan As Byte, ByVal dwFlags As Long, ByVal dwExtraInfo As Long)
 
-    Private Sub OutPutTextBox_MouseDown(sender As Object, e As MouseEventArgs) Handles OutPutTextBox.MouseDown
-        If Timer1.Enabled = False Then
-            Timer1.Enabled = True
-        Else
-            Timer1.Enabled = False
-        End If
-    End Sub
-
-    Private Sub OutPutTextBox_MouseUp(sender As Object, e As MouseEventArgs) Handles OutPutTextBox.MouseUp
-        If Timer1.Enabled = False Then
-            Timer1.Enabled = True
-        Else
-            Timer1.Enabled = False
-        End If
-    End Sub
-
     Private Sub CopyAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyAllToolStripMenuItem.Click
         Clipboard.SetText(OutPutTextBox.Text)
     End Sub
@@ -482,7 +526,7 @@ Public Class Form1
         Dim PropertiesContent As New Properties
         PropertiesContent.Dock = DockStyle.Fill
         PropertiesWindow.Size = New Size(800, 800)
-
+        PropertiesWindow.Icon = My.Resources.cblauncher
         PropertiesWindow.StartPosition = FormStartPosition.CenterScreen
         PropertiesWindow.Text = LocRM.GetString("PropsTitle")
         PropertiesWindow.Controls.Add(PropertiesContent)
@@ -508,12 +552,12 @@ Public Class Form1
 
                 With OutPutTextBox
                     .Font = New Font("Lucida Console", 8.25, FontStyle.Bold)
-                    .ForeColor = Color.White
+                    .ForeColor = Color.LightGray
                     .BackColor = Color.Black
                 End With
                 With InputTextBox
                     .Font = New Font("Lucida Console", 8.25, FontStyle.Bold)
-                    .ForeColor = Color.White
+                    .ForeColor = Color.LightGray
                     .BackColor = Color.Black
                 End With
         End Select
@@ -526,4 +570,46 @@ Public Class Form1
     Private Sub BookToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BookToolStripMenuItem.Click
         FontSelect("Book")
     End Sub
+
+    Private Sub ReloadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReloadToolStripMenuItem.Click
+        serverprocess.StandardInput.WriteLine("reload")
+    End Sub
+
+    Private Sub InputTextBox_TextChanged(sender As Object, e As EventArgs) Handles InputTextBox.TextChanged
+
+    End Sub
+
+    Private Sub ToggleDownfallToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ToggleDownfallToolStripMenuItem.Click
+        serverprocess.StandardInput.WriteLine("weather rain")
+    End Sub
+
+    Private Sub ThunderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ThunderToolStripMenuItem.Click
+        serverprocess.StandardInput.WriteLine("weather thunder")
+    End Sub
+
+    Private Sub SetDayToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetDayToolStripMenuItem.Click
+        serverprocess.StandardInput.WriteLine("time set day")
+    End Sub
+
+    Private Sub SetNightToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetNightToolStripMenuItem.Click
+        serverprocess.StandardInput.WriteLine("time set night")
+    End Sub
+
+    Private Sub ClearWeatherToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearWeatherToolStripMenuItem.Click
+        serverprocess.StandardInput.WriteLine("weather clear")
+    End Sub
+
+    Private Sub OutPutTextBox_TextChanged(sender As Object, e As EventArgs) Handles OutPutTextBox.TextChanged
+        If Not SelectingText = True Or OutPutTextBox.SelectionLength > 0 Then
+            OutPutTextBox.SelectionStart = OutPutTextBox.TextLength
+            OutPutTextBox.SelectionLength = 0
+            OutPutTextBox.ScrollToCaret()
+            If SelectionStart > 0 Or SelectionLenght > 0 Then
+                OutPutTextBox.SelectionStart = SelectionStart
+                OutPutTextBox.SelectionLength = SelectionLenght
+            End If
+
+        End If
+    End Sub
+
 End Class

@@ -172,10 +172,7 @@ Nombre del proceso y PID: </value>
     <value>Aún no has instalado Java.</value>
   </data>
   <data name="ShouldClickStop1" xml:space="preserve">
-    <value>Deberías hacer clic en Detener antes de salir. ¿Estás seguro?</value>
-  </data>
-  <data name="ShouldClickStop2" xml:space="preserve">
-    <value>Clic en Detener</value>
+    <value>¿Cerrar servidor y salir?</value>
   </data>
   <data name="CBUpdated1" xml:space="preserve">
     <value>La última versión ya está descargada.</value>
@@ -192,10 +189,10 @@ Nombre del proceso y PID: </value>
   <data name="LdDfProps" xml:space="preserve">
     <value>Esta operación no puede deshacerse.</value>
   </data>
-  <data name="LdDfProps2" xml:space="preserve">
+  <data name="AreYouSure" xml:space="preserve">
     <value>¿Estás seguro?</value>
   </data>
-  <data name="WhereCopy1" xml:space="preserve">
-    <value>Where to copy </value>
+  <data name="PropsTitle" xml:space="preserve">
+    <value>Propiedades del servidor</value>
   </data>
 </root>

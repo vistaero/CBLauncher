@@ -117,10 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="TabPage3.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="GroupBox5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -132,8 +128,9 @@
   <data name="MaxPlayers.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 20</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="MaxPlayers.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;MaxPlayers.Name" xml:space="preserve">
     <value>MaxPlayers</value>
@@ -181,10 +178,10 @@
     <value>9, 71</value>
   </data>
   <data name="ResourcePackTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>603, 20</value>
+    <value>583, 20</value>
   </data>
   <data name="ResourcePackTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;ResourcePackTextBox.Name" xml:space="preserve">
     <value>ResourcePackTextBox</value>
@@ -235,7 +232,7 @@
     <value>73, 17</value>
   </data>
   <data name="WhiteListCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="WhiteListCheckBox.Text" xml:space="preserve">
     <value>White List</value>
@@ -259,7 +256,7 @@
     <value>9, 32</value>
   </data>
   <data name="DescriptionTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>603, 20</value>
+    <value>583, 20</value>
   </data>
   <data name="DescriptionTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -304,10 +301,10 @@
     <value>6</value>
   </data>
   <data name="GroupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
+    <value>3, 3</value>
   </data>
   <data name="GroupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>618, 161</value>
+    <value>598, 161</value>
   </data>
   <data name="GroupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -322,13 +319,61 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;GroupBox5.Parent" xml:space="preserve">
-    <value>TabPage3</value>
+    <value>Content</value>
   </data>
   <data name="&gt;&gt;GroupBox5.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="GroupBox6.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
+  </data>
+  <data name="RconPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 304</value>
+  </data>
+  <data name="RconPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="RconPassword.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="&gt;&gt;RconPassword.Name" xml:space="preserve">
+    <value>RconPassword</value>
+  </data>
+  <data name="&gt;&gt;RconPassword.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RconPassword.Parent" xml:space="preserve">
+    <value>GroupBox6</value>
+  </data>
+  <data name="&gt;&gt;RconPassword.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="RconPasswordLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="RconPasswordLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 288</value>
+  </data>
+  <data name="RconPasswordLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 13</value>
+  </data>
+  <data name="RconPasswordLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="RconPasswordLabel.Text" xml:space="preserve">
+    <value>Rcon Password</value>
+  </data>
+  <data name="&gt;&gt;RconPasswordLabel.Name" xml:space="preserve">
+    <value>RconPasswordLabel</value>
+  </data>
+  <data name="&gt;&gt;RconPasswordLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RconPasswordLabel.Parent" xml:space="preserve">
+    <value>GroupBox6</value>
+  </data>
+  <data name="&gt;&gt;RconPasswordLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="ViewDistance.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 110</value>
@@ -337,7 +382,7 @@
     <value>120, 20</value>
   </data>
   <data name="ViewDistance.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>26</value>
   </data>
   <data name="&gt;&gt;ViewDistance.Name" xml:space="preserve">
     <value>ViewDistance</value>
@@ -349,7 +394,7 @@
     <value>GroupBox6</value>
   </data>
   <data name="&gt;&gt;ViewDistance.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="Label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -376,19 +421,19 @@
     <value>GroupBox6</value>
   </data>
   <data name="&gt;&gt;Label4.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="EnableCommandBlock.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="EnableCommandBlock.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 268</value>
+    <value>9, 199</value>
   </data>
   <data name="EnableCommandBlock.Size" type="System.Drawing.Size, System.Drawing">
     <value>139, 17</value>
   </data>
   <data name="EnableCommandBlock.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>29</value>
   </data>
   <data name="EnableCommandBlock.Text" xml:space="preserve">
     <value>Enable Command Block</value>
@@ -403,19 +448,19 @@
     <value>GroupBox6</value>
   </data>
   <data name="&gt;&gt;EnableCommandBlock.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="OnlineMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="OnlineMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 245</value>
+    <value>9, 176</value>
   </data>
   <data name="OnlineMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 17</value>
   </data>
   <data name="OnlineMode.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>28</value>
   </data>
   <data name="OnlineMode.Text" xml:space="preserve">
     <value>Online Mode</value>
@@ -430,7 +475,7 @@
     <value>GroupBox6</value>
   </data>
   <data name="&gt;&gt;OnlineMode.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="SnooperCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -442,7 +487,7 @@
     <value>108, 17</value>
   </data>
   <data name="SnooperCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>30</value>
   </data>
   <data name="SnooperCheckBox.Text" xml:space="preserve">
     <value>Snooper Enabled</value>
@@ -457,7 +502,7 @@
     <value>GroupBox6</value>
   </data>
   <data name="&gt;&gt;SnooperCheckBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="ServerIPTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 32</value>
@@ -466,7 +511,7 @@
     <value>100, 20</value>
   </data>
   <data name="ServerIPTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>24</value>
   </data>
   <data name="&gt;&gt;ServerIPTextBox.Name" xml:space="preserve">
     <value>ServerIPTextBox</value>
@@ -478,7 +523,7 @@
     <value>GroupBox6</value>
   </data>
   <data name="&gt;&gt;ServerIPTextBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="ServerIPLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -505,19 +550,19 @@
     <value>GroupBox6</value>
   </data>
   <data name="&gt;&gt;ServerIPLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="EnableRconCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="EnableRconCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 199</value>
+    <value>9, 268</value>
   </data>
   <data name="EnableRconCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 17</value>
   </data>
   <data name="EnableRconCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>32</value>
   </data>
   <data name="EnableRconCheckBox.Text" xml:space="preserve">
     <value>Enable Rcon</value>
@@ -532,7 +577,7 @@
     <value>GroupBox6</value>
   </data>
   <data name="&gt;&gt;EnableRconCheckBox.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="ServerPort.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 71</value>
@@ -541,7 +586,7 @@
     <value>120, 20</value>
   </data>
   <data name="ServerPort.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>25</value>
   </data>
   <data name="&gt;&gt;ServerPort.Name" xml:space="preserve">
     <value>ServerPort</value>
@@ -553,7 +598,7 @@
     <value>GroupBox6</value>
   </data>
   <data name="&gt;&gt;ServerPort.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="ServerPortLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -580,19 +625,19 @@
     <value>GroupBox6</value>
   </data>
   <data name="&gt;&gt;ServerPortLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="EnableQueryCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="EnableQueryCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 176</value>
+    <value>9, 245</value>
   </data>
   <data name="EnableQueryCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 17</value>
   </data>
   <data name="EnableQueryCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>31</value>
   </data>
   <data name="EnableQueryCheckBox.Text" xml:space="preserve">
     <value>Enable Query</value>
@@ -607,7 +652,7 @@
     <value>GroupBox6</value>
   </data>
   <data name="&gt;&gt;EnableQueryCheckBox.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="OpPermLevelComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -628,10 +673,10 @@
     <value>9, 149</value>
   </data>
   <data name="OpPermLevelComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>603, 21</value>
+    <value>583, 21</value>
   </data>
   <data name="OpPermLevelComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>27</value>
   </data>
   <data name="&gt;&gt;OpPermLevelComboBox.Name" xml:space="preserve">
     <value>OpPermLevelComboBox</value>
@@ -643,7 +688,7 @@
     <value>GroupBox6</value>
   </data>
   <data name="&gt;&gt;OpPermLevelComboBox.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="OpPermLevelLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -670,13 +715,13 @@
     <value>GroupBox6</value>
   </data>
   <data name="&gt;&gt;OpPermLevelLabel.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="GroupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 812</value>
+    <value>3, 809</value>
   </data>
   <data name="GroupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>618, 296</value>
+    <value>598, 335</value>
   </data>
   <data name="GroupBox6.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -691,7 +736,7 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;GroupBox6.Parent" xml:space="preserve">
-    <value>TabPage3</value>
+    <value>Content</value>
   </data>
   <data name="&gt;&gt;GroupBox6.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -709,7 +754,7 @@
     <value>121, 17</value>
   </data>
   <data name="GenerateStructures.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>10</value>
   </data>
   <data name="GenerateStructures.Text" xml:space="preserve">
     <value>Generate Structures</value>
@@ -784,7 +829,7 @@
     <value>105, 17</value>
   </data>
   <data name="SpawnMonstersCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="SpawnMonstersCheckBox.Text" xml:space="preserve">
     <value>Spawn Monsters</value>
@@ -811,7 +856,7 @@
     <value>98, 17</value>
   </data>
   <data name="SpawnAnimalsCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="SpawnAnimalsCheckBox.Text" xml:space="preserve">
     <value>Spawn Animals</value>
@@ -838,7 +883,7 @@
     <value>89, 17</value>
   </data>
   <data name="SpawnNPCsCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="SpawnNPCsCheckBox.Text" xml:space="preserve">
     <value>Spawn NPCs</value>
@@ -862,7 +907,7 @@
     <value>120, 20</value>
   </data>
   <data name="MaxBuildHeight.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;MaxBuildHeight.Name" xml:space="preserve">
     <value>MaxBuildHeight</value>
@@ -910,7 +955,7 @@
     <value>9, 150</value>
   </data>
   <data name="LevelSeedTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>603, 20</value>
+    <value>583, 20</value>
   </data>
   <data name="LevelSeedTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -973,7 +1018,7 @@
     <value>121, 21</value>
   </data>
   <data name="LevelTypeComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;LevelTypeComboBox.Name" xml:space="preserve">
     <value>LevelTypeComboBox</value>
@@ -1021,10 +1066,10 @@
     <value>9, 32</value>
   </data>
   <data name="LevelNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>603, 20</value>
+    <value>583, 20</value>
   </data>
   <data name="LevelNameTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;LevelNameTextBox.Name" xml:space="preserve">
     <value>LevelNameTextBox</value>
@@ -1075,7 +1120,7 @@
     <value>86, 17</value>
   </data>
   <data name="AllowNetherCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>11</value>
   </data>
   <data name="AllowNetherCheckBox.Text" xml:space="preserve">
     <value>Allow Nether</value>
@@ -1099,10 +1144,10 @@
     <value>9, 71</value>
   </data>
   <data name="GeneratorSettingsTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>603, 20</value>
+    <value>583, 20</value>
   </data>
   <data name="GeneratorSettingsTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;GeneratorSettingsTextBox.Name" xml:space="preserve">
     <value>GeneratorSettingsTextBox</value>
@@ -1144,10 +1189,10 @@
     <value>16</value>
   </data>
   <data name="GroupBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 172</value>
+    <value>3, 169</value>
   </data>
   <data name="GroupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>618, 374</value>
+    <value>598, 374</value>
   </data>
   <data name="GroupBox7.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1162,7 +1207,7 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;GroupBox7.Parent" xml:space="preserve">
-    <value>TabPage3</value>
+    <value>Content</value>
   </data>
   <data name="&gt;&gt;GroupBox7.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1186,7 +1231,7 @@
     <value>121, 21</value>
   </data>
   <data name="GamemodeComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>22</value>
   </data>
   <data name="&gt;&gt;GamemodeComboBox.Name" xml:space="preserve">
     <value>GamemodeComboBox</value>
@@ -1234,7 +1279,7 @@
     <value>120, 20</value>
   </data>
   <data name="PlayerIdlTimeout.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>23</value>
   </data>
   <data name="&gt;&gt;PlayerIdlTimeout.Name" xml:space="preserve">
     <value>PlayerIdlTimeout</value>
@@ -1285,7 +1330,7 @@
     <value>70, 17</value>
   </data>
   <data name="HardcoreCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>21</value>
   </data>
   <data name="HardcoreCheckBox.Text" xml:space="preserve">
     <value>Hardcore</value>
@@ -1348,7 +1393,7 @@
     <value>121, 21</value>
   </data>
   <data name="DifficultyComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>20</value>
   </data>
   <data name="&gt;&gt;DifficultyComboBox.Name" xml:space="preserve">
     <value>DifficultyComboBox</value>
@@ -1372,7 +1417,7 @@
     <value>47, 17</value>
   </data>
   <data name="PVPCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>19</value>
   </data>
   <data name="PVPCheckBox.Text" xml:space="preserve">
     <value>PVP</value>
@@ -1399,7 +1444,7 @@
     <value>110, 17</value>
   </data>
   <data name="ForceGamemodeCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>18</value>
   </data>
   <data name="ForceGamemodeCheckBox.Text" xml:space="preserve">
     <value>Force Gamemode</value>
@@ -1426,7 +1471,7 @@
     <value>177, 17</value>
   </data>
   <data name="AnnouncePArchsCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>17</value>
   </data>
   <data name="AnnouncePArchsCheckBox.Text" xml:space="preserve">
     <value>Announce Player Achievements</value>
@@ -1453,7 +1498,7 @@
     <value>79, 17</value>
   </data>
   <data name="AllowFlightCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>16</value>
   </data>
   <data name="AllowFlightCheckBox.Text" xml:space="preserve">
     <value>Allow Flight</value>
@@ -1471,10 +1516,10 @@
     <value>10</value>
   </data>
   <data name="GroupBox8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 551</value>
+    <value>3, 548</value>
   </data>
   <data name="GroupBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>618, 256</value>
+    <value>598, 256</value>
   </data>
   <data name="GroupBox8.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1489,120 +1534,15 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;GroupBox8.Parent" xml:space="preserve">
-    <value>TabPage3</value>
+    <value>Content</value>
   </data>
   <data name="&gt;&gt;GroupBox8.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="TabPage3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="TabPage3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>647, 620</value>
-  </data>
-  <data name="TabPage3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="TabPage3.Text" xml:space="preserve">
-    <value>Main View</value>
-  </data>
-  <data name="&gt;&gt;TabPage3.Name" xml:space="preserve">
-    <value>TabPage3</value>
-  </data>
-  <data name="&gt;&gt;TabPage3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabPage3.Parent" xml:space="preserve">
-    <value>TabControl1</value>
-  </data>
-  <data name="&gt;&gt;TabPage3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="TextBox5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="TextBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="TextBox5.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="TextBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>641, 614</value>
-  </data>
-  <data name="TextBox5.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;TextBox5.Name" xml:space="preserve">
-    <value>TextBox5</value>
-  </data>
-  <data name="&gt;&gt;TextBox5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TextBox5.Parent" xml:space="preserve">
-    <value>TabPage2</value>
-  </data>
-  <data name="&gt;&gt;TextBox5.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="TabPage2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="TabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>647, 620</value>
-  </data>
-  <data name="TabPage2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="TabPage2.Text" xml:space="preserve">
-    <value>Text View</value>
-  </data>
-  <data name="&gt;&gt;TabPage2.Name" xml:space="preserve">
-    <value>TabPage2</value>
-  </data>
-  <data name="&gt;&gt;TabPage2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabPage2.Parent" xml:space="preserve">
-    <value>TabControl1</value>
-  </data>
-  <data name="&gt;&gt;TabPage2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="TabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="TabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="TabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>655, 646</value>
-  </data>
-  <data name="TabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;TabControl1.Name" xml:space="preserve">
-    <value>TabControl1</value>
-  </data>
-  <data name="&gt;&gt;TabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabControl1.Parent" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
-  <data name="&gt;&gt;TabControl1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="ToolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="MenuBar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="ToolStripButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="SaveToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
@@ -1617,16 +1557,16 @@
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="ToolStripButton1.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="SaveToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="ToolStripButton1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="SaveToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 22</value>
   </data>
-  <data name="ToolStripButton1.Text" xml:space="preserve">
+  <data name="SaveToolStripButton.Text" xml:space="preserve">
     <value>Save and close</value>
   </data>
-  <data name="ToolStripButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="UndoToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
@@ -1641,16 +1581,16 @@
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="ToolStripButton2.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="UndoToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="ToolStripButton2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="UndoToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 22</value>
   </data>
-  <data name="ToolStripButton2.Text" xml:space="preserve">
+  <data name="UndoToolStripButton.Text" xml:space="preserve">
     <value>Undo</value>
   </data>
-  <data name="ToolStripButton3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Regen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
@@ -1665,61 +1605,64 @@
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="ToolStripButton3.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="Regen.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="ToolStripButton3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="Regen.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 22</value>
   </data>
-  <data name="ToolStripButton3.Text" xml:space="preserve">
+  <data name="Regen.Text" xml:space="preserve">
     <value>Regenerate properties file</value>
   </data>
-  <data name="ToolStrip1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="MenuBar.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="ToolStrip1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="MenuBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>655, 25</value>
   </data>
-  <data name="ToolStrip1.TabIndex" type="System.Int32, mscorlib">
+  <data name="MenuBar.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="ToolStrip1.Text" xml:space="preserve">
+  <data name="MenuBar.Text" xml:space="preserve">
     <value>ToolStrip1</value>
   </data>
-  <data name="&gt;&gt;ToolStrip1.Name" xml:space="preserve">
-    <value>ToolStrip1</value>
+  <data name="&gt;&gt;MenuBar.Name" xml:space="preserve">
+    <value>MenuBar</value>
   </data>
-  <data name="&gt;&gt;ToolStrip1.Type" xml:space="preserve">
+  <data name="&gt;&gt;MenuBar.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStrip1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;MenuBar.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;ToolStrip1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;MenuBar.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="Panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="Content.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Content.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="Panel1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="Content.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 25</value>
   </data>
-  <data name="Panel1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="Content.Size" type="System.Drawing.Size, System.Drawing">
     <value>655, 646</value>
   </data>
-  <data name="Panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="Content.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;Panel1.Name" xml:space="preserve">
-    <value>Panel1</value>
+  <data name="&gt;&gt;Content.Name" xml:space="preserve">
+    <value>Content</value>
   </data>
-  <data name="&gt;&gt;Panel1.Type" xml:space="preserve">
+  <data name="&gt;&gt;Content.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Panel1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Content.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;Panel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Content.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -1734,22 +1677,22 @@
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>655, 671</value>
   </data>
-  <data name="&gt;&gt;ToolStripButton1.Name" xml:space="preserve">
-    <value>ToolStripButton1</value>
+  <data name="&gt;&gt;SaveToolStripButton.Name" xml:space="preserve">
+    <value>SaveToolStripButton</value>
   </data>
-  <data name="&gt;&gt;ToolStripButton1.Type" xml:space="preserve">
+  <data name="&gt;&gt;SaveToolStripButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripButton2.Name" xml:space="preserve">
-    <value>ToolStripButton2</value>
+  <data name="&gt;&gt;UndoToolStripButton.Name" xml:space="preserve">
+    <value>UndoToolStripButton</value>
   </data>
-  <data name="&gt;&gt;ToolStripButton2.Type" xml:space="preserve">
+  <data name="&gt;&gt;UndoToolStripButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripButton3.Name" xml:space="preserve">
-    <value>ToolStripButton3</value>
+  <data name="&gt;&gt;Regen.Name" xml:space="preserve">
+    <value>Regen</value>
   </data>
-  <data name="&gt;&gt;ToolStripButton3.Type" xml:space="preserve">
+  <data name="&gt;&gt;Regen.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

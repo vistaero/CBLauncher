@@ -17,6 +17,7 @@ Public Class Properties
                 Properties("level-name") = "world"
                 Properties("enable-query") = "false"
                 Properties("allow-flight") = "false"
+                Properties("rcon.password") = ""
                 Properties("announce-player-achievements") = "true"
                 Properties("server-port") = "25565"
                 Properties("level-type") = "DEFAULT"
@@ -50,6 +51,7 @@ Public Class Properties
                 Properties.Add("level-name", "world")
                 Properties.Add("enable-query", "false")
                 Properties.Add("allow-flight", "false")
+                Properties.Add("rcon.password", "")
                 Properties.Add("announce-player-achievements", "true")
                 Properties.Add("server-port", "25565")
                 Properties.Add("level-type", "DEFAULT")
@@ -92,6 +94,7 @@ Public Class Properties
         Properties.TryGetValue("level-name", LevelNameTextBox.Text)
         Properties.TryGetValue("enable-query", EnableQueryCheckBox.Checked)
         Properties.TryGetValue("allow-flight", AllowFlightCheckBox.Checked)
+        Properties.TryGetValue("rcon.password", RconPassword.Text)
         Properties.TryGetValue("announce-player-achievements", AnnouncePArchsCheckBox.Checked)
         Properties.TryGetValue("server-port", ServerPort.Value)
         Properties.TryGetValue("level-type", LevelTypeComboBox.SelectedItem)
@@ -130,6 +133,7 @@ Public Class Properties
         Properties("level-name") = LevelNameTextBox.Text
         Properties("enable-query") = EnableQueryCheckBox.Checked
         Properties("allow-flight") = AllowFlightCheckBox.Checked
+        Properties("rcon.password") = RconPassword.Text
         Properties("announce-player-achievements") = AnnouncePArchsCheckBox.Checked
         Properties("server-port") = ServerPort.Value
         Properties("level-type") = LevelTypeComboBox.SelectedItem
@@ -158,7 +162,7 @@ Public Class Properties
         Properties("motd") = DescriptionTextBox.Text
         GenerateServerPropertiesText()
         Try
-            System.IO.File.WriteAllText(Form1.JarPath.Replace(IO.Path.GetFileName(Form1.JarPath), "" & "\server.properties"), TextBox5.Text)
+            System.IO.File.WriteAllText(Form1.JarPath.Replace(IO.Path.GetFileName(Form1.JarPath), "" & "\server.properties"), ReconstructedProperties)
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -213,7 +217,6 @@ Public Class Properties
 
         Next
 
-        TextBox5.Text = ReconstructedProperties
     End Sub
 
     Private Sub Properties_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -223,13 +226,13 @@ Public Class Properties
 
     End Sub
 
-    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
+    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles UndoToolStripButton.Click
         SetValuesOnUI()
 
     End Sub
 
-    Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
-        Dim reply = MessageBox.Show(Form1.LocRM.GetString("LdDfProps"), Form1.LocRM.GetString("LdDfProps2"), MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
+    Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles Regen.Click
+        Dim reply = MessageBox.Show(Form1.LocRM.GetString("LdDfProps"), Form1.LocRM.GetString("AreYouSure"), MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
         If reply = DialogResult.OK Then
             SetDictionary(True)
             SetValuesOnUI()
@@ -238,9 +241,10 @@ Public Class Properties
 
     End Sub
 
-    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles SaveToolStripButton.Click
         SaveValues()
         ParentForm.Dispose()
 
     End Sub
+
 End Class

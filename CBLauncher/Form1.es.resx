@@ -124,14 +124,14 @@
   <data name="InputTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>584, 18</value>
   </data>
-  <data name="StatusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>584, 20</value>
-  </data>
   <data name="JarPathText.Size" type="System.Drawing.Size, System.Drawing">
     <value>139, 15</value>
   </data>
   <data name="JarPathText.Text" xml:space="preserve">
     <value>No hay JAR seleccionado</value>
+  </data>
+  <data name="StatusStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>584, 20</value>
   </data>
   <data name="FavoritesButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -243,6 +243,12 @@
   </data>
   <data name="CopyAllToolStripMenuItem.Text" xml:space="preserve">
     <value>Copiar todo</value>
+  </data>
+  <data name="ConsoleToolStripMenuItem.Text" xml:space="preserve">
+    <value>Consola</value>
+  </data>
+  <data name="BookToolStripMenuItem.Text" xml:space="preserve">
+    <value>Libro</value>
   </data>
   <data name="FontTypeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 22</value>
@@ -371,16 +377,10 @@
   <data name="ToolStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>584, 25</value>
   </data>
-  <data name="ConsoleToolStripMenuItem.Text" xml:space="preserve">
-    <value>Consola</value>
-  </data>
-  <data name="BookToolStripMenuItem.Text" xml:space="preserve">
-    <value>Libro</value>
-  </data>
-  <data name="OutPutPanel.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ListBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>584, 266</value>
   </data>
-  <data name="ListBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="OutPutPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>584, 266</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
