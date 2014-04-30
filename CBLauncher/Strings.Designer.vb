@@ -118,6 +118,15 @@ Friend Class Strings
     End Property
     
     '''<summary>
+    '''  Busca una cadena traducida similar a How do you want to name it?.
+    '''</summary>
+    Friend Shared ReadOnly Property HowToNameIt() As String
+        Get
+            Return ResourceManager.GetString("HowToNameIt", resourceCulture)
+        End Get
+    End Property
+    
+    '''<summary>
     '''  Busca una cadena traducida similar a Java Files|*.jar.
     '''</summary>
     Friend Shared ReadOnly Property JarFormat() As String

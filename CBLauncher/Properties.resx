@@ -178,7 +178,7 @@
     <value>9, 71</value>
   </data>
   <data name="ResourcePackTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>583, 20</value>
+    <value>617, 20</value>
   </data>
   <data name="ResourcePackTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -256,7 +256,7 @@
     <value>9, 32</value>
   </data>
   <data name="DescriptionTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>583, 20</value>
+    <value>617, 20</value>
   </data>
   <data name="DescriptionTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -304,7 +304,7 @@
     <value>3, 3</value>
   </data>
   <data name="GroupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 161</value>
+    <value>632, 161</value>
   </data>
   <data name="GroupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -673,7 +673,7 @@
     <value>9, 149</value>
   </data>
   <data name="OpPermLevelComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>583, 21</value>
+    <value>617, 21</value>
   </data>
   <data name="OpPermLevelComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -721,7 +721,7 @@
     <value>3, 809</value>
   </data>
   <data name="GroupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 335</value>
+    <value>632, 335</value>
   </data>
   <data name="GroupBox6.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -955,7 +955,7 @@
     <value>9, 150</value>
   </data>
   <data name="LevelSeedTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>583, 20</value>
+    <value>617, 20</value>
   </data>
   <data name="LevelSeedTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1066,7 +1066,7 @@
     <value>9, 32</value>
   </data>
   <data name="LevelNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>583, 20</value>
+    <value>617, 20</value>
   </data>
   <data name="LevelNameTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1144,7 +1144,7 @@
     <value>9, 71</value>
   </data>
   <data name="GeneratorSettingsTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>583, 20</value>
+    <value>617, 20</value>
   </data>
   <data name="GeneratorSettingsTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1192,7 +1192,7 @@
     <value>3, 169</value>
   </data>
   <data name="GroupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 374</value>
+    <value>632, 374</value>
   </data>
   <data name="GroupBox7.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1519,7 +1519,7 @@
     <value>3, 548</value>
   </data>
   <data name="GroupBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 256</value>
+    <value>632, 256</value>
   </data>
   <data name="GroupBox8.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>

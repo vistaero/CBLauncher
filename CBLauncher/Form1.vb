@@ -4,21 +4,36 @@ Imports System.Xml
 Imports System.Xml.Serialization
 Imports System.Text
 Imports System.Resources
-
+Imports System.Media
+Imports System.Threading
+Imports System.Globalization
 
 Public Class Form1
 
-    Dim output As String
-    Dim serverprocess As New Process()
+    Private output As String
+    Private serverprocess As New Process()
     Public JarPath As String = ""
-    Dim JarFolder As String
+    Private JarFolder As String
     Public Favorites As New List(Of Favorite)
     Public NewFavoriteName As String
     Public documentspath As String = (System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)) & "\CBLauncher\"
     Private InputHistorial As New List(Of String)
     Public LocRM As New ResourceManager("CBLauncher.Strings", GetType(Form1).Assembly)
+    Private TextBuffer As String = ""
+    Private Delegate Sub DelegateUpdateStatus(ByVal statusText As String)
+    Private ShouldExitWhenBackgroundWorkerEnds As Boolean
+    Private SelectedInputHistorial As Integer = 0
+    Private SelectingText As Boolean = False
+    Private SelectionStart As Integer
+    Private SelectionLenght As Integer
+    Private Declare Sub keybd_event Lib "user32.dll" (ByVal bVk As Byte, ByVal bScan As Byte, ByVal dwFlags As Long, ByVal dwExtraInfo As Long)
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'Dim targetCulture As String = "en-US"
+        'Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(targetCulture)
+        'Me.Controls.Clear()
+        'InitializeComponent()
+
         EasterEgg()
 
         Dim processlist As Object = Process.GetProcesses
@@ -73,10 +88,6 @@ Public Class Form1
         FavoritesButton.Enabled = True
         MoreCommands.Enabled = False
     End Sub
-
-    Private Delegate Sub DelegateUpdateStatus(ByVal statusText As String)
-
-    Private TextBuffer As String = ""
 
     Private Sub UpdateStatus(ByVal NewInput As String)
         If InvokeRequired Then
@@ -153,8 +164,6 @@ Public Class Form1
             MessageBox.Show(LocRM.GetString("NotInstalledJavaYet"))
         End If
     End Sub
-
-    Private ShouldExitWhenBackgroundWorkerEnds As Boolean
 
     Private Sub StopServer(ByVal Forced As Boolean)
         Try
@@ -249,36 +258,22 @@ Public Class Form1
 
         If Exists = False Then
             If Not JarPath.Equals("") Then
-                Dim Nuevo As Boolean = True
-                Select Case Nuevo
-                    Case True
-                        Dim FavWindow As New Form
-                        Dim FavWindowContent As New AddFavorite
 
-                        FavWindow.FormBorderStyle = Windows.Forms.FormBorderStyle.FixedSingle
-                        FavWindow.MaximizeBox = False
-                        FavWindow.MinimizeBox = False
-
-                        FavWindow.Controls.Add(FavWindowContent)
-                        FavWindowContent.Dock = DockStyle.Fill
-
-                        FavWindow.Size = New Size(300, 130)
-                        FavWindow.StartPosition = FormStartPosition.CenterParent
-                        FavWindow.ShowDialog()
-
-                    Case False
-
-                        Dim Ventanuco As New AddFavorite
-                        Ventanuco.Dock = DockStyle.Fill
-                        OutPutTextBox.Hide()
-                        Me.OutPutPanel.Controls.Add(Ventanuco)
-                        Ventanuco.Show()
-
-                        If ListBox1.Visible = True Then
-                            ListBox1.Visible = False
-                        End If
-
-                End Select
+                Dim FavWindow As New Form
+                Dim FavWindowContent As New AddFavorite
+                FavWindowContent.Dock = DockStyle.Fill
+                With FavWindow
+                    .FormBorderStyle = Windows.Forms.FormBorderStyle.FixedSingle
+                    .MaximizeBox = False
+                    .MinimizeBox = False
+                    .Controls.Add(FavWindowContent)
+                    .ShowInTaskbar = False
+                    .ShowIcon = False
+                    .Size = New Size(320, 105)
+                    .StartPosition = FormStartPosition.CenterParent
+                    .Text = LocRM.GetString("HowToNameIt")
+                    .ShowDialog()
+                End With
 
             End If
         End If
@@ -325,8 +320,6 @@ Public Class Form1
 
     End Function
 
-    Private SelectedInputHistorial As Integer = 0
-
     Private Sub InputTextBox_KeyDown(sender As Object, e As KeyEventArgs) Handles InputTextBox.KeyDown
 
 
@@ -368,14 +361,9 @@ Public Class Form1
 
     End Sub
 
-    Private SelectingText As Boolean = False
-
     Private Sub OutPutTextBox_MouseDown(sender As Object, e As MouseEventArgs) Handles OutPutTextBox.MouseDown
         SelectingText = True
     End Sub
-
-    Private SelectionStart As Integer
-    Private SelectionLenght As Integer
 
     Private Sub OutPutTextBox_MouseUp(sender As Object, e As MouseEventArgs) Handles OutPutTextBox.MouseUp
         SelectionStart = OutPutTextBox.SelectionStart
@@ -450,7 +438,6 @@ Public Class Form1
 
     End Sub
 
-
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         MessageBox.Show(LocRM.GetString("About"), LocRM.GetString("AboutTitle"), MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, 0, "http://github.com/vistaero")
 
@@ -469,6 +456,23 @@ Public Class Form1
             AddFavoriteToolStripMenuItem.Enabled = False
             ToolStripMenuItem1.Enabled = False
         End If
+    End Sub
+
+    Private Sub OutPutTextBox_TextChanged(sender As Object, e As EventArgs) Handles OutPutTextBox.TextChanged
+        If Not SelectingText = True Or OutPutTextBox.SelectionLength > 0 Then
+            OutPutTextBox.SelectionStart = OutPutTextBox.TextLength
+            OutPutTextBox.SelectionLength = 0
+            If SelectionStart > 0 Or SelectionLenght > 0 Then
+                OutPutTextBox.SelectionStart = SelectionStart
+                OutPutTextBox.SelectionLength = SelectionLenght
+            End If
+
+        End If
+    End Sub
+
+    Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        If SelectionStart = 0 And SelectionLenght = 0 Then OutPutTextBox.ScrollToCaret()
+
     End Sub
 
     Private Sub ListBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles ListBox1.KeyDown
@@ -503,16 +507,16 @@ Public Class Form1
     End Sub
 
     Private Sub OutPutTextBox_KeyDown(sender As Object, e As KeyEventArgs) Handles OutPutTextBox.KeyDown
-        InputTextBox.Focus()
-        Try
-            keybd_event(e.KeyCode, "0", "0", "0")
-        Catch ex As Exception
+        If Not e.KeyCode = Keys.ControlKey Then
+            InputTextBox.Focus()
+            Try
+                keybd_event(e.KeyCode, "0", "0", "0")
+            Catch ex As Exception
 
-        End Try
+            End Try
+        End If
 
     End Sub
-
-    Private Declare Sub keybd_event Lib "user32.dll" (ByVal bVk As Byte, ByVal bScan As Byte, ByVal dwFlags As Long, ByVal dwExtraInfo As Long)
 
     Private Sub CopyAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyAllToolStripMenuItem.Click
         Clipboard.SetText(OutPutTextBox.Text)
@@ -536,49 +540,8 @@ Public Class Form1
 
     End Sub
 
-    Private Sub FontSelect(ByVal Type)
-        Select Case Type
-            Case Is = "Book"
-                With OutPutTextBox
-                    .Font = New Font("Tahoma", 10, FontStyle.Regular)
-                    .ForeColor = Color.Black
-                    .BackColor = Color.White
-                End With
-                With InputTextBox
-                    .Font = New Font("Tahoma", 10, FontStyle.Regular)
-                    .ForeColor = Color.Black
-                    .BackColor = Color.White
-                End With
-
-            Case Is = "Console"
-
-                With OutPutTextBox
-                    .Font = New Font("Lucida Console", 8.25, FontStyle.Bold)
-                    .ForeColor = Color.LightGray
-                    .BackColor = Color.Black
-                End With
-                With InputTextBox
-                    .Font = New Font("Lucida Console", 8.25, FontStyle.Bold)
-                    .ForeColor = Color.LightGray
-                    .BackColor = Color.Black
-                End With
-        End Select
-    End Sub
-
-    Private Sub ConsoleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsoleToolStripMenuItem.Click
-        FontSelect("Console")
-    End Sub
-
-    Private Sub BookToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BookToolStripMenuItem.Click
-        FontSelect("Book")
-    End Sub
-
     Private Sub ReloadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReloadToolStripMenuItem.Click
         serverprocess.StandardInput.WriteLine("reload")
-    End Sub
-
-    Private Sub InputTextBox_TextChanged(sender As Object, e As EventArgs) Handles InputTextBox.TextChanged
-
     End Sub
 
     Private Sub ToggleDownfallToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ToggleDownfallToolStripMenuItem.Click
@@ -601,20 +564,44 @@ Public Class Form1
         serverprocess.StandardInput.WriteLine("weather clear")
     End Sub
 
-    Private Sub OutPutTextBox_TextChanged(sender As Object, e As EventArgs) Handles OutPutTextBox.TextChanged
-        If Not SelectingText = True Or OutPutTextBox.SelectionLength > 0 Then
-            OutPutTextBox.SelectionStart = OutPutTextBox.TextLength
-            OutPutTextBox.SelectionLength = 0
-            If SelectionStart > 0 Or SelectionLenght > 0 Then
-                OutPutTextBox.SelectionStart = SelectionStart
-                OutPutTextBox.SelectionLength = SelectionLenght
-            End If
+    '/////////////////////////
+    'FONT STYLE MENU
+    '/////////////////////////
 
-        End If
+    Private Sub ConsoleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsoleToolStripMenuItem.Click
+        ' Dim color As Color = System.Drawing.ColorTranslator.FromHtml("#EEEEEE")
+
+        Dim console As New Font("Lucida Console", 8.25, FontStyle.Bold)
+        With OutPutTextBox
+            .Font = console
+            .ForeColor = Color.LightGray
+            .BackColor = Color.Black
+        End With
+        With InputTextBox
+            .Font = console
+            .ForeColor = Color.LightGray
+            .BackColor = Color.Black
+        End With
     End Sub
 
-    Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        If SelectionStart = 0 And SelectionLenght = 0 Then OutPutTextBox.ScrollToCaret()
+    Private Sub PersonalizedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ForeColorToolStripMenuItem.Click
+        ColorDialog1.ShowDialog()
+        InputTextBox.ForeColor = ColorDialog1.Color
+        OutPutTextBox.ForeColor = ColorDialog1.Color
 
     End Sub
+
+    Private Sub ChangeFontToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangeFontToolStripMenuItem.Click
+        FontDialog1.ShowDialog()
+        OutPutTextBox.Font = FontDialog1.Font
+        InputTextBox.Font = FontDialog1.Font
+    End Sub
+
+    Private Sub ChangeBackcolorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangeBackcolorToolStripMenuItem.Click
+        ColorDialog1.ShowDialog()
+        InputTextBox.BackColor = ColorDialog1.Color
+        OutPutTextBox.BackColor = ColorDialog1.Color
+
+    End Sub
+
 End Class

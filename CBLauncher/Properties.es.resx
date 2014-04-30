@@ -125,7 +125,7 @@
     <value>Jugadores máximos</value>
   </data>
   <data name="ResourcePackTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>592, 20</value>
+    <value>575, 20</value>
   </data>
   <data name="WhiteListCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 17</value>
@@ -134,7 +134,7 @@
     <value>Lista blanca</value>
   </data>
   <data name="DescriptionTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>592, 20</value>
+    <value>575, 20</value>
   </data>
   <data name="DescriptionLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 13</value>
@@ -143,10 +143,10 @@
     <value>Descripción</value>
   </data>
   <data name="GroupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>607, 161</value>
+    <value>590, 161</value>
   </data>
   <data name="GroupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>607, 337</value>
+    <value>590, 337</value>
   </data>
   <data name="GroupBox6.Text" xml:space="preserve">
     <value>Avanzado</value>
@@ -212,7 +212,7 @@
     <value>4 - Ops pueden usar /stop.</value>
   </data>
   <data name="OpPermLevelComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>592, 21</value>
+    <value>575, 21</value>
   </data>
   <data name="OpPermLevelLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>186, 13</value>
@@ -221,7 +221,7 @@
     <value>Nivel de permisos para los operadores</value>
   </data>
   <data name="GroupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>607, 374</value>
+    <value>590, 374</value>
   </data>
   <data name="GroupBox7.Text" xml:space="preserve">
     <value>Opciones de mundo</value>
@@ -263,7 +263,7 @@
     <value>Altura máxima de construcción</value>
   </data>
   <data name="LevelSeedTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>592, 20</value>
+    <value>575, 20</value>
   </data>
   <data name="SeedLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 13</value>
@@ -278,7 +278,7 @@
     <value>Tipo de mundo</value>
   </data>
   <data name="LevelNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>592, 20</value>
+    <value>575, 20</value>
   </data>
   <data name="LevelNameLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 13</value>
@@ -293,7 +293,7 @@
     <value>Permitir Inframundo</value>
   </data>
   <data name="GeneratorSettingsTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>592, 20</value>
+    <value>575, 20</value>
   </data>
   <data name="GeneratorSettingsLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 13</value>
@@ -302,7 +302,7 @@
     <value>Configuración del generador</value>
   </data>
   <data name="GroupBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>607, 256</value>
+    <value>590, 256</value>
   </data>
   <data name="GroupBox8.Text" xml:space="preserve">
     <value>Reglas de juego</value>
@@ -385,6 +385,12 @@
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="SaveToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 22</value>
+  </data>
+  <data name="SaveToolStripButton.Text" xml:space="preserve">
+    <value>Guardar y cerrar</value>
+  </data>
   <data name="UndoToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -400,6 +406,12 @@
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="UndoToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 22</value>
+  </data>
+  <data name="UndoToolStripButton.Text" xml:space="preserve">
+    <value>Deshacer</value>
+  </data>
   <data name="Regen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -414,6 +426,12 @@
         kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="Regen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 22</value>
+  </data>
+  <data name="Regen.Text" xml:space="preserve">
+    <value>Regenerar archivo de propiedades</value>
   </data>
   <data name="Content.Size" type="System.Drawing.Size, System.Drawing">
     <value>658, 646</value>

@@ -37,19 +37,19 @@ Partial Class Form1
         Me.StopButton = New System.Windows.Forms.ToolStripButton()
         Me.ForceStopButton = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.ExtrasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LogsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EditPropertiesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ManagePlayersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RegenerateWorldToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CopyAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FontTypeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsoleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BookToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ChangeFontToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ForeColorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ChangeBackcolorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ExtrasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EditPropertiesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OperatorsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.WhiteListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BannedPlayersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RegenerateWorldToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LogsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddFavoriteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
@@ -69,6 +69,9 @@ Partial Class Form1
         Me.MemoryText = New System.Windows.Forms.ToolStripTextBox()
         Me.OutPutPanel = New System.Windows.Forms.Panel()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
+        Me.FontDialog1 = New System.Windows.Forms.FontDialog()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.OutPutPanel.SuspendLayout()
@@ -76,10 +79,14 @@ Partial Class Form1
         '
         'OutPutTextBox
         '
-        Me.OutPutTextBox.BackColor = System.Drawing.Color.Black
+        Me.OutPutTextBox.BackColor = Global.CBLauncher.My.MySettings.Default.PersonalizedBackColor
         Me.OutPutTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.OutPutTextBox.DataBindings.Add(New System.Windows.Forms.Binding("ForeColor", Global.CBLauncher.My.MySettings.Default, "PersonalizedColor", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.OutPutTextBox.DataBindings.Add(New System.Windows.Forms.Binding("BackColor", Global.CBLauncher.My.MySettings.Default, "PersonalizedBackColor", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.OutPutTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.CBLauncher.My.MySettings.Default, "PersonalizedFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         resources.ApplyResources(Me.OutPutTextBox, "OutPutTextBox")
-        Me.OutPutTextBox.ForeColor = System.Drawing.Color.LightGray
+        Me.OutPutTextBox.Font = Global.CBLauncher.My.MySettings.Default.PersonalizedFont
+        Me.OutPutTextBox.ForeColor = Global.CBLauncher.My.MySettings.Default.PersonalizedColor
         Me.OutPutTextBox.Name = "OutPutTextBox"
         Me.OutPutTextBox.ReadOnly = True
         Me.OutPutTextBox.TabStop = False
@@ -90,10 +97,14 @@ Partial Class Form1
         'InputTextBox
         '
         Me.InputTextBox.AcceptsReturn = True
-        Me.InputTextBox.BackColor = System.Drawing.Color.Black
+        Me.InputTextBox.BackColor = Global.CBLauncher.My.MySettings.Default.PersonalizedBackColor
         Me.InputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.InputTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.CBLauncher.My.MySettings.Default, "PersonalizedFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.InputTextBox.DataBindings.Add(New System.Windows.Forms.Binding("ForeColor", Global.CBLauncher.My.MySettings.Default, "PersonalizedColor", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.InputTextBox.DataBindings.Add(New System.Windows.Forms.Binding("BackColor", Global.CBLauncher.My.MySettings.Default, "PersonalizedBackColor", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         resources.ApplyResources(Me.InputTextBox, "InputTextBox")
-        Me.InputTextBox.ForeColor = System.Drawing.SystemColors.AppWorkspace
+        Me.InputTextBox.Font = Global.CBLauncher.My.MySettings.Default.PersonalizedFont
+        Me.InputTextBox.ForeColor = Global.CBLauncher.My.MySettings.Default.PersonalizedColor
         Me.InputTextBox.Name = "InputTextBox"
         '
         'StatusStrip1
@@ -165,9 +176,35 @@ Partial Class Form1
         '
         Me.ToolStripButton2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripButton2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearToolStripMenuItem, Me.CopyAllToolStripMenuItem, Me.FontTypeToolStripMenuItem, Me.ToolStripSeparator3, Me.ExtrasToolStripMenuItem, Me.AddFavoriteToolStripMenuItem, Me.ToolStripMenuItem1, Me.ToolStripSeparator5, Me.DownloadCraftBukkitToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.AboutToolStripMenuItem, Me.HuevoToolStripMenuItem})
+        Me.ToolStripButton2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExtrasToolStripMenuItem, Me.ToolStripSeparator4, Me.ClearToolStripMenuItem, Me.CopyAllToolStripMenuItem, Me.FontTypeToolStripMenuItem, Me.ToolStripSeparator3, Me.AddFavoriteToolStripMenuItem, Me.ToolStripMenuItem1, Me.ToolStripSeparator5, Me.DownloadCraftBukkitToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.AboutToolStripMenuItem, Me.HuevoToolStripMenuItem})
         resources.ApplyResources(Me.ToolStripButton2, "ToolStripButton2")
         Me.ToolStripButton2.Name = "ToolStripButton2"
+        '
+        'ExtrasToolStripMenuItem
+        '
+        Me.ExtrasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditPropertiesToolStripMenuItem, Me.LogsToolStripMenuItem, Me.ManagePlayersToolStripMenuItem, Me.RegenerateWorldToolStripMenuItem})
+        Me.ExtrasToolStripMenuItem.Name = "ExtrasToolStripMenuItem"
+        resources.ApplyResources(Me.ExtrasToolStripMenuItem, "ExtrasToolStripMenuItem")
+        '
+        'LogsToolStripMenuItem
+        '
+        Me.LogsToolStripMenuItem.Name = "LogsToolStripMenuItem"
+        resources.ApplyResources(Me.LogsToolStripMenuItem, "LogsToolStripMenuItem")
+        '
+        'EditPropertiesToolStripMenuItem
+        '
+        Me.EditPropertiesToolStripMenuItem.Name = "EditPropertiesToolStripMenuItem"
+        resources.ApplyResources(Me.EditPropertiesToolStripMenuItem, "EditPropertiesToolStripMenuItem")
+        '
+        'ManagePlayersToolStripMenuItem
+        '
+        Me.ManagePlayersToolStripMenuItem.Name = "ManagePlayersToolStripMenuItem"
+        resources.ApplyResources(Me.ManagePlayersToolStripMenuItem, "ManagePlayersToolStripMenuItem")
+        '
+        'RegenerateWorldToolStripMenuItem
+        '
+        Me.RegenerateWorldToolStripMenuItem.Name = "RegenerateWorldToolStripMenuItem"
+        resources.ApplyResources(Me.RegenerateWorldToolStripMenuItem, "RegenerateWorldToolStripMenuItem")
         '
         'ClearToolStripMenuItem
         '
@@ -181,7 +218,7 @@ Partial Class Form1
         '
         'FontTypeToolStripMenuItem
         '
-        Me.FontTypeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConsoleToolStripMenuItem, Me.BookToolStripMenuItem})
+        Me.FontTypeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConsoleToolStripMenuItem, Me.ChangeFontToolStripMenuItem, Me.ForeColorToolStripMenuItem, Me.ChangeBackcolorToolStripMenuItem})
         Me.FontTypeToolStripMenuItem.Name = "FontTypeToolStripMenuItem"
         resources.ApplyResources(Me.FontTypeToolStripMenuItem, "FontTypeToolStripMenuItem")
         '
@@ -190,51 +227,25 @@ Partial Class Form1
         Me.ConsoleToolStripMenuItem.Name = "ConsoleToolStripMenuItem"
         resources.ApplyResources(Me.ConsoleToolStripMenuItem, "ConsoleToolStripMenuItem")
         '
-        'BookToolStripMenuItem
+        'ChangeFontToolStripMenuItem
         '
-        Me.BookToolStripMenuItem.Name = "BookToolStripMenuItem"
-        resources.ApplyResources(Me.BookToolStripMenuItem, "BookToolStripMenuItem")
+        Me.ChangeFontToolStripMenuItem.Name = "ChangeFontToolStripMenuItem"
+        resources.ApplyResources(Me.ChangeFontToolStripMenuItem, "ChangeFontToolStripMenuItem")
+        '
+        'ForeColorToolStripMenuItem
+        '
+        Me.ForeColorToolStripMenuItem.Name = "ForeColorToolStripMenuItem"
+        resources.ApplyResources(Me.ForeColorToolStripMenuItem, "ForeColorToolStripMenuItem")
+        '
+        'ChangeBackcolorToolStripMenuItem
+        '
+        Me.ChangeBackcolorToolStripMenuItem.Name = "ChangeBackcolorToolStripMenuItem"
+        resources.ApplyResources(Me.ChangeBackcolorToolStripMenuItem, "ChangeBackcolorToolStripMenuItem")
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         resources.ApplyResources(Me.ToolStripSeparator3, "ToolStripSeparator3")
-        '
-        'ExtrasToolStripMenuItem
-        '
-        Me.ExtrasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditPropertiesToolStripMenuItem, Me.OperatorsToolStripMenuItem, Me.WhiteListToolStripMenuItem, Me.BannedPlayersToolStripMenuItem, Me.RegenerateWorldToolStripMenuItem, Me.LogsToolStripMenuItem})
-        Me.ExtrasToolStripMenuItem.Name = "ExtrasToolStripMenuItem"
-        resources.ApplyResources(Me.ExtrasToolStripMenuItem, "ExtrasToolStripMenuItem")
-        '
-        'EditPropertiesToolStripMenuItem
-        '
-        Me.EditPropertiesToolStripMenuItem.Name = "EditPropertiesToolStripMenuItem"
-        resources.ApplyResources(Me.EditPropertiesToolStripMenuItem, "EditPropertiesToolStripMenuItem")
-        '
-        'OperatorsToolStripMenuItem
-        '
-        Me.OperatorsToolStripMenuItem.Name = "OperatorsToolStripMenuItem"
-        resources.ApplyResources(Me.OperatorsToolStripMenuItem, "OperatorsToolStripMenuItem")
-        '
-        'WhiteListToolStripMenuItem
-        '
-        Me.WhiteListToolStripMenuItem.Name = "WhiteListToolStripMenuItem"
-        resources.ApplyResources(Me.WhiteListToolStripMenuItem, "WhiteListToolStripMenuItem")
-        '
-        'BannedPlayersToolStripMenuItem
-        '
-        Me.BannedPlayersToolStripMenuItem.Name = "BannedPlayersToolStripMenuItem"
-        resources.ApplyResources(Me.BannedPlayersToolStripMenuItem, "BannedPlayersToolStripMenuItem")
-        '
-        'RegenerateWorldToolStripMenuItem
-        '
-        Me.RegenerateWorldToolStripMenuItem.Name = "RegenerateWorldToolStripMenuItem"
-        resources.ApplyResources(Me.RegenerateWorldToolStripMenuItem, "RegenerateWorldToolStripMenuItem")
-        '
-        'LogsToolStripMenuItem
-        '
-        Me.LogsToolStripMenuItem.Name = "LogsToolStripMenuItem"
-        resources.ApplyResources(Me.LogsToolStripMenuItem, "LogsToolStripMenuItem")
         '
         'AddFavoriteToolStripMenuItem
         '
@@ -336,6 +347,11 @@ Partial Class Form1
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.Name = "ListBox1"
         '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        resources.ApplyResources(Me.ToolStripSeparator4, "ToolStripSeparator4")
+        '
         'Form1
         '
         resources.ApplyResources(Me, "$this")
@@ -386,14 +402,10 @@ Partial Class Form1
     Friend WithEvents HuevoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ExtrasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EditPropertiesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents WhiteListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents OperatorsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents BannedPlayersToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RegenerateWorldToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LogsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FontTypeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ConsoleToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents BookToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StopButton As System.Windows.Forms.ToolStripButton
     Friend WithEvents MoreCommands As System.Windows.Forms.ToolStripDropDownButton
     Friend WithEvents ReloadToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -402,5 +414,12 @@ Partial Class Form1
     Friend WithEvents SetDayToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SetNightToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ClearWeatherToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ManagePlayersToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ForeColorToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ChangeFontToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ColorDialog1 As System.Windows.Forms.ColorDialog
+    Friend WithEvents FontDialog1 As System.Windows.Forms.FontDialog
+    Friend WithEvents ChangeBackcolorToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
 
 End Class

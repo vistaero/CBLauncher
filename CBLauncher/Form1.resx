@@ -122,9 +122,6 @@
     <value>Fill</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="OutPutTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Lucida Console, 8.25pt, style=Bold</value>
-  </data>
   <data name="OutPutTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -136,7 +133,7 @@
     <value>Vertical</value>
   </data>
   <data name="OutPutTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>534, 266</value>
+    <value>584, 266</value>
   </data>
   <data name="OutPutTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -159,14 +156,11 @@
   <data name="InputTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
-  <data name="InputTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Lucida Console, 8.25pt, style=Bold</value>
-  </data>
   <data name="InputTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 291</value>
   </data>
   <data name="InputTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>534, 18</value>
+    <value>584, 18</value>
   </data>
   <data name="InputTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -196,7 +190,7 @@
     <value>0, 309</value>
   </data>
   <data name="StatusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>534, 20</value>
+    <value>584, 20</value>
   </data>
   <data name="StatusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -357,6 +351,39 @@
   <data name="ForceStopButton.Text" xml:space="preserve">
     <value>Force Stop</value>
   </data>
+  <data name="EditPropertiesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 22</value>
+  </data>
+  <data name="EditPropertiesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Edit Properties</value>
+  </data>
+  <data name="LogsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 22</value>
+  </data>
+  <data name="LogsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Logs</value>
+  </data>
+  <data name="ManagePlayersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 22</value>
+  </data>
+  <data name="ManagePlayersToolStripMenuItem.Text" xml:space="preserve">
+    <value>Manage Players</value>
+  </data>
+  <data name="RegenerateWorldToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 22</value>
+  </data>
+  <data name="RegenerateWorldToolStripMenuItem.Text" xml:space="preserve">
+    <value>Regenerate World</value>
+  </data>
+  <data name="ExtrasToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
+  </data>
+  <data name="ExtrasToolStripMenuItem.Text" xml:space="preserve">
+    <value>Extras (Work In Progress)</value>
+  </data>
+  <data name="ToolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 6</value>
+  </data>
   <data name="ClearToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 22</value>
   </data>
@@ -370,16 +397,28 @@
     <value>Copy All</value>
   </data>
   <data name="ConsoleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 22</value>
+    <value>214, 22</value>
   </data>
   <data name="ConsoleToolStripMenuItem.Text" xml:space="preserve">
-    <value>Console</value>
+    <value>Default Style</value>
   </data>
-  <data name="BookToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 22</value>
+  <data name="ChangeFontToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 22</value>
   </data>
-  <data name="BookToolStripMenuItem.Text" xml:space="preserve">
-    <value>Book</value>
+  <data name="ChangeFontToolStripMenuItem.Text" xml:space="preserve">
+    <value>Change Font</value>
+  </data>
+  <data name="ForeColorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 22</value>
+  </data>
+  <data name="ForeColorToolStripMenuItem.Text" xml:space="preserve">
+    <value>Change Text Color</value>
+  </data>
+  <data name="ChangeBackcolorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 22</value>
+  </data>
+  <data name="ChangeBackcolorToolStripMenuItem.Text" xml:space="preserve">
+    <value>Change Background Color</value>
   </data>
   <data name="FontTypeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 22</value>
@@ -389,48 +428,6 @@
   </data>
   <data name="ToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>201, 6</value>
-  </data>
-  <data name="EditPropertiesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
-  </data>
-  <data name="EditPropertiesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Edit Properties</value>
-  </data>
-  <data name="OperatorsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
-  </data>
-  <data name="OperatorsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Operators</value>
-  </data>
-  <data name="WhiteListToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
-  </data>
-  <data name="WhiteListToolStripMenuItem.Text" xml:space="preserve">
-    <value>White List</value>
-  </data>
-  <data name="BannedPlayersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
-  </data>
-  <data name="BannedPlayersToolStripMenuItem.Text" xml:space="preserve">
-    <value>Banned Players</value>
-  </data>
-  <data name="RegenerateWorldToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
-  </data>
-  <data name="RegenerateWorldToolStripMenuItem.Text" xml:space="preserve">
-    <value>Regenerate World</value>
-  </data>
-  <data name="LogsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
-  </data>
-  <data name="LogsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Logs</value>
-  </data>
-  <data name="ExtrasToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
-  </data>
-  <data name="ExtrasToolStripMenuItem.Text" xml:space="preserve">
-    <value>Extras (Work In Progress)</value>
   </data>
   <data name="AddFavoriteToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -445,7 +442,7 @@
     <value>204, 22</value>
   </data>
   <data name="ToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Generate Shortcut</value>
+    <value>Save Shortcut</value>
   </data>
   <data name="ToolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
     <value>201, 6</value>
@@ -586,7 +583,7 @@
     <value>0, 0</value>
   </data>
   <data name="ToolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>534, 25</value>
+    <value>584, 25</value>
   </data>
   <data name="ToolStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -613,7 +610,7 @@
     <value>0, 0</value>
   </data>
   <data name="ListBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>534, 266</value>
+    <value>584, 266</value>
   </data>
   <data name="ListBox1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -640,7 +637,7 @@
     <value>0, 25</value>
   </data>
   <data name="OutPutPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>534, 266</value>
+    <value>584, 266</value>
   </data>
   <data name="OutPutPanel.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -657,6 +654,12 @@
   <data name="&gt;&gt;OutPutPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="ColorDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>493, 17</value>
+  </metadata>
+  <metadata name="FontDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>616, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -664,7 +667,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>534, 329</value>
+    <value>584, 329</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2570,6 +2573,36 @@
   <data name="&gt;&gt;ToolStripButton2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;ExtrasToolStripMenuItem.Name" xml:space="preserve">
+    <value>ExtrasToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ExtrasToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LogsToolStripMenuItem.Name" xml:space="preserve">
+    <value>LogsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;LogsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EditPropertiesToolStripMenuItem.Name" xml:space="preserve">
+    <value>EditPropertiesToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;EditPropertiesToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ManagePlayersToolStripMenuItem.Name" xml:space="preserve">
+    <value>ManagePlayersToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ManagePlayersToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RegenerateWorldToolStripMenuItem.Name" xml:space="preserve">
+    <value>RegenerateWorldToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;RegenerateWorldToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;ClearToolStripMenuItem.Name" xml:space="preserve">
     <value>ClearToolStripMenuItem</value>
   </data>
@@ -2594,10 +2627,22 @@
   <data name="&gt;&gt;ConsoleToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;BookToolStripMenuItem.Name" xml:space="preserve">
-    <value>BookToolStripMenuItem</value>
+  <data name="&gt;&gt;ChangeFontToolStripMenuItem.Name" xml:space="preserve">
+    <value>ChangeFontToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;BookToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;ChangeFontToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ForeColorToolStripMenuItem.Name" xml:space="preserve">
+    <value>ForeColorToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ForeColorToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ChangeBackcolorToolStripMenuItem.Name" xml:space="preserve">
+    <value>ChangeBackcolorToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ChangeBackcolorToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStripSeparator3.Name" xml:space="preserve">
@@ -2605,48 +2650,6 @@
   </data>
   <data name="&gt;&gt;ToolStripSeparator3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ExtrasToolStripMenuItem.Name" xml:space="preserve">
-    <value>ExtrasToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;ExtrasToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;EditPropertiesToolStripMenuItem.Name" xml:space="preserve">
-    <value>EditPropertiesToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;EditPropertiesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;OperatorsToolStripMenuItem.Name" xml:space="preserve">
-    <value>OperatorsToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;OperatorsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;WhiteListToolStripMenuItem.Name" xml:space="preserve">
-    <value>WhiteListToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;WhiteListToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BannedPlayersToolStripMenuItem.Name" xml:space="preserve">
-    <value>BannedPlayersToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;BannedPlayersToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RegenerateWorldToolStripMenuItem.Name" xml:space="preserve">
-    <value>RegenerateWorldToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;RegenerateWorldToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LogsToolStripMenuItem.Name" xml:space="preserve">
-    <value>LogsToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;LogsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;AddFavoriteToolStripMenuItem.Name" xml:space="preserve">
     <value>AddFavoriteToolStripMenuItem</value>
@@ -2749,6 +2752,24 @@
   </data>
   <data name="&gt;&gt;MemoryText.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColorDialog1.Name" xml:space="preserve">
+    <value>ColorDialog1</value>
+  </data>
+  <data name="&gt;&gt;ColorDialog1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColorDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FontDialog1.Name" xml:space="preserve">
+    <value>FontDialog1</value>
+  </data>
+  <data name="&gt;&gt;FontDialog1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FontDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator4.Name" xml:space="preserve">
+    <value>ToolStripSeparator4</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>

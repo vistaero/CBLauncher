@@ -232,6 +232,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="cblauncher.ico" />
+    <None Include="Resources\icon.bmp" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="IWshRuntimeLibrary">

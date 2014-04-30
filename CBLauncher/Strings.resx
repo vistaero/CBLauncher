@@ -182,4 +182,7 @@ Process Name and PID: </value>
   <data name="NotFound" xml:space="preserve">
     <value>File not found.</value>
   </data>
+  <data name="HowToNameIt" xml:space="preserve">
+    <value>How do you want to name it?</value>
+  </data>
 </root>

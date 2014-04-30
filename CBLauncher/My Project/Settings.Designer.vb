@@ -161,6 +161,42 @@ Namespace My
                 Me("ForceStop") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Lucida Console, 8.25pt, style=Bold")>  _
+        Public Property PersonalizedFont() As Global.System.Drawing.Font
+            Get
+                Return CType(Me("PersonalizedFont"),Global.System.Drawing.Font)
+            End Get
+            Set
+                Me("PersonalizedFont") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("LightGray")>  _
+        Public Property PersonalizedColor() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("PersonalizedColor"),Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("PersonalizedColor") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Black")>  _
+        Public Property PersonalizedBackColor() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("PersonalizedBackColor"),Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("PersonalizedBackColor") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
