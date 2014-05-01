@@ -1,9 +1,9 @@
 ﻿Imports System.Windows.Forms
 Imports System.IO
 
-Public Class VersionEditor
+Public Class DownloadBuild
 
-    Dim wc As System.Net.WebClient
+    Dim wc As New System.Net.WebClient
     Dim FileName
     Dim FileToDownload
     Private LatestVersionFolder As String
@@ -52,8 +52,8 @@ Public Class VersionEditor
         Next
 
         UrlDownload = CraftBukkitUrl & LatestVersionFolder & "/craftbukkit-" & LatestVersionFile & ".jar"
-        FileURLCalculator.Dispose()
 
+        Intermediario()
     End Sub
 
     Private Sub OnDownloadProgressChanged(ByVal sender As Object, ByVal e As System.Net.DownloadProgressChangedEventArgs)
@@ -84,43 +84,65 @@ Public Class VersionEditor
             ProgressBar1.Visible = False
             ListVersions()
 
-
         End If
+
+
+
+
 
     End Sub
 
     Private Sub DownloadError()
         Try
-            System.IO.File.Delete(Form1.documentspath & "\versions\" & LatestVersionFile & ".jar")
+            System.IO.File.Delete(Form1.documentspath & "versions\" & LatestVersionFile & ".jar")
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
 
-    Private Sub FinalUrlChecker_Tick(sender As Object, e As EventArgs) Handles FinalUrlChecker.Tick
-        If Not UrlDownload Is Nothing Then
-            FinalUrlChecker.Enabled = False
-            Dim SavePath As String = Form1.documentspath & "\versions\" & LatestVersionFile & ".jar"
-            Dim Updated As Boolean = System.IO.File.Exists(SavePath)
-            Select Case Updated
-                Case True
-                    MessageBox.Show(Form1.LocRM.GetString("CBUpdated1"), Form1.LocRM.GetString("CBUpdated2"), MessageBoxButtons.OK, MessageBoxIcon.Information)
+    Private Sub Intermediario()
+        If InvokeRequired Then
+            Invoke(Sub() DownloadBuild())
+        Else
+            DownloadBuild()
 
-                Case False
-                    Try
-                        wc.DownloadFileAsync(New Uri(UrlDownload), SavePath)
-                    Catch ex As Exception
-                        MessageBox.Show("Unknown Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End Try
-
-                    ProgressBar1.Visible = True
-            End Select
         End If
     End Sub
+
+    Private Sub DownloadBuild()
+
+        Dim SavePath As String = Form1.documentspath & "\versions\" & LatestVersionFile & ".jar"
+        Dim Updated As Boolean = System.IO.File.Exists(SavePath)
+        Select Case Updated
+            Case True
+                MessageBox.Show(Form1.LocRM.GetString("CBUpdated1"), Form1.LocRM.GetString("CBUpdated2"), MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            Case False
+                Try
+                    wc.CancelAsync()
+                    wc.Dispose()
+                    wc.DownloadFileAsync(New Uri(UrlDownload), SavePath)
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    wc.Dispose()
+                End Try
+
+                ProgressBar1.Visible = True
+        End Select
+
+    End Sub
+
 
     Private Sub VersionEditor_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         If Not wc Is Nothing Then
             wc.CancelAsync()
+            Try
+                System.IO.Directory.Delete(Form1.documentspath & "versions\temp", True)
+
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+
             Me.Dispose()
 
         End If
@@ -162,9 +184,9 @@ Public Class VersionEditor
     End Sub
 
     Private Sub CheckForUpdatesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CheckForUpdatesToolStripMenuItem.Click
-
-        FileURLCalculator.RunWorkerAsync()
-        FinalUrlChecker.Enabled = True
+        If FileURLCalculator.IsBusy = False Then
+            FileURLCalculator.RunWorkerAsync()
+        End If
 
     End Sub
 
@@ -181,28 +203,57 @@ Public Class VersionEditor
         If ListBox1.SelectedIndex = -1 Then
             RemoveToolStripMenuItem.Enabled = False
             CopyToolStripMenuItem.Enabled = False
+            UpdateToolStripMenuItem.Enabled = False
         Else
             CopyToolStripMenuItem.Enabled = True
             RemoveToolStripMenuItem.Enabled = True
+            UpdateToolStripMenuItem.Enabled = True
         End If
 
     End Sub
 
     Private Sub AddToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddToolStripMenuItem.Click
         Dim CopyJar As New OpenFileDialog
+
         CopyJar.Title = Form1.LocRM.GetString("SelectJar")
         CopyJar.Filter = "JAR|*.jar"
         CopyJar.ShowDialog()
+
         If Not CopyJar.FileName.Equals("") Then
             Try
                 System.IO.File.Copy(CopyJar.FileName, Form1.documentspath & "\versions\" & CopyJar.SafeFileName)
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
-
             ListVersions()
         End If
 
+
+    End Sub
+
+    Private Sub UpdateToThisToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateToolStripMenuItem.Click
+        Dim Remove As String
+        Dim Removed As Boolean
+        Try
+            Remove = Form1.JarFolder & Path.GetFileName(Form1.JarPath)
+            System.IO.File.Delete(Remove)
+            Dim Dest As String = Form1.JarFolder & ListBox1.SelectedItem & ".jar"
+            System.IO.File.Copy(Form1.documentspath & "\versions\" & ListBox1.SelectedItem & ".jar", Form1.JarFolder & ListBox1.SelectedItem & ".jar")
+            Form1.SelectJar(Dest, ListBox1.SelectedItem & ".jar")
+            Removed = True
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+        If Removed = True Then
+            For Each Favorite In Form1.Favorites
+                If Favorite.FavPath = Remove Then
+                    System.IO.File.WriteAllText(Form1.documentspath & Favorite.FavName & ".cblfav", Form1.JarPath)
+                    MessageBox.Show(Form1.LocRM.GetString("UpdatedCorrectly"), Form1.LocRM.GetString("Done"), MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Me.Dispose()
+                End If
+            Next
+        End If
 
     End Sub
 End Class

@@ -97,11 +97,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Favorite.vb" />
+    <Compile Include="Logs.Designer.vb">
+      <DependentUpon>Logs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Logs.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Properties.Designer.vb">
       <DependentUpon>Properties.vb</DependentUpon>
     </Compile>
     <Compile Include="Properties.vb">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PropertiesWindow.Designer.vb">
+      <DependentUpon>PropertiesWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PropertiesWindow.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Settings.Designer.vb">
       <DependentUpon>Settings.vb</DependentUpon>
@@ -147,10 +159,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.es.resx</DependentUpon>
     </Compile>
-    <Compile Include="VersionEditor.Designer.vb">
-      <DependentUpon>VersionEditor.vb</DependentUpon>
+    <Compile Include="DownloadBuild.Designer.vb">
+      <DependentUpon>DownloadBuild.vb</DependentUpon>
     </Compile>
-    <Compile Include="VersionEditor.vb">
+    <Compile Include="DownloadBuild.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Worlds.Designer.vb">
+      <DependentUpon>Worlds.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Worlds.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -161,11 +179,17 @@
     <EmbeddedResource Include="Form1.es.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Logs.resx">
+      <DependentUpon>Logs.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties.es.resx">
       <DependentUpon>Properties.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties.resx">
       <DependentUpon>Properties.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropertiesWindow.resx">
+      <DependentUpon>PropertiesWindow.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.es.resx">
       <DependentUpon>Settings.vb</DependentUpon>
@@ -193,11 +217,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.es.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="VersionEditor.es.resx">
-      <DependentUpon>VersionEditor.vb</DependentUpon>
+    <EmbeddedResource Include="DownloadBuild.es.resx">
+      <DependentUpon>DownloadBuild.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VersionEditor.resx">
-      <DependentUpon>VersionEditor.vb</DependentUpon>
+    <EmbeddedResource Include="DownloadBuild.resx">
+      <DependentUpon>DownloadBuild.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Worlds.es.resx">
+      <DependentUpon>Worlds.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Worlds.resx">
+      <DependentUpon>Worlds.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -232,7 +262,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="cblauncher.ico" />
-    <None Include="Resources\icon.bmp" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="IWshRuntimeLibrary">
@@ -244,6 +273,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

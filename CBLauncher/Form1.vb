@@ -1,5 +1,4 @@
 ﻿Imports System.IO
-Imports IWshRuntimeLibrary
 Imports System.Xml
 Imports System.Xml.Serialization
 Imports System.Text
@@ -7,15 +6,15 @@ Imports System.Resources
 Imports System.Media
 Imports System.Threading
 Imports System.Globalization
+Imports System.IO.Compression
 
 Public Class Form1
 
     Private output As String
     Private serverprocess As New Process()
     Public JarPath As String = ""
-    Private JarFolder As String
+    Public JarFolder As String
     Public Favorites As New List(Of Favorite)
-    Public NewFavoriteName As String
     Public documentspath As String = (System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)) & "\CBLauncher\"
     Private InputHistorial As New List(Of String)
     Public LocRM As New ResourceManager("CBLauncher.Strings", GetType(Form1).Assembly)
@@ -28,14 +27,14 @@ Public Class Form1
     Private SelectionLenght As Integer
     Private Declare Sub keybd_event Lib "user32.dll" (ByVal bVk As Byte, ByVal bScan As Byte, ByVal dwFlags As Long, ByVal dwExtraInfo As Long)
 
+    Private Sub LoadInEnglish()
+        Dim targetCulture As String = "en-US"
+        Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(targetCulture)
+        Me.Controls.Clear()
+        InitializeComponent()
+    End Sub
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
-        'Dim targetCulture As String = "en-US"
-        'Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(targetCulture)
-        'Me.Controls.Clear()
-        'InitializeComponent()
-
-        EasterEgg()
-
         Dim processlist As Object = Process.GetProcesses
         For Each process As Process In processlist
             Dim Process2 As String = process.Id
@@ -60,10 +59,22 @@ Public Class Form1
             Else
                 MessageBox.Show(LocRM.GetString("NotFound"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
-
+        Else
+            MemoryText.Text = My.Settings.DefaultMaxMemory
         End If
-
+        EasterEgg()
+        CheckIfShowMaxMemory()
         RefreshFavorites()
+    End Sub
+
+    Public Sub CheckIfShowMaxMemory()
+        If My.Settings.ShowMaxMemory = False Then
+            MaxMemoryLabel.Visible = False
+            MemoryText.Visible = False
+        Else
+            MaxMemoryLabel.Visible = True
+            MemoryText.Visible = True
+        End If
     End Sub
 
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
@@ -87,6 +98,7 @@ Public Class Form1
         SelectJarButton.Enabled = True
         FavoritesButton.Enabled = True
         MoreCommands.Enabled = False
+        StatusCircle.ForeColor = Color.Red
     End Sub
 
     Private Sub UpdateStatus(ByVal NewInput As String)
@@ -117,11 +129,12 @@ Public Class Form1
 
     End Sub
 
-    Private Sub SelectJar(ByVal InputJarPath As String, ByVal InputSafeFileName As String)
+    Public Sub SelectJar(ByVal InputJarPath As String, ByVal InputSafeFileName As String)
         JarPath = InputJarPath
         If Not JarPath = "" Then
             JarFolder = JarPath.Replace(InputSafeFileName, "")
             JarPathText.Text = JarPath
+            StatusCircle.ForeColor = Color.Orange
             ExtrasToolStripMenuItem.Enabled = True
             If BackgroundWorker1.IsBusy = False Then
                 StartButton.Enabled = True
@@ -131,35 +144,44 @@ Public Class Form1
 
     Private Sub StartServer(ByVal memory As String)
         If CheckJavaw(False) = True Then
-            Try
-                serverprocess.StartInfo.RedirectStandardOutput = True
-                serverprocess.StartInfo.RedirectStandardInput = True
-                serverprocess.StartInfo.FileName = My.Settings.JavawPath
-                Select Case My.Settings.AutoArgs
-                    Case True
-                        serverprocess.StartInfo.Arguments = "-Xmx" & memory & "M -jar " & """" & JarPath & """"
-                    Case False
-                        serverprocess.StartInfo.Arguments = My.Settings.NonAutoArgsText
-                End Select
-                serverprocess.StartInfo.UseShellExecute = False
-                serverprocess.StartInfo.CreateNoWindow = True
-                serverprocess.StartInfo.WorkingDirectory = JarFolder
-                serverprocess.Start()
-                My.Settings.LastJavawPID = serverprocess.Id
-                If Not My.Settings.History.Contains(JarPath) Then My.Settings.History += vbNewLine & JarPath
-                My.Settings.Save()
-                BackgroundWorker1.RunWorkerAsync()
-                StopButton.Enabled = True
-                ForceStopButton.Enabled = True
-                StartButton.Enabled = False
-                SelectJarButton.Enabled = False
-                FavoritesButton.Enabled = False
-                MoreCommands.Enabled = True
-                ListBox1.Visible = False
-                OutPutTextBox.Visible = True
-            Catch ex As Exception
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
+
+            If Not IO.File.Exists(JarFolder & "\" & "server.properties") Then
+                Dim reply = MessageBox.Show(LocRM.GetString("NoServerProps1"), LocRM.GetString("NoServerProps2"), MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                If reply = Windows.Forms.DialogResult.Yes Then
+                    PropertiesWindow.ShowDialog()
+                End If
+            End If
+
+            ' /////////
+            ' IT STARTS
+            ' /////////
+            serverprocess.StartInfo.RedirectStandardOutput = True
+            serverprocess.StartInfo.RedirectStandardInput = True
+            serverprocess.StartInfo.FileName = My.Settings.JavawPath
+            Select Case My.Settings.AutoArgs
+                Case True
+                    serverprocess.StartInfo.Arguments = "-Xmx" & memory & "M -jar " & """" & JarPath & """"
+                Case False
+                    serverprocess.StartInfo.Arguments = My.Settings.NonAutoArgsText
+            End Select
+            serverprocess.StartInfo.UseShellExecute = False
+            serverprocess.StartInfo.CreateNoWindow = True
+            serverprocess.StartInfo.WorkingDirectory = JarFolder
+            serverprocess.Start()
+            My.Settings.LastJavawPID = serverprocess.Id
+            If Not My.Settings.History.Contains(JarPath) Then My.Settings.History += vbNewLine & JarPath
+            My.Settings.Save()
+            BackgroundWorker1.RunWorkerAsync()
+            StopButton.Enabled = True
+            ForceStopButton.Enabled = True
+            StartButton.Enabled = False
+            SelectJarButton.Enabled = False
+            FavoritesButton.Enabled = False
+            MoreCommands.Enabled = True
+            ListBox1.Visible = False
+            OutPutTextBox.Visible = True
+            StatusCircle.ForeColor = Color.Green
+
         Else
             MessageBox.Show(LocRM.GetString("NotInstalledJavaYet"))
         End If
@@ -354,9 +376,17 @@ Public Class Form1
         End If
 
         If e.KeyCode = Keys.J And e.Control = True Then
+            e.SuppressKeyPress = True
+
             My.Settings.History = ""
             My.Settings.Save()
             MessageBox.Show("Historial cleared", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+
+        If e.KeyCode = Keys.E And e.Control = True Then
+            e.SuppressKeyPress = True
+            LoadInEnglish()
+
         End If
 
     End Sub
@@ -411,12 +441,17 @@ Public Class Form1
         Dim SaveShortCutDialog As New SaveFileDialog
         SaveShortCutDialog.Filter = LocRM.GetString("lnkFormat")
         SaveShortCutDialog.InitialDirectory = My.Settings.DefaultShortcutPath
+        Dim fi As New IO.FileInfo(JarPath)
+        SaveShortCutDialog.FileName = fi.Directory.Name
         SaveShortCutDialog.ShowDialog()
         Try
             If Not SaveShortCutDialog.FileName.Equals("") Then CreateShortCut(Application.ExecutablePath, System.IO.Path.GetDirectoryName(SaveShortCutDialog.FileName), System.IO.Path.GetFileName(SaveShortCutDialog.FileName))
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+
+
+
     End Sub
 
     'Dim oShell2 As WshShell 'import IWshRuntimeLibrary 'Project > Add Reference > COM > Windows Script Host Object Model.
@@ -425,11 +460,12 @@ Public Class Form1
         Dim oShell As Object
         Dim oLink As Object
         oShell = CreateObject("WScript.Shell")
-        oLink = oShell.CreateShortcut(ShortCutPath & "\" & ShortCutName & ".lnk")
+        oLink = oShell.CreateShortcut(ShortCutPath & "\" & ShortCutName)
         oLink.Arguments = MemoryText.Text & " " & """" & JarPathText.Text & """"
         oLink.TargetPath = TargetName
         oLink.WindowStyle = 1
         oLink.Save()
+        Return True
 
     End Function
 
@@ -444,7 +480,7 @@ Public Class Form1
     End Sub
 
     Private Sub DownloadCraftBukkitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DownloadCraftBukkitToolStripMenuItem.Click
-        VersionEditor.ShowDialog()
+        DownloadBuild.ShowDialog()
 
     End Sub
 
@@ -528,14 +564,6 @@ Public Class Form1
     End Sub
 
     Private Sub EditPropertiesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditPropertiesToolStripMenuItem.Click
-        Dim PropertiesWindow As New Form
-        Dim PropertiesContent As New Properties
-        PropertiesContent.Dock = DockStyle.Fill
-        PropertiesWindow.Size = New Size(800, 800)
-        PropertiesWindow.Icon = My.Resources.cblauncher
-        PropertiesWindow.StartPosition = FormStartPosition.CenterScreen
-        PropertiesWindow.Text = LocRM.GetString("PropsTitle")
-        PropertiesWindow.Controls.Add(PropertiesContent)
         PropertiesWindow.ShowDialog()
 
     End Sub
@@ -604,4 +632,34 @@ Public Class Form1
 
     End Sub
 
+    Private Sub LogsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogsToolStripMenuItem.Click
+        Dim Logswindow As New Logs
+        Logswindow.Show()
+
+    End Sub
+
+    Private Sub RegenerateWorldToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RegenerateWorldToolStripMenuItem.Click
+        Dim reply = MessageBox.Show(LocRM.GetString("RegenerateWorld"), "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+        If reply = Windows.Forms.DialogResult.Yes Then
+            If BackgroundWorker1.IsBusy = True Then StopServer(False)
+            Worlds.ShowDialog()
+
+        End If
+
+    End Sub
+
+    Private Sub UpdateCraftbukkitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateCraftbukkitToolStripMenuItem.Click
+        Dim ChangeBuild As New DownloadBuild
+        ChangeBuild.RemoveToolStripMenuItem.Visible = False
+        ChangeBuild.AddToolStripMenuItem.Visible = False
+        ChangeBuild.CopyToolStripMenuItem.Visible = False
+        ChangeBuild.UpdateToolStripMenuItem.Visible = True
+        ChangeBuild.ShowDialog()
+        RefreshFavorites()
+
+    End Sub
+
+    Private Sub InputTextBox_TextChanged(sender As Object, e As EventArgs) Handles InputTextBox.TextChanged
+
+    End Sub
 End Class

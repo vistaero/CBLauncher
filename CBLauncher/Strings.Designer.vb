@@ -64,7 +64,9 @@ Friend Class Strings
     End Property
     
     '''<summary>
-    '''  Busca una cadena traducida similar a CBLauncher is a software developed by vistaero at 2014 for the people who do not conform with a batch script to start their servers..
+    '''  Busca una cadena traducida similar a CBLauncher is a software developed by vistaero at 2014 for the people who do not conform with a batch script to start their servers. 
+    '''
+    '''Have you found any bug or any translation (I do not speak english) mistake? Contact me clicking the Help button..
     '''</summary>
     Friend Shared ReadOnly Property About() As String
         Get
@@ -105,6 +107,15 @@ Friend Class Strings
     Friend Shared ReadOnly Property CBUpdated2() As String
         Get
             Return ResourceManager.GetString("CBUpdated2", resourceCulture)
+        End Get
+    End Property
+    
+    '''<summary>
+    '''  Busca una cadena traducida similar a Done.
+    '''</summary>
+    Friend Shared ReadOnly Property Done() As String
+        Get
+            Return ResourceManager.GetString("Done", resourceCulture)
         End Get
     End Property
     
@@ -192,6 +203,24 @@ Friend Class Strings
     End Property
     
     '''<summary>
+    '''  Busca una cadena traducida similar a This server is still not configured. Do you want to configure it now?.
+    '''</summary>
+    Friend Shared ReadOnly Property NoServerProps1() As String
+        Get
+            Return ResourceManager.GetString("NoServerProps1", resourceCulture)
+        End Get
+    End Property
+    
+    '''<summary>
+    '''  Busca una cadena traducida similar a Server not configured. Missing server.properties..
+    '''</summary>
+    Friend Shared ReadOnly Property NoServerProps2() As String
+        Get
+            Return ResourceManager.GetString("NoServerProps2", resourceCulture)
+        End Get
+    End Property
+    
+    '''<summary>
     '''  Busca una cadena traducida similar a File not found..
     '''</summary>
     Friend Shared ReadOnly Property NotFound() As String
@@ -219,6 +248,15 @@ Friend Class Strings
     End Property
     
     '''<summary>
+    '''  Busca una cadena traducida similar a To regenerate a world, first we need to stop the server. Regeneration consists in deleting certain folders to be rebuilt the next time the server is started. Continue?.
+    '''</summary>
+    Friend Shared ReadOnly Property RegenerateWorld() As String
+        Get
+            Return ResourceManager.GetString("RegenerateWorld", resourceCulture)
+        End Get
+    End Property
+    
+    '''<summary>
     '''  Busca una cadena traducida similar a Select Jar File.
     '''</summary>
     Friend Shared ReadOnly Property SelectJar() As String
@@ -237,11 +275,38 @@ Friend Class Strings
     End Property
     
     '''<summary>
+    '''  Busca una cadena traducida similar a Update completed..
+    '''</summary>
+    Friend Shared ReadOnly Property UpdatedCorrectly() As String
+        Get
+            Return ResourceManager.GetString("UpdatedCorrectly", resourceCulture)
+        End Get
+    End Property
+    
+    '''<summary>
+    '''  Busca una cadena traducida similar a Waiting the server to be stopped..
+    '''</summary>
+    Friend Shared ReadOnly Property WaitingToBeStopped() As String
+        Get
+            Return ResourceManager.GetString("WaitingToBeStopped", resourceCulture)
+        End Get
+    End Property
+    
+    '''<summary>
     '''  Busca una cadena traducida similar a Where to copy .
     '''</summary>
     Friend Shared ReadOnly Property WhereCopy() As String
         Get
             Return ResourceManager.GetString("WhereCopy", resourceCulture)
+        End Get
+    End Property
+    
+    '''<summary>
+    '''  Busca una cadena traducida similar a World ready to be regenerated at next server startup..
+    '''</summary>
+    Friend Shared ReadOnly Property WorldRegen() As String
+        Get
+            Return ResourceManager.GetString("WorldRegen", resourceCulture)
         End Get
     End Property
 End Class

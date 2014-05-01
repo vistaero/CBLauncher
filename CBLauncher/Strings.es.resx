@@ -118,7 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>CBLauncher es un programa desarrollado por vistaero en el 2014 para las personas que no se conforman con un script en batch para iniciar sus servidores.</value>
+    <value>CBLauncher es un programa desarrollado por vistaero en el 2014 para las personas que no se conforman con un script en batch para iniciar sus servidores.
+
+¿Ha encontrado algún fallo? contácteme con el botón Ayuda.</value>
   </data>
   <data name="AboutTitle" xml:space="preserve">
     <value>Acerca de CBLauncher</value>
@@ -183,5 +185,26 @@ Nombre del proceso y PID: </value>
   </data>
   <data name="HowToNameIt" xml:space="preserve">
     <value>¿Cómo desea llamarlo?</value>
+  </data>
+  <data name="NoServerProps1" xml:space="preserve">
+    <value>Este servidor aún no está configurado. ¿Desea configurarlo antes de iniciarlo?</value>
+  </data>
+  <data name="NoServerProps2" xml:space="preserve">
+    <value>Servidor no configurado. Falta archivo server.properties.</value>
+  </data>
+  <data name="RegenerateWorld" xml:space="preserve">
+    <value>Para regenerar un mundo primero debemos detener el servidor. La regeneración consiste en borrar ciertas carpetas para que se vuelvan a crear la próxima vez que se inicie el servidor. ¿Continuar?</value>
+  </data>
+  <data name="WaitingToBeStopped" xml:space="preserve">
+    <value>Esperando a que se detenga el servidor</value>
+  </data>
+  <data name="WorldRegen" xml:space="preserve">
+    <value>Mundo preparado para ser regenerado la próxima vez que se inicie el servidor.</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>Hecho</value>
+  </data>
+  <data name="UpdatedCorrectly" xml:space="preserve">
+    <value>Actualización completada.</value>
   </data>
 </root>

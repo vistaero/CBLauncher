@@ -13,8 +13,7 @@
     End Sub
 
     Private Sub Done()
-        Form1.NewFavoriteName = TextBox1.Text
-        System.IO.File.WriteAllText(Form1.documentspath & Form1.NewFavoriteName & ".cblfav", Form1.JarPath)
+        System.IO.File.WriteAllText(Form1.documentspath & TextBox1.Text & ".cblfav", Form1.JarPath)
         Form1.RefreshFavorites()
         ParentForm.Dispose()
 

@@ -221,8 +221,15 @@ Public Class Properties
 
     Private Sub Properties_Load(sender As Object, e As EventArgs) Handles Me.Load
         SetDictionary()
-        ReadProperties(Form1.JarPath.Replace(IO.Path.GetFileName(Form1.JarPath), "" & "\server.properties"))
-        SetValuesOnUI()
+        If System.IO.File.Exists(Form1.JarPath.Replace(IO.Path.GetFileName(Form1.JarPath), "" & "\server.properties")) Then
+            ReadProperties(Form1.JarPath.Replace(IO.Path.GetFileName(Form1.JarPath), "" & "\server.properties"))
+            SetValuesOnUI()
+        Else
+            SetDictionary(True)
+            SetValuesOnUI()
+
+        End If
+
 
     End Sub
 

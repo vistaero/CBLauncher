@@ -197,6 +197,30 @@ Namespace My
                 Me("PersonalizedBackColor") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1024")>  _
+        Public Property DefaultMaxMemory() As Decimal
+            Get
+                Return CType(Me("DefaultMaxMemory"),Decimal)
+            End Get
+            Set
+                Me("DefaultMaxMemory") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ShowMaxMemory() As Boolean
+            Get
+                Return CType(Me("ShowMaxMemory"),Boolean)
+            End Get
+            Set
+                Me("ShowMaxMemory") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

@@ -25,6 +25,9 @@ Public Class Settings
     Private Sub Settings_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
 
         My.Settings.Save()
+        Form1.CheckIfShowMaxMemory()
+        Form1.MemoryText.Text = My.Settings.DefaultMaxMemory
+
     End Sub
 
     Private Sub Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -55,5 +58,17 @@ Public Class Settings
         Dim reply = MessageBox.Show(Form1.LocRM.GetString("AreYouSure"), Form1.LocRM.GetString("AreYouSure"), MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         My.Settings.Reset()
         My.Settings.Save()
+    End Sub
+
+    Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
+        If TabControl1.SelectedIndex = 0 Then
+            Me.Height = 250
+        Else
+            Me.Height = 400
+        End If
+    End Sub
+
+    Private Sub TabControl1_TabIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.TabIndexChanged
+
     End Sub
 End Class
