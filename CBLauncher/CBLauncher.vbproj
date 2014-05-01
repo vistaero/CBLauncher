@@ -97,6 +97,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Favorite.vb" />
+    <Compile Include="ListOfJars.Designer.vb">
+      <DependentUpon>ListOfJars.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ListOfJars.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Logs.Designer.vb">
       <DependentUpon>Logs.vb</DependentUpon>
     </Compile>
@@ -178,6 +184,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.es.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListOfJars.es.resx">
+      <DependentUpon>ListOfJars.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListOfJars.resx">
+      <DependentUpon>ListOfJars.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Logs.resx">
       <DependentUpon>Logs.vb</DependentUpon>

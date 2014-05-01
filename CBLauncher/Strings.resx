@@ -208,4 +208,10 @@ Have you found any bug or any translation (I do not speak english) mistake? Cont
   <data name="UpdatedCorrectly" xml:space="preserve">
     <value>Update completed.</value>
   </data>
+  <data name="CBNotFound" xml:space="preserve">
+    <value>CraftBukkit not found here.</value>
+  </data>
+  <data name="SelectOneCB" xml:space="preserve">
+    <value>We have found some files that could be CraftBukkit. Select the only one you want to use with this server.</value>
+  </data>
 </root>

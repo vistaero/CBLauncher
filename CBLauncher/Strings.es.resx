@@ -207,4 +207,10 @@ Nombre del proceso y PID: </value>
   <data name="UpdatedCorrectly" xml:space="preserve">
     <value>Actualización completada.</value>
   </data>
+  <data name="CBNotFound" xml:space="preserve">
+    <value>No se encontró ningún CraftBukkit aquí.</value>
+  </data>
+  <data name="SelectOneCB" xml:space="preserve">
+    <value>Hemos encontrado varios archivos que podrían ser CraftBukkit. Elige el que quieres usar con este servidor.</value>
+  </data>
 </root>

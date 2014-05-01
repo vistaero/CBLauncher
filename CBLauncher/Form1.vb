@@ -52,8 +52,8 @@ Public Class Form1
 
         CheckJavaw(True)
         If My.Application.CommandLineArgs.Count > 0 Then
-            If IO.File.Exists(My.Application.CommandLineArgs.Last) Then
-                SelectJar(My.Application.CommandLineArgs.Last, Path.GetFileName(My.Application.CommandLineArgs.Last))
+            If IO.File.Exists(My.Application.CommandLineArgs.Last) Or IO.Directory.Exists(My.Application.CommandLineArgs.Last.Replace("""", "")) Then
+                SelectJar(My.Application.CommandLineArgs.Last)
                 MemoryText.Text = My.Application.CommandLineArgs.First
                 StartServer(MemoryText.Text)
             Else
@@ -80,8 +80,8 @@ Public Class Form1
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
         Do
             output = serverprocess.StandardOutput.ReadLine()
-            If Not output.ToString.Length < 1 Then
-                UpdateStatus(output & vbNewLine)
+            If output.ToString.Length <> 0 Then
+                UpdateStatus(serverprocess.StandardOutput.ReadLine & vbNewLine)
             End If
         Loop
 
@@ -129,18 +129,55 @@ Public Class Form1
 
     End Sub
 
-    Public Sub SelectJar(ByVal InputJarPath As String, ByVal InputSafeFileName As String)
-        JarPath = InputJarPath
-        If Not JarPath = "" Then
-            JarFolder = JarPath.Replace(InputSafeFileName, "")
-            JarPathText.Text = JarPath
-            StatusCircle.ForeColor = Color.Orange
-            ExtrasToolStripMenuItem.Enabled = True
-            If BackgroundWorker1.IsBusy = False Then
-                StartButton.Enabled = True
+    Public Sub SelectJar(ByVal InputJarPath As String)
+
+        If System.IO.Directory.Exists(InputJarPath) Then
+
+            SelectByFolder(InputJarPath)
+        ElseIf System.IO.File.Exists(InputJarPath) Then
+            JarPath = InputJarPath
+            If Not JarPath = "" Then
+                JarFolder = JarPath.Replace(Path.GetFileName(InputJarPath), "")
+                JarPathText.Text = JarPath
+                StatusCircle.ForeColor = Color.Orange
+                ExtrasToolStripMenuItem.Enabled = True
+                If BackgroundWorker1.IsBusy = False Then
+                    StartButton.Enabled = True
+                End If
             End If
         End If
+
+        
     End Sub
+
+    Private Function SearchJar(ByVal Path As String)
+
+        Dim Files = IO.Directory.GetFiles(Path)
+        Dim FilesList As New List(Of String)
+
+        For Each file In Files
+            If file.EndsWith("-cblauncher.jar") Then
+                Dim Result As New List(Of String)
+                Result.Add(file)
+                Return Result
+            End If
+            If file.EndsWith(".jar") Then
+                FilesList.Add(file)
+            End If
+        Next
+
+        If FilesList.Count = 1 Then
+            Dim Result As New List(Of String)
+            Result.Add(FilesList(0))
+            Return Result
+        ElseIf FilesList.Count > 1 Then
+            Return FilesList
+
+        End If
+        FilesList.Clear()
+        Return FilesList
+
+    End Function
 
     Private Sub StartServer(ByVal memory As String)
         If CheckJavaw(False) = True Then
@@ -344,7 +381,6 @@ Public Class Form1
 
     Private Sub InputTextBox_KeyDown(sender As Object, e As KeyEventArgs) Handles InputTextBox.KeyDown
 
-
         If e.KeyCode = Keys.Enter And BackgroundWorker1.IsBusy = True Then
             e.SuppressKeyPress = True
             serverprocess.StandardInput.WriteLine(InputTextBox.Text)
@@ -354,6 +390,7 @@ Public Class Form1
         End If
 
         If e.KeyCode = Keys.Up Then
+
             If SelectedInputHistorial > 0 And InputHistorial.Count > 0 Then
                 SelectedInputHistorial -= 1
                 InputTextBox.Text = InputHistorial(SelectedInputHistorial)
@@ -368,6 +405,10 @@ Public Class Form1
             End If
             InputTextBox.Select(InputTextBox.Text.Count, 0)
 
+        End If
+
+        If e.KeyCode = Keys.Escape Then
+            InputTextBox.Clear()
         End If
 
         If e.KeyCode = Keys.H And e.Control = True Then
@@ -408,6 +449,7 @@ Public Class Form1
 
     Private Sub InputTextBox_KeyUp(sender As Object, e As KeyEventArgs) Handles InputTextBox.KeyUp
         InputTextBox.Select(InputTextBox.Text.Length + 1, 0)
+
     End Sub
 
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles StartButton.Click
@@ -423,16 +465,6 @@ Public Class Form1
         StopServer(True)
     End Sub
 
-    Private Sub ToolStripButton1_Click_1(sender As Object, e As EventArgs) Handles SelectJarButton.Click
-        Dim Dialog As New OpenFileDialog
-        Dialog.Filter = LocRM.GetString("JarFormat")
-        Dialog.InitialDirectory = My.Settings.DefaultJarPath
-        Dim reply = Dialog.ShowDialog()
-        If reply = Windows.Forms.DialogResult.OK Then
-            SelectJar(Dialog.FileName, Dialog.SafeFileName)
-        End If
-    End Sub
-
     Private Sub ClearToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearToolStripMenuItem.Click
         OutPutTextBox.Clear()
     End Sub
@@ -445,12 +477,14 @@ Public Class Form1
         SaveShortCutDialog.FileName = fi.Directory.Name
         SaveShortCutDialog.ShowDialog()
         Try
-            If Not SaveShortCutDialog.FileName.Equals("") Then CreateShortCut(Application.ExecutablePath, System.IO.Path.GetDirectoryName(SaveShortCutDialog.FileName), System.IO.Path.GetFileName(SaveShortCutDialog.FileName))
+            If Not SaveShortCutDialog.FileName.Equals("") Then
+                CreateShortCut(Application.ExecutablePath, System.IO.Path.GetDirectoryName(SaveShortCutDialog.FileName), _
+                               System.IO.Path.GetFileName(SaveShortCutDialog.FileName))
+
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-
-
 
     End Sub
 
@@ -461,7 +495,10 @@ Public Class Form1
         Dim oLink As Object
         oShell = CreateObject("WScript.Shell")
         oLink = oShell.CreateShortcut(ShortCutPath & "\" & ShortCutName)
-        oLink.Arguments = MemoryText.Text & " " & """" & JarPathText.Text & """"
+        Dim Arguments As String = MemoryText.Text & " " & """" & JarPath.Replace(System.IO.Path.GetFileName(JarPath), "") & """"
+        Arguments = Arguments.Remove(Arguments.Length - 2, 1)
+        MsgBox(Arguments)
+        oLink.Arguments = Arguments
         oLink.TargetPath = TargetName
         oLink.WindowStyle = 1
         oLink.Save()
@@ -508,7 +545,6 @@ Public Class Form1
 
     Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         If SelectionStart = 0 And SelectionLenght = 0 Then OutPutTextBox.ScrollToCaret()
-
     End Sub
 
     Private Sub ListBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles ListBox1.KeyDown
@@ -523,7 +559,7 @@ Public Class Form1
         If ListBox1.SelectedIndex > -1 Then
             For Each item As Favorite In Favorites
                 If item.FavName.Equals(ListBox1.SelectedItem.ToString) Then
-                    SelectJar(item.FavPath, Path.GetFileName(item.FavPath))
+                    SelectJar(item.FavPath)
                 End If
             Next
         End If
@@ -659,7 +695,58 @@ Public Class Form1
 
     End Sub
 
-    Private Sub InputTextBox_TextChanged(sender As Object, e As EventArgs) Handles InputTextBox.TextChanged
+    Private Sub SelectByFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectByFileToolStripMenuItem.Click
+        Dim Dialog As New OpenFileDialog
+        Dialog.Filter = LocRM.GetString("JarFormat")
+        Dialog.InitialDirectory = My.Settings.DefaultJarPath
+        Dim reply = Dialog.ShowDialog()
+        If reply = Windows.Forms.DialogResult.OK Then
+            SelectJar(Dialog.FileName)
+        End If
+    End Sub
 
+    Private Sub SelectByFolderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectByFolderToolStripMenuItem.Click
+        SelectByFolder()
+
+    End Sub
+
+    Private Sub SelectByFolder(Optional ByVal path As String = "")
+        Dim OpenByFolder As New FolderBrowserDialog
+
+        If Not path.Length > 0 Then
+            OpenByFolder.ShowNewFolderButton = False
+            OpenByFolder.ShowDialog()
+            path = OpenByFolder.SelectedPath
+        End If
+
+        If path <> Nothing Then
+            Dim Result As New List(Of String)
+
+            Result = SearchJar(path)
+
+            Select Case Result.Count
+                Case Is = 0
+                    MessageBox.Show(LocRM.GetString("CBNotFound"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Case Is = 1
+                    Dim filepath As String = Result(0)
+                    SelectJar(filepath)
+                Case Is > 1
+                    MessageBox.Show(LocRM.GetString("SelectOneCB"), "", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Dim ListOfJarsWindow As New ListOfJars
+
+                    For Each item In Result
+                        ListOfJarsWindow.ListBox1.Items.Add(System.IO.Path.GetFileName(item))
+                    Next
+
+                    ListOfJarsWindow.ShowDialog()
+                    Dim Dest As String = path & "\" & System.IO.Path.GetFileNameWithoutExtension(path & "\" & ListOfJarsWindow.ListBox1.SelectedItem) & "-cblauncher.jar"
+                    System.IO.File.Move(path & "\" & ListOfJarsWindow.ListBox1.SelectedItem, Dest)
+                    SelectJar(Dest)
+            End Select
+        End If
+    End Sub
+
+    Private Sub OpenServerFolderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenServerFolderToolStripMenuItem.Click
+        Process.Start(JarPath.Replace(System.IO.Path.GetFileName(JarPath), ""))
     End Sub
 End Class

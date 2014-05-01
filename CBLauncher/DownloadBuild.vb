@@ -239,7 +239,7 @@ Public Class DownloadBuild
             System.IO.File.Delete(Remove)
             Dim Dest As String = Form1.JarFolder & ListBox1.SelectedItem & ".jar"
             System.IO.File.Copy(Form1.documentspath & "\versions\" & ListBox1.SelectedItem & ".jar", Form1.JarFolder & ListBox1.SelectedItem & ".jar")
-            Form1.SelectJar(Dest, ListBox1.SelectedItem & ".jar")
+            Form1.SelectJar(Dest)
             Removed = True
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)

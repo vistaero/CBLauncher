@@ -93,6 +93,15 @@ Friend Class Strings
     End Property
     
     '''<summary>
+    '''  Busca una cadena traducida similar a CraftBukkit not found here..
+    '''</summary>
+    Friend Shared ReadOnly Property CBNotFound() As String
+        Get
+            Return ResourceManager.GetString("CBNotFound", resourceCulture)
+        End Get
+    End Property
+    
+    '''<summary>
     '''  Busca una cadena traducida similar a Latest build already downloaded..
     '''</summary>
     Friend Shared ReadOnly Property CBUpdated1() As String
@@ -262,6 +271,15 @@ Friend Class Strings
     Friend Shared ReadOnly Property SelectJar() As String
         Get
             Return ResourceManager.GetString("SelectJar", resourceCulture)
+        End Get
+    End Property
+    
+    '''<summary>
+    '''  Busca una cadena traducida similar a We have found some files that could be CraftBukkit. Select the only one you want to use with this server..
+    '''</summary>
+    Friend Shared ReadOnly Property SelectOneCB() As String
+        Get
+            Return ResourceManager.GetString("SelectOneCB", resourceCulture)
         End Get
     End Property
     

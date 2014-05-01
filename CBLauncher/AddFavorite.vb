@@ -13,7 +13,7 @@
     End Sub
 
     Private Sub Done()
-        System.IO.File.WriteAllText(Form1.documentspath & TextBox1.Text & ".cblfav", Form1.JarPath)
+        System.IO.File.WriteAllText(Form1.documentspath & TextBox1.Text & ".cblfav", System.IO.Path.GetDirectoryName(Form1.JarPath))
         Form1.RefreshFavorites()
         ParentForm.Dispose()
 
