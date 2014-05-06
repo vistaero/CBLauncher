@@ -14,6 +14,7 @@ Public Class Form1
     Private serverprocess As New Process()
     Public JarPath As String = ""
     Public JarFolder As String
+    Private RunWithDefaultJar As Boolean = False
     Public Favorites As New List(Of Favorite)
     Public documentspath As String = (System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)) & "\CBLauncher\"
     Private InputHistorial As New List(Of String)
@@ -53,7 +54,7 @@ Public Class Form1
         CheckJavaw(True)
         If My.Application.CommandLineArgs.Count > 0 Then
             If IO.File.Exists(My.Application.CommandLineArgs.Last) Or IO.Directory.Exists(My.Application.CommandLineArgs.Last.Replace("""", "")) Then
-                SelectJar(My.Application.CommandLineArgs.Last)
+                SelectJar(My.Application.CommandLineArgs.Last, False)
                 MemoryText.Text = My.Application.CommandLineArgs.First
                 StartServer(MemoryText.Text)
             Else
@@ -97,7 +98,7 @@ Public Class Form1
         StartButton.Enabled = True
         SelectJarButton.Enabled = True
         FavoritesButton.Enabled = True
-        MoreCommands.Enabled = False
+        Reload.Enabled = False
         StatusCircle.ForeColor = Color.Red
     End Sub
 
@@ -129,11 +130,22 @@ Public Class Form1
 
     End Sub
 
-    Public Sub SelectJar(ByVal InputJarPath As String)
+    Public Sub SelectJar(ByVal InputJarPath As String, ByVal defaultjar As Boolean)
 
-        If System.IO.Directory.Exists(InputJarPath) Then
-
-            SelectByFolder(InputJarPath)
+        If System.IO.Directory.Exists(InputJarPath) = True Then
+            If defaultjar = True Then
+                JarFolder = InputJarPath
+                JarPathText.Text = JarFolder
+                StatusCircle.ForeColor = Color.Orange
+                ExtrasToolStripMenuItem.Enabled = True
+                UpdateCraftbukkitToolStripMenuItem.Enabled = False
+                RunWithDefaultJar = True
+                If BackgroundWorker1.IsBusy = False Then
+                    StartButton.Enabled = True
+                End If
+            Else
+                SelectByFolder(InputJarPath)
+            End If
         ElseIf System.IO.File.Exists(InputJarPath) Then
             JarPath = InputJarPath
             If Not JarPath = "" Then
@@ -141,13 +153,18 @@ Public Class Form1
                 JarPathText.Text = JarPath
                 StatusCircle.ForeColor = Color.Orange
                 ExtrasToolStripMenuItem.Enabled = True
+                UpdateCraftbukkitToolStripMenuItem.Enabled = True
+                RunWithDefaultJar = False
                 If BackgroundWorker1.IsBusy = False Then
                     StartButton.Enabled = True
                 End If
             End If
         End If
 
-        
+
+
+
+
     End Sub
 
     Private Function SearchJar(ByVal Path As String)
@@ -197,7 +214,12 @@ Public Class Form1
             serverprocess.StartInfo.FileName = My.Settings.JavawPath
             Select Case My.Settings.AutoArgs
                 Case True
-                    serverprocess.StartInfo.Arguments = "-Xmx" & memory & "M -jar " & """" & JarPath & """"
+                    If RunWithDefaultJar = False Then
+                        serverprocess.StartInfo.Arguments = "-Xmx" & memory & "M -jar " & """" & JarPath & """"
+                    Else
+                        serverprocess.StartInfo.Arguments = "-Xmx" & memory & "M -jar " & """" & documentspath & "versions\" & My.Settings.DefaultCraftBukkitPath & ".jar" & """"
+
+                    End If
                 Case False
                     serverprocess.StartInfo.Arguments = My.Settings.NonAutoArgsText
             End Select
@@ -214,7 +236,7 @@ Public Class Form1
             StartButton.Enabled = False
             SelectJarButton.Enabled = False
             FavoritesButton.Enabled = False
-            MoreCommands.Enabled = True
+            Reload.Enabled = True
             ListBox1.Visible = False
             OutPutTextBox.Visible = True
             StatusCircle.ForeColor = Color.Green
@@ -559,7 +581,7 @@ Public Class Form1
         If ListBox1.SelectedIndex > -1 Then
             For Each item As Favorite In Favorites
                 If item.FavName.Equals(ListBox1.SelectedItem.ToString) Then
-                    SelectJar(item.FavPath)
+                    SelectJar(item.FavPath, False)
                 End If
             Next
         End If
@@ -602,30 +624,6 @@ Public Class Form1
     Private Sub EditPropertiesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditPropertiesToolStripMenuItem.Click
         PropertiesWindow.ShowDialog()
 
-    End Sub
-
-    Private Sub ReloadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReloadToolStripMenuItem.Click
-        serverprocess.StandardInput.WriteLine("reload")
-    End Sub
-
-    Private Sub ToggleDownfallToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ToggleDownfallToolStripMenuItem.Click
-        serverprocess.StandardInput.WriteLine("weather rain")
-    End Sub
-
-    Private Sub ThunderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ThunderToolStripMenuItem.Click
-        serverprocess.StandardInput.WriteLine("weather thunder")
-    End Sub
-
-    Private Sub SetDayToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetDayToolStripMenuItem.Click
-        serverprocess.StandardInput.WriteLine("time set day")
-    End Sub
-
-    Private Sub SetNightToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetNightToolStripMenuItem.Click
-        serverprocess.StandardInput.WriteLine("time set night")
-    End Sub
-
-    Private Sub ClearWeatherToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearWeatherToolStripMenuItem.Click
-        serverprocess.StandardInput.WriteLine("weather clear")
     End Sub
 
     '/////////////////////////
@@ -689,6 +687,7 @@ Public Class Form1
         ChangeBuild.RemoveToolStripMenuItem.Visible = False
         ChangeBuild.AddToolStripMenuItem.Visible = False
         ChangeBuild.CopyToolStripMenuItem.Visible = False
+        ChangeBuild.SetAsDefaultToolStripMenuItem.Visible = False
         ChangeBuild.UpdateToolStripMenuItem.Visible = True
         ChangeBuild.ShowDialog()
         RefreshFavorites()
@@ -701,7 +700,7 @@ Public Class Form1
         Dialog.InitialDirectory = My.Settings.DefaultJarPath
         Dim reply = Dialog.ShowDialog()
         If reply = Windows.Forms.DialogResult.OK Then
-            SelectJar(Dialog.FileName)
+            SelectJar(Dialog.FileName, False)
         End If
     End Sub
 
@@ -720,33 +719,60 @@ Public Class Form1
         End If
 
         If path <> Nothing Then
-            Dim Result As New List(Of String)
 
-            Result = SearchJar(path)
 
-            Select Case Result.Count
-                Case Is = 0
-                    MessageBox.Show(LocRM.GetString("CBNotFound"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Case Is = 1
-                    Dim filepath As String = Result(0)
-                    SelectJar(filepath)
-                Case Is > 1
-                    MessageBox.Show(LocRM.GetString("SelectOneCB"), "", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    Dim ListOfJarsWindow As New ListOfJars
+            If My.Settings.DefaultJar = False Then
 
-                    For Each item In Result
-                        ListOfJarsWindow.ListBox1.Items.Add(System.IO.Path.GetFileName(item))
-                    Next
 
-                    ListOfJarsWindow.ShowDialog()
-                    Dim Dest As String = path & "\" & System.IO.Path.GetFileNameWithoutExtension(path & "\" & ListOfJarsWindow.ListBox1.SelectedItem) & "-cblauncher.jar"
-                    System.IO.File.Move(path & "\" & ListOfJarsWindow.ListBox1.SelectedItem, Dest)
-                    SelectJar(Dest)
-            End Select
+                Dim Result As New List(Of String)
+
+                Result = SearchJar(path)
+
+                Select Case Result.Count
+                    Case Is = 0
+                        MessageBox.Show(LocRM.GetString("CBNotFound"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Case Is = 1
+                        Dim filepath As String = Result(0)
+                        SelectJar(filepath, False)
+                    Case Is > 1
+                        MessageBox.Show(LocRM.GetString("SelectOneCB"), "", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Dim ListOfJarsWindow As New ListOfJars
+
+                        For Each item In Result
+                            ListOfJarsWindow.ListBox1.Items.Add(System.IO.Path.GetFileName(item))
+                        Next
+
+                        ListOfJarsWindow.ShowDialog()
+                        Dim Dest As String = path & "\" & System.IO.Path.GetFileNameWithoutExtension(path & "\" & ListOfJarsWindow.ListBox1.SelectedItem) & "-cblauncher.jar"
+                        System.IO.File.Move(path & "\" & ListOfJarsWindow.ListBox1.SelectedItem, Dest)
+                        SelectJar(Dest, False)
+                        RunWithDefaultJar = False
+                End Select
+            Else
+                SelectJar(path, True)
+                RunWithDefaultJar = True
+            End If
+
         End If
     End Sub
 
     Private Sub OpenServerFolderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenServerFolderToolStripMenuItem.Click
-        Process.Start(JarPath.Replace(System.IO.Path.GetFileName(JarPath), ""))
+        Process.Start(JarFolder)
+    End Sub
+
+    Private Sub Reload_Click(sender As Object, e As EventArgs) Handles Reload.Click
+        serverprocess.StandardInput.WriteLine("reload")
+    End Sub
+
+
+    Private Sub RunMinecraftToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles RunMinecraftToolStripMenuItem.Click
+        If Not My.Settings.MinecraftPath.Equals("") Then
+            Process.Start(My.Settings.MinecraftPath)
+        Else
+            Dim MinecraftPath As New OpenFileDialog
+            MinecraftPath.ShowDialog()
+            My.Settings.MinecraftPath = MinecraftPath.FileName
+            Process.Start(My.Settings.MinecraftPath)
+        End If
     End Sub
 End Class

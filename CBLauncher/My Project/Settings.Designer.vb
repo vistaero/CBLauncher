@@ -221,6 +221,42 @@ Namespace My
                 Me("ShowMaxMemory") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property DefaultJar() As Boolean
+            Get
+                Return CType(Me("DefaultJar"),Boolean)
+            End Get
+            Set
+                Me("DefaultJar") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property DefaultCraftBukkitPath() As String
+            Get
+                Return CType(Me("DefaultCraftBukkitPath"),String)
+            End Get
+            Set
+                Me("DefaultCraftBukkitPath") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property MinecraftPath() As String
+            Get
+                Return CType(Me("MinecraftPath"),String)
+            End Get
+            Set
+                Me("MinecraftPath") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

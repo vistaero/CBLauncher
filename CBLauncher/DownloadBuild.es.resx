@@ -119,10 +119,16 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="CheckForUpdatesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 20</value>
+    <value>153, 20</value>
   </data>
   <data name="CheckForUpdatesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Descargar versión más reciente</value>
+    <value>Descargar el más reciente</value>
+  </data>
+  <data name="SetAsDefaultToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 20</value>
+  </data>
+  <data name="SetAsDefaultToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ajustar como predeterminado</value>
   </data>
   <data name="RemoveToolStripMenuItem.Text" xml:space="preserve">
     <value>Eliminar</value>
@@ -2143,6 +2149,10 @@
         AIAPAADwPwAA4B8AAOcHAADHBwAAz4MAAM+TAADPgQAAwAEAAIAPAAD8/wAA+H8AAPI/AADgPwAA4D8A
         AA==
 </value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Descargar CraftBukkit</value>

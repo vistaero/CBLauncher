@@ -31,6 +31,8 @@ Public Class Settings
     End Sub
 
     Private Sub Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Height = 350
+
         If My.Settings.ForceStop = False Then
             StopRadio.Checked = True
         End If
@@ -58,17 +60,29 @@ Public Class Settings
         Dim reply = MessageBox.Show(Form1.LocRM.GetString("AreYouSure"), Form1.LocRM.GetString("AreYouSure"), MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         My.Settings.Reset()
         My.Settings.Save()
+        InitializeComponent()
     End Sub
 
     Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
         If TabControl1.SelectedIndex = 0 Then
-            Me.Height = 250
+            Me.Height = 350
         Else
             Me.Height = 400
         End If
     End Sub
 
     Private Sub TabControl1_TabIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.TabIndexChanged
+
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Dim DefaultCBversion As New DownloadBuild
+        DefaultCBversion.SetAsDefaultToolStripMenuItem.Visible = True
+        DefaultCBversion.AddToolStripMenuItem.Visible = False
+        DefaultCBversion.CheckForUpdatesToolStripMenuItem.Visible = False
+        DefaultCBversion.RemoveToolStripMenuItem.Visible = False
+        DefaultCBversion.CopyToolStripMenuItem.Visible = False
+        DefaultCBversion.ShowDialog()
 
     End Sub
 End Class

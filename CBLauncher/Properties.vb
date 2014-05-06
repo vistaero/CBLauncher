@@ -162,7 +162,7 @@ Public Class Properties
         Properties("motd") = DescriptionTextBox.Text
         GenerateServerPropertiesText()
         Try
-            System.IO.File.WriteAllText(Form1.JarPath.Replace(IO.Path.GetFileName(Form1.JarPath), "" & "\server.properties"), ReconstructedProperties)
+            System.IO.File.WriteAllText(Form1.JarFolder & "\server.properties", ReconstructedProperties)
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -221,8 +221,8 @@ Public Class Properties
 
     Private Sub Properties_Load(sender As Object, e As EventArgs) Handles Me.Load
         SetDictionary()
-        If System.IO.File.Exists(Form1.JarPath.Replace(IO.Path.GetFileName(Form1.JarPath), "" & "\server.properties")) Then
-            ReadProperties(Form1.JarPath.Replace(IO.Path.GetFileName(Form1.JarPath), "" & "\server.properties"))
+        If System.IO.File.Exists(Form1.JarFolder & "\server.properties") Then
+            ReadProperties(Form1.JarFolder & "\server.properties")
             SetValuesOnUI()
         Else
             SetDictionary(True)

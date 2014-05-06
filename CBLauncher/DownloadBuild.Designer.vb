@@ -27,11 +27,12 @@ Partial Class DownloadBuild
         Me.FileURLCalculator = New System.ComponentModel.BackgroundWorker()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.CheckForUpdatesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SetAsDefaultToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RemoveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UpdateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.CopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -45,29 +46,29 @@ Partial Class DownloadBuild
         '
         'MenuStrip1
         '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddToolStripMenuItem, Me.CheckForUpdatesToolStripMenuItem, Me.SetAsDefaultToolStripMenuItem, Me.RemoveToolStripMenuItem, Me.CopyToolStripMenuItem, Me.UpdateToolStripMenuItem})
         resources.ApplyResources(Me.MenuStrip1, "MenuStrip1")
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CheckForUpdatesToolStripMenuItem, Me.RemoveToolStripMenuItem, Me.CopyToolStripMenuItem, Me.AddToolStripMenuItem, Me.UpdateToolStripMenuItem})
         Me.MenuStrip1.Name = "MenuStrip1"
         '
         'CheckForUpdatesToolStripMenuItem
         '
-        resources.ApplyResources(Me.CheckForUpdatesToolStripMenuItem, "CheckForUpdatesToolStripMenuItem")
         Me.CheckForUpdatesToolStripMenuItem.Name = "CheckForUpdatesToolStripMenuItem"
+        resources.ApplyResources(Me.CheckForUpdatesToolStripMenuItem, "CheckForUpdatesToolStripMenuItem")
+        '
+        'SetAsDefaultToolStripMenuItem
+        '
+        resources.ApplyResources(Me.SetAsDefaultToolStripMenuItem, "SetAsDefaultToolStripMenuItem")
+        Me.SetAsDefaultToolStripMenuItem.Name = "SetAsDefaultToolStripMenuItem"
         '
         'RemoveToolStripMenuItem
         '
         resources.ApplyResources(Me.RemoveToolStripMenuItem, "RemoveToolStripMenuItem")
         Me.RemoveToolStripMenuItem.Name = "RemoveToolStripMenuItem"
         '
-        'CopyToolStripMenuItem
-        '
-        resources.ApplyResources(Me.CopyToolStripMenuItem, "CopyToolStripMenuItem")
-        Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
-        '
         'AddToolStripMenuItem
         '
-        resources.ApplyResources(Me.AddToolStripMenuItem, "AddToolStripMenuItem")
         Me.AddToolStripMenuItem.Name = "AddToolStripMenuItem"
+        resources.ApplyResources(Me.AddToolStripMenuItem, "AddToolStripMenuItem")
         '
         'UpdateToolStripMenuItem
         '
@@ -79,6 +80,11 @@ Partial Class DownloadBuild
         resources.ApplyResources(Me.ListBox1, "ListBox1")
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.Name = "ListBox1"
+        '
+        'CopyToolStripMenuItem
+        '
+        resources.ApplyResources(Me.CopyToolStripMenuItem, "CopyToolStripMenuItem")
+        Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
         '
         'DownloadBuild
         '
@@ -100,8 +106,9 @@ Partial Class DownloadBuild
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents CheckForUpdatesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RemoveToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents CopyToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
     Friend WithEvents AddToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents UpdateToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SetAsDefaultToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CopyToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

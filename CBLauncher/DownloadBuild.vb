@@ -86,10 +86,6 @@ Public Class DownloadBuild
 
         End If
 
-
-
-
-
     End Sub
 
     Private Sub DownloadError()
@@ -134,6 +130,7 @@ Public Class DownloadBuild
 
 
     Private Sub VersionEditor_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+
         If Not wc Is Nothing Then
             wc.CancelAsync()
             Try
@@ -146,6 +143,11 @@ Public Class DownloadBuild
             Me.Dispose()
 
         End If
+
+    End Sub
+
+    Private Sub DownloadBuild_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        My.Settings.Save()
 
     End Sub
 
@@ -181,6 +183,13 @@ Public Class DownloadBuild
             Case True
                 ListBox1.Items.Remove(ListBox1.SelectedItem)
         End Select
+
+        If ListBox1.Items.Count = 0 Then
+            My.Settings.DefaultJar = False
+        ElseIf ListBox1.Items.Count = 1 Then
+            My.Settings.DefaultCraftBukkitPath = ListBox1.Items(0)
+        End If
+
     End Sub
 
     Private Sub CheckForUpdatesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CheckForUpdatesToolStripMenuItem.Click
@@ -204,10 +213,12 @@ Public Class DownloadBuild
             RemoveToolStripMenuItem.Enabled = False
             CopyToolStripMenuItem.Enabled = False
             UpdateToolStripMenuItem.Enabled = False
+            SetAsDefaultToolStripMenuItem.Enabled = False
         Else
             CopyToolStripMenuItem.Enabled = True
             RemoveToolStripMenuItem.Enabled = True
             UpdateToolStripMenuItem.Enabled = True
+            SetAsDefaultToolStripMenuItem.Enabled = True
         End If
 
     End Sub
@@ -232,28 +243,28 @@ Public Class DownloadBuild
     End Sub
 
     Private Sub UpdateToThisToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateToolStripMenuItem.Click
-        Dim Remove As String
-        Dim Removed As Boolean
-        Try
-            Remove = Form1.JarFolder & Path.GetFileName(Form1.JarPath)
-            System.IO.File.Delete(Remove)
-            Dim Dest As String = Form1.JarFolder & ListBox1.SelectedItem & ".jar"
-            System.IO.File.Copy(Form1.documentspath & "\versions\" & ListBox1.SelectedItem & ".jar", Form1.JarFolder & ListBox1.SelectedItem & ".jar")
-            Form1.SelectJar(Dest)
-            Removed = True
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
 
-        If Removed = True Then
-            For Each Favorite In Form1.Favorites
-                If Favorite.FavPath = Remove Then
-                    System.IO.File.WriteAllText(Form1.documentspath & Favorite.FavName & ".cblfav", Form1.JarPath)
-                    MessageBox.Show(Form1.LocRM.GetString("UpdatedCorrectly"), Form1.LocRM.GetString("Done"), MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    Me.Dispose()
-                End If
-            Next
+        If Not Form1.JarPath.Replace(Form1.JarFolder, "").Equals(ListBox1.SelectedItem) Then
+            Dim Remove As String
+            Try
+                Remove = Form1.JarFolder & Path.GetFileName(Form1.JarPath)
+                System.IO.File.Delete(Remove)
+                Dim Dest As String = Form1.JarFolder & ListBox1.SelectedItem & ".jar"
+                System.IO.File.Copy(Form1.documentspath & "\versions\" & ListBox1.SelectedItem & ".jar", Form1.JarFolder & ListBox1.SelectedItem & ".jar")
+                Form1.SelectJar(Dest, False)
+                MessageBox.Show(Form1.LocRM.GetString("UpdatedCorrectly"), Form1.LocRM.GetString("Done"), MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Me.Dispose()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+
+        Else
+
         End If
+    End Sub
 
+    Private Sub SetAsDefaultToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetAsDefaultToolStripMenuItem.Click
+        My.Settings.DefaultCraftBukkitPath = ListBox1.SelectedItem
+        MessageBox.Show(Form1.LocRM.GetString("Done"), "", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 End Class
