@@ -10,7 +10,6 @@ Imports System.IO.Compression
 
 Public Class Form1
 
-    Private output As String
     Private serverprocess As New Process()
     Public JarPath As String = ""
     Public JarFolder As String
@@ -83,27 +82,15 @@ Public Class Form1
     End Sub
 
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
+        Dim output As String
         Do
             output = serverprocess.StandardOutput.ReadLine()
             If output.ToString.Length <> 0 Then
-                UpdateStatus(serverprocess.StandardOutput.ReadLine & vbNewLine)
+                UpdateStatus(output & vbNewLine)
+
             End If
         Loop
 
-    End Sub
-
-    Private Sub BackgroundWorker1_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
-        BackgroundWorker1.Dispose()
-        If ShouldExitWhenBackgroundWorkerEnds = True Then
-            Environment.Exit(0)
-        End If
-        StopButton.Enabled = False
-        ForceStopButton.Enabled = False
-        StartButton.Enabled = True
-        SelectJarButton.Enabled = True
-        FavoritesButton.Enabled = True
-        Reload.Enabled = False
-        StatusCircle.ForeColor = Color.Red
     End Sub
 
     Private Sub UpdateStatus(ByVal NewInput As String)
@@ -132,6 +119,20 @@ Public Class Form1
 
         End If
 
+    End Sub
+
+    Private Sub BackgroundWorker1_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
+        BackgroundWorker1.Dispose()
+        If ShouldExitWhenBackgroundWorkerEnds = True Then
+            Environment.Exit(0)
+        End If
+        StopButton.Enabled = False
+        ForceStopButton.Enabled = False
+        StartButton.Enabled = True
+        SelectJarButton.Enabled = True
+        FavoritesButton.Enabled = True
+        Reload.Enabled = False
+        StatusCircle.ForeColor = Color.Red
     End Sub
 
     Public Sub SelectJar(ByVal InputJarPath As String, ByVal defaultjar As Boolean)

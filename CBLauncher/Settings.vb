@@ -31,7 +31,6 @@ Public Class Settings
     End Sub
 
     Private Sub Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Height = 350
 
         If My.Settings.ForceStop = False Then
             StopRadio.Checked = True
@@ -61,14 +60,6 @@ Public Class Settings
         My.Settings.Reset()
         My.Settings.Save()
         InitializeComponent()
-    End Sub
-
-    Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
-        If TabControl1.SelectedIndex = 0 Then
-            Me.Height = 350
-        Else
-            Me.Height = 400
-        End If
     End Sub
 
     Private Sub TabControl1_TabIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.TabIndexChanged

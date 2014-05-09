@@ -183,17 +183,12 @@ Public Class Properties
 
                 For Each s As String In split
                     If s.Trim <> "" And Not s.StartsWith("#") Then
-
                         If Properties.ContainsKey(s) Then
                             PropertyReading = s
                         Else
                             If Not Properties.ContainsKey(s) Then
-
                                 Properties(PropertyReading) = s
-
-                                Dim value As String
                                 Dim key As String = PropertyReading
-
                             End If
                         End If
                     End If
