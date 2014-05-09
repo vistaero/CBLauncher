@@ -65,6 +65,10 @@ Public Class Form1
         End If
         EasterEgg()
         CheckIfShowMaxMemory()
+
+        If Not Directory.Exists(documentspath) Then
+            Directory.CreateDirectory(documentspath)
+        End If
         RefreshFavorites()
     End Sub
 
