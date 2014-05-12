@@ -82,42 +82,24 @@ Public Class Form1
     End Sub
 
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
-        Dim output As String
         Do
-            output = serverprocess.StandardOutput.ReadLine()
-            If output.ToString.Length <> 0 Then
-                UpdateStatus(output & vbNewLine)
+            Dim output As String = serverprocess.StandardOutput.ReadLine()
+
+            If output.Length <> 0 Then
+
+                If SelectingText = False Then
+                    If Not TextBuffer.Equals("") Then
+                        Invoke(Sub() OutPutTextBox.AppendText(TextBuffer))
+                        TextBuffer = ""
+                        Invoke(Sub() OutPutTextBox.ScrollToCaret())
+                    End If
+                    Invoke(Sub() OutPutTextBox.AppendText(output & vbNewLine))
+                Else
+                    TextBuffer += output & vbNewLine
+                End If
 
             End If
         Loop
-
-    End Sub
-
-    Private Sub UpdateStatus(ByVal NewInput As String)
-        If InvokeRequired Then
-
-            If SelectingText = False Then
-                If Not TextBuffer.Equals("") Then
-                    Invoke(Sub() OutPutTextBox.AppendText(TextBuffer))
-                    TextBuffer = ""
-                End If
-                Invoke(Sub() OutPutTextBox.AppendText(NewInput))
-            Else
-                TextBuffer += NewInput
-            End If
-
-        Else
-            If SelectingText = False Then
-                If Not TextBuffer.Equals("") Then
-                    OutPutTextBox.AppendText(TextBuffer)
-                    TextBuffer = ""
-                End If
-                OutPutTextBox.AppendText(NewInput)
-            Else
-                TextBuffer += NewInput
-            End If
-
-        End If
 
     End Sub
 
@@ -132,7 +114,7 @@ Public Class Form1
         SelectJarButton.Enabled = True
         FavoritesButton.Enabled = True
         Reload.Enabled = False
-        StatusCircle.ForeColor = Color.Red
+        StatusCircle.ForeColor = Color.Orange
     End Sub
 
     Public Sub SelectJar(ByVal InputJarPath As String, ByVal defaultjar As Boolean)
@@ -216,6 +198,7 @@ Public Class Form1
             ' /////////
             serverprocess.StartInfo.RedirectStandardOutput = True
             serverprocess.StartInfo.RedirectStandardInput = True
+            serverprocess.StartInfo.RedirectStandardError = True
             serverprocess.StartInfo.FileName = My.Settings.JavawPath
             Select Case My.Settings.AutoArgs
                 Case True
@@ -232,10 +215,10 @@ Public Class Form1
             serverprocess.StartInfo.CreateNoWindow = True
             serverprocess.StartInfo.WorkingDirectory = JarFolder
             serverprocess.Start()
+            BackgroundWorker1.RunWorkerAsync()
             My.Settings.LastJavawPID = serverprocess.Id
             If Not My.Settings.History.Contains(JarPath) Then My.Settings.History += vbNewLine & JarPath
             My.Settings.Save()
-            BackgroundWorker1.RunWorkerAsync()
             StopButton.Enabled = True
             ForceStopButton.Enabled = True
             StartButton.Enabled = False
@@ -324,9 +307,6 @@ Public Class Form1
             Me.Text = "Happy birthday Jeb!"
             HuevoToolStripMenuItem.Visible = True
         End If
-
-
-
 
     End Sub
 
@@ -769,7 +749,6 @@ Public Class Form1
         serverprocess.StandardInput.WriteLine("reload")
     End Sub
 
-
     Private Sub RunMinecraftToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles RunMinecraftToolStripMenuItem.Click
         If Not My.Settings.MinecraftPath.Equals("") Then
             Process.Start(My.Settings.MinecraftPath)
@@ -780,4 +759,10 @@ Public Class Form1
             Process.Start(My.Settings.MinecraftPath)
         End If
     End Sub
+
+    Private Sub ManagePlayersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ManagePlayersToolStripMenuItem.Click
+        Form2.ShowDialog()
+
+    End Sub
+
 End Class

@@ -38,6 +38,7 @@ Partial Class Form1
         Me.StopButton = New System.Windows.Forms.ToolStripButton()
         Me.ForceStopButton = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.RunMinecraftToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExtrasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenServerFolderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
@@ -45,8 +46,8 @@ Partial Class Form1
         Me.EditPropertiesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LogsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RegenerateWorldToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ManagePlayersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.RunMinecraftToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CopyAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FontTypeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -79,6 +80,7 @@ Partial Class Form1
         '
         'BackgroundWorker1
         '
+        Me.BackgroundWorker1.WorkerSupportsCancellation = True
         '
         'StatusStrip1
         '
@@ -170,11 +172,16 @@ Partial Class Form1
         resources.ApplyResources(Me.ToolStripButton2, "ToolStripButton2")
         Me.ToolStripButton2.Name = "ToolStripButton2"
         '
+        'RunMinecraftToolStripMenuItem
+        '
+        Me.RunMinecraftToolStripMenuItem.Name = "RunMinecraftToolStripMenuItem"
+        resources.ApplyResources(Me.RunMinecraftToolStripMenuItem, "RunMinecraftToolStripMenuItem")
+        '
         'ExtrasToolStripMenuItem
         '
-        Me.ExtrasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenServerFolderToolStripMenuItem, Me.ToolStripSeparator6, Me.UpdateCraftbukkitToolStripMenuItem, Me.EditPropertiesToolStripMenuItem, Me.LogsToolStripMenuItem, Me.RegenerateWorldToolStripMenuItem})
-        Me.ExtrasToolStripMenuItem.Name = "ExtrasToolStripMenuItem"
+        Me.ExtrasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenServerFolderToolStripMenuItem, Me.ToolStripSeparator6, Me.UpdateCraftbukkitToolStripMenuItem, Me.EditPropertiesToolStripMenuItem, Me.LogsToolStripMenuItem, Me.RegenerateWorldToolStripMenuItem, Me.ManagePlayersToolStripMenuItem})
         resources.ApplyResources(Me.ExtrasToolStripMenuItem, "ExtrasToolStripMenuItem")
+        Me.ExtrasToolStripMenuItem.Name = "ExtrasToolStripMenuItem"
         '
         'OpenServerFolderToolStripMenuItem
         '
@@ -206,15 +213,15 @@ Partial Class Form1
         Me.RegenerateWorldToolStripMenuItem.Name = "RegenerateWorldToolStripMenuItem"
         resources.ApplyResources(Me.RegenerateWorldToolStripMenuItem, "RegenerateWorldToolStripMenuItem")
         '
+        'ManagePlayersToolStripMenuItem
+        '
+        Me.ManagePlayersToolStripMenuItem.Name = "ManagePlayersToolStripMenuItem"
+        resources.ApplyResources(Me.ManagePlayersToolStripMenuItem, "ManagePlayersToolStripMenuItem")
+        '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
         resources.ApplyResources(Me.ToolStripSeparator4, "ToolStripSeparator4")
-        '
-        'RunMinecraftToolStripMenuItem
-        '
-        Me.RunMinecraftToolStripMenuItem.Name = "RunMinecraftToolStripMenuItem"
-        resources.ApplyResources(Me.RunMinecraftToolStripMenuItem, "RunMinecraftToolStripMenuItem")
         '
         'ClearToolStripMenuItem
         '
@@ -324,8 +331,8 @@ Partial Class Form1
         '
         Me.OutPutTextBox.BackColor = Global.CBLauncher.My.MySettings.Default.PersonalizedBackColor
         Me.OutPutTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.OutPutTextBox.DataBindings.Add(New System.Windows.Forms.Binding("ForeColor", Global.CBLauncher.My.MySettings.Default, "PersonalizedColor", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.OutPutTextBox.DataBindings.Add(New System.Windows.Forms.Binding("BackColor", Global.CBLauncher.My.MySettings.Default, "PersonalizedBackColor", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.OutPutTextBox.DataBindings.Add(New System.Windows.Forms.Binding("ForeColor", Global.CBLauncher.My.MySettings.Default, "PersonalizedColor", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.OutPutTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Font", Global.CBLauncher.My.MySettings.Default, "PersonalizedFont", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         resources.ApplyResources(Me.OutPutTextBox, "OutPutTextBox")
         Me.OutPutTextBox.Font = Global.CBLauncher.My.MySettings.Default.PersonalizedFont
@@ -333,7 +340,6 @@ Partial Class Form1
         Me.OutPutTextBox.HideSelection = False
         Me.OutPutTextBox.Name = "OutPutTextBox"
         Me.OutPutTextBox.ReadOnly = True
-        Me.OutPutTextBox.TabStop = False
         '
         'ListBox1
         '
@@ -374,7 +380,6 @@ Partial Class Form1
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents OutPutTextBox As System.Windows.Forms.TextBox
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents InputTextBox As System.Windows.Forms.TextBox
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
@@ -423,5 +428,7 @@ Partial Class Form1
     Friend WithEvents ToolStripSeparator6 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents Reload As System.Windows.Forms.ToolStripButton
     Friend WithEvents RunMinecraftToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ManagePlayersToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents OutPutTextBox As System.Windows.Forms.TextBox
 
 End Class

@@ -5,7 +5,6 @@ Public Class Favorite
     Public FavName As String
     Public FavPath As String
 
-
     ' Empty constructor required for serialization.
     Public Sub New()
     End Sub

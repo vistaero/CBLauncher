@@ -82,6 +82,7 @@ Partial Class Worlds
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.ToolStrip1)
+        Me.MinimizeBox = False
         Me.Name = "Worlds"
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()

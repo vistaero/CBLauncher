@@ -362,6 +362,15 @@
   <data name="RegenerateWorldToolStripMenuItem.Text" xml:space="preserve">
     <value>Regenerate World</value>
   </data>
+  <data name="ManagePlayersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 22</value>
+  </data>
+  <data name="ManagePlayersToolStripMenuItem.Text" xml:space="preserve">
+    <value>Players</value>
+  </data>
+  <data name="ExtrasToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="ExtrasToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 22</value>
   </data>
@@ -571,7 +580,7 @@
     <value>661, 298</value>
   </data>
   <data name="OutPutTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;OutPutTextBox.Name" xml:space="preserve">
     <value>OutPutTextBox</value>
@@ -2597,6 +2606,12 @@
   <data name="&gt;&gt;ToolStripButton2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;RunMinecraftToolStripMenuItem.Name" xml:space="preserve">
+    <value>RunMinecraftToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;RunMinecraftToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;ExtrasToolStripMenuItem.Name" xml:space="preserve">
     <value>ExtrasToolStripMenuItem</value>
   </data>
@@ -2639,17 +2654,17 @@
   <data name="&gt;&gt;RegenerateWorldToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;ManagePlayersToolStripMenuItem.Name" xml:space="preserve">
+    <value>ManagePlayersToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ManagePlayersToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;ToolStripSeparator4.Name" xml:space="preserve">
     <value>ToolStripSeparator4</value>
   </data>
   <data name="&gt;&gt;ToolStripSeparator4.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RunMinecraftToolStripMenuItem.Name" xml:space="preserve">
-    <value>RunMinecraftToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;RunMinecraftToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ClearToolStripMenuItem.Name" xml:space="preserve">
     <value>ClearToolStripMenuItem</value>

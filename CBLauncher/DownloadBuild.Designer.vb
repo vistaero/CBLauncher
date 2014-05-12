@@ -26,13 +26,13 @@ Partial Class DownloadBuild
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.FileURLCalculator = New System.ComponentModel.BackgroundWorker()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.AddToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CheckForUpdatesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SetAsDefaultToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RemoveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AddToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UpdateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
-        Me.CopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -50,6 +50,11 @@ Partial Class DownloadBuild
         resources.ApplyResources(Me.MenuStrip1, "MenuStrip1")
         Me.MenuStrip1.Name = "MenuStrip1"
         '
+        'AddToolStripMenuItem
+        '
+        Me.AddToolStripMenuItem.Name = "AddToolStripMenuItem"
+        resources.ApplyResources(Me.AddToolStripMenuItem, "AddToolStripMenuItem")
+        '
         'CheckForUpdatesToolStripMenuItem
         '
         Me.CheckForUpdatesToolStripMenuItem.Name = "CheckForUpdatesToolStripMenuItem"
@@ -65,10 +70,10 @@ Partial Class DownloadBuild
         resources.ApplyResources(Me.RemoveToolStripMenuItem, "RemoveToolStripMenuItem")
         Me.RemoveToolStripMenuItem.Name = "RemoveToolStripMenuItem"
         '
-        'AddToolStripMenuItem
+        'CopyToolStripMenuItem
         '
-        Me.AddToolStripMenuItem.Name = "AddToolStripMenuItem"
-        resources.ApplyResources(Me.AddToolStripMenuItem, "AddToolStripMenuItem")
+        resources.ApplyResources(Me.CopyToolStripMenuItem, "CopyToolStripMenuItem")
+        Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
         '
         'UpdateToolStripMenuItem
         '
@@ -81,11 +86,6 @@ Partial Class DownloadBuild
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.Name = "ListBox1"
         '
-        'CopyToolStripMenuItem
-        '
-        resources.ApplyResources(Me.CopyToolStripMenuItem, "CopyToolStripMenuItem")
-        Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
-        '
         'DownloadBuild
         '
         resources.ApplyResources(Me, "$this")
@@ -94,6 +94,7 @@ Partial Class DownloadBuild
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
+        Me.MinimizeBox = False
         Me.Name = "DownloadBuild"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()

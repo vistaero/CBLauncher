@@ -2263,9 +2263,6 @@
         AA==
 </value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
@@ -2277,6 +2274,12 @@
   </data>
   <data name="&gt;&gt;FileURLCalculator.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AddToolStripMenuItem.Name" xml:space="preserve">
+    <value>AddToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;AddToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CheckForUpdatesToolStripMenuItem.Name" xml:space="preserve">
     <value>CheckForUpdatesToolStripMenuItem</value>
@@ -2296,22 +2299,16 @@
   <data name="&gt;&gt;RemoveToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;AddToolStripMenuItem.Name" xml:space="preserve">
-    <value>AddToolStripMenuItem</value>
+  <data name="&gt;&gt;CopyToolStripMenuItem.Name" xml:space="preserve">
+    <value>CopyToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;AddToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;CopyToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;UpdateToolStripMenuItem.Name" xml:space="preserve">
     <value>UpdateToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;UpdateToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CopyToolStripMenuItem.Name" xml:space="preserve">
-    <value>CopyToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;CopyToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

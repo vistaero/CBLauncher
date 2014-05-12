@@ -29,6 +29,7 @@ Partial Class PropertiesWindow
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(734, 761)
+        Me.MinimizeBox = False
         Me.Name = "PropertiesWindow"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "PropertiesWindow"
