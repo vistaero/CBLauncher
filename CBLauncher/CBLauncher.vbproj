@@ -116,10 +116,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Favorite.vb" />
-    <Compile Include="Form2.Designer.vb">
-      <DependentUpon>Form2.vb</DependentUpon>
+    <Compile Include="Players.Designer.vb">
+      <DependentUpon>Players.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form2.vb">
+    <Compile Include="Players.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ListOfJars.Designer.vb">
@@ -210,11 +210,11 @@
     <EmbeddedResource Include="Form1.es.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.es.resx">
-      <DependentUpon>Form2.vb</DependentUpon>
+    <EmbeddedResource Include="Players.es.resx">
+      <DependentUpon>Players.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.vb</DependentUpon>
+    <EmbeddedResource Include="Players.resx">
+      <DependentUpon>Players.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListOfJars.es.resx">
       <DependentUpon>ListOfJars.vb</DependentUpon>
