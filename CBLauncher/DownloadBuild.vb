@@ -131,7 +131,7 @@ Public Class DownloadBuild
 
     Private Sub VersionEditor_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
 
-        If Not wc Is Nothing Then
+        If Not wc.IsBusy = True Then
             wc.CancelAsync()
             Try
                 System.IO.Directory.Delete(Form1.documentspath & "versions\temp", True)
@@ -188,13 +188,6 @@ Public Class DownloadBuild
             My.Settings.DefaultJar = False
         ElseIf ListBox1.Items.Count = 1 Then
             My.Settings.DefaultCraftBukkitPath = ListBox1.Items(0)
-        End If
-
-    End Sub
-
-    Private Sub CheckForUpdatesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CheckForUpdatesToolStripMenuItem.Click
-        If FileURLCalculator.IsBusy = False Then
-            FileURLCalculator.RunWorkerAsync()
         End If
 
     End Sub
@@ -266,5 +259,20 @@ Public Class DownloadBuild
     Private Sub SetAsDefaultToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetAsDefaultToolStripMenuItem.Click
         My.Settings.DefaultCraftBukkitPath = ListBox1.SelectedItem
         MessageBox.Show(Form1.LocRM.GetString("Done"), "", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+
+    Private Sub LatestDevelopmentBuildToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LatestDevelopmentBuildToolStripMenuItem.Click
+        If FileURLCalculator.IsBusy = False Then
+            FileURLCalculator.RunWorkerAsync()
+        End If
+    End Sub
+
+    Private Sub LatestBetaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LatestBetaToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub LatestRecommendedBuildToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LatestRecommendedBuildToolStripMenuItem.Click
+        My.Computer.Network.DownloadFile("http://dl.bukkit.org/latest-rb/craftbukkit.jar", "C:\Users\vista_000\Desktop\craftbukkit.jar")
     End Sub
 End Class

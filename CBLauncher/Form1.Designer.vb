@@ -430,5 +430,6 @@ Partial Class Form1
     Friend WithEvents RunMinecraftToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ManagePlayersToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OutPutTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
 
 End Class

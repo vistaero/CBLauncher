@@ -1,6 +1,4 @@
 ﻿Imports System.IO
-Imports System.Xml
-Imports System.Xml.Serialization
 Imports System.Text
 Imports System.Resources
 Imports System.Media
@@ -41,7 +39,6 @@ Public Class Form1
             If Process2.Equals(My.Settings.LastJavawPID) And process.ProcessName.Equals("javaw") Then
 
                 Dim AlertWindow = MessageBox.Show(LocRM.GetString("LastPIDAlert") & process.ProcessName & " (" & My.Settings.LastJavawPID & ").", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Hand)
-
                 If AlertWindow = Windows.Forms.DialogResult.Yes Then
                     process.Kill()
                 Else
@@ -765,4 +762,13 @@ Public Class Form1
 
     End Sub
 
+    Private Sub ConfigToolStripMenuItem_Click(sender As Object, e As EventArgs)
+        Config.ShowDialog()
+
+    End Sub
+
+    Private Sub ToolStripButton1_Click_1(sender As Object, e As EventArgs)
+        Config.ShowDialog()
+
+    End Sub
 End Class

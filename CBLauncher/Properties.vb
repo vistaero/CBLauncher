@@ -246,7 +246,6 @@ Public Class Properties
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles SaveToolStripButton.Click
         SaveValues()
         ParentForm.Dispose()
-
     End Sub
 
 End Class
